@@ -29,7 +29,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { ProductSidebarComponent } from './components/layout/product-sidebar/product-sidebar.component';
 
 @NgModule({
@@ -60,8 +59,7 @@ import { ProductSidebarComponent } from './components/layout/product-sidebar/pro
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
-    CarouselModule,
-    NgxGalleryModule
+    CarouselModule
   ],
   exports: [],
   providers: [],

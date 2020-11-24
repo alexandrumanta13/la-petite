@@ -20,8 +20,6 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "@angular/service-worker": "~9.1.0",
-    "@kolkov/ngx-gallery": "^1.2.3",
-    "ng-image-slider": "^2.4.1",
     "ngx-owl-carousel-o": "^4.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
