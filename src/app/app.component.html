@@ -1,14 +1,43 @@
-<div class="page-wrapper">
-  <!-- Preloader -->
-  <div class="preloader"></div>
+<div class="boxed_wrapper">
+  <!-- preloader -->
+  <div class="loader-wrap">
+    <div class="preloader">
+      <div class="preloader-close">Preloader Close</div>
+      <div id="handle-preloader" class="handle-preloader">
+        <div class="animation-preloader">
+          <div class="spinner"></div>
+          <div class="txt-loading">
+            <span data-text-preloader="B" class="letters-loading">
+              B
+            </span>
+            <span data-text-preloader="A" class="letters-loading">
+              A
+            </span>
+            <span data-text-preloader="G" class="letters-loading">
+              G
+            </span>
+            <span data-text-preloader="E" class="letters-loading">
+              E
+            </span>
+            <span data-text-preloader="R" class="letters-loading">
+              R
+            </span>
+            <span data-text-preloader="Y" class="letters-loading">
+              Y
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- preloader end -->
+
+  <app-product-sidebar></app-product-sidebar>
 
   <app-header></app-header>
-
-
-
 
   <router-outlet></router-outlet>
   <app-footer></app-footer>
   <app-whatsapp></app-whatsapp>
-  <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
+
 </div>

@@ -15,144 +15,18 @@ import { GdprComponent } from './pages/gdpr/gdpr.component';
 import { ConfidentialityComponent } from './pages/confidentiality/confidentiality.component';
 import { CookiesComponent } from "./pages/cookies/cookies.component";
 import { TermsComponent } from "./pages/terms/terms.component";
-import { InstalatorSectorOneComponent } from './pages/instalator-sector-one/instalator-sector-one.component';
-import { InstalatorBucurestiComponent } from './pages/instalator-bucuresti/instalator-bucuresti.component';
-import { InstalatorSectorSixComponent } from './pages/instalator-sector-six/instalator-sector-six.component';
-import { InstalatorSectorFiveComponent } from './pages/instalator-sector-five/instalator-sector-five.component';
-import { InstalatorSectorFourComponent } from './pages/instalator-sector-four/instalator-sector-four.component';
-import { InstalatorSectorThreeComponent } from './pages/instalator-sector-three/instalator-sector-three.component';
-import { InstalatorSectorTwoComponent } from './pages/instalator-sector-two/instalator-sector-two.component';
-import { InstalatorSanitarComponent } from './pages/instalator-sanitar/instalator-sanitar.component';
-import { InstalatiiTermiceComponent } from './pages/instalatii-termice/instalatii-termice.component';
-import { InstalatorNonStopComponent } from './pages/instalator-non-stop/instalator-non-stop.component';
-import { MontajCentraleTermiceComponent } from './pages/montaj-centrale-termice/montaj-centrale-termice.component';
-import { DesfundareCanalizareComponent } from './pages/desfundare-canalizare/desfundare-canalizare.component';
-import { DesfundareWcComponent } from './pages/desfundare-wc/desfundare-wc.component';
-import { LucrariComponent } from './pages/lucrari/lucrari.component';
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
     data: {
       title: 'instalator bucuresti si ilfov',
-      description: 'Lukinstall - instalator autorizat in Bucuresti si Ilfov',
+      description: 'la-petite - instalator autorizat in Bucuresti si Ilfov',
       ogUrl: 'your og url'
     }
   },
 
-  {
-    path: 'instalator-bucuresti', component: InstalatorBucurestiComponent,
-    data: {
-      title: 'instalator bucuresti si ilfov',
-      description: 'Instalator termic autorizat pentru instalatii termice in Bucuresti (toate sectoarele) si Ilfov. Intervenim rapid. Oferim garantie.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'instalatii-termice', component: InstalatiiTermiceComponent,
-    data: {
-      title: 'instalatii termice',
-      description: 'Instalator termic autorizat pentru instalatii termice in Bucuresti (toate sectoarele) si Ilfov. Intervenim rapid. Oferim garantie.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'instalator-sanitar', component: InstalatorSanitarComponent,
-    data: {
-      title: 'instalator sanitar',
-      description: 'Instalator sanitar Bucurest si Ilfov. Servicii complete pentru toata gama de instalatii. Intervenim rapid cu instalatori autorizati. Oferim garantie.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'montaj-centrale-termice', component: MontajCentraleTermiceComponent,
-    data: {
-      title: 'instalator sanitar',
-      description: 'Instalator sanitar Bucurest si Ilfov. Servicii complete pentru toata gama de instalatii. Intervenim rapid cu instalatori autorizati. Oferim garantie.',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'desfundare-canalizare', component: DesfundareCanalizareComponent,
-    data: {
-      title: 'desfundare canalizare',
-      description: 'Instalator autorizat pentru desfundare canalizare in Bucuresti (toate sectoarele) si Ilfov. Intervenim rapid. Oferim garantie.',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'desfundare-wc', component: DesfundareWcComponent,
-    data: {
-      title: 'desfundare wc',
-      description: 'Instalator autorizat pentru desfundareWC in Bucuresti (toate sectoarele) si Ilfov. Intervenim rapid. Oferim garantie.',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'instalator-non-stop', component: InstalatorNonStopComponent,
-    data: {
-      title: 'instalator non stop',
-      description: 'Cauti un instalator non stop in Bucuresti (toate sectoarele) si Ilfov? Intervenim in maxim 30 de minute. Oferim garantia lucrarii efectuate.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'instalator-sector-1', component: InstalatorSectorOneComponent,
-    data: {
-      title: 'instalator sector 1',
-      description: 'Instalator sector 1. Servicii complete pentru toata gama de instalatii. Intervenim rapid cu instalatori autorizati pentru orice tip de lucrari in Bucuresti.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'instalator-sector-2', component: InstalatorSectorTwoComponent,
-    data: {
-      title: 'instalator sector 2',
-      description: 'Instalator sector 2. Servicii complete pentru toata gama de instalatii. Intervenim rapid cu instalatori autorizati pentru orice tip de lucrari in Bucuresti.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'instalator-sector-3', component: InstalatorSectorThreeComponent,
-    data: {
-      title: 'instalator sector 3',
-      description: 'Instalator sector 3. Servicii complete pentru toata gama de instalatii. Intervenim rapid cu instalatori autorizati pentru orice tip de lucrari in Bucuresti.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'instalator-sector-4', component: InstalatorSectorFourComponent,
-    data: {
-      title: 'instalator sector 4',
-      description: 'Instalator sector 4. Servicii complete pentru toata gama de instalatii. Intervenim rapid cu instalatori autorizati pentru orice tip de lucrari in Bucuresti.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'instalator-sector-5', component: InstalatorSectorFiveComponent,
-    data: {
-      title: 'instalator sector 5',
-      description: 'Instalator sector 5. Servicii complete pentru toata gama de instalatii. Intervenim rapid cu instalatori autorizati pentru orice tip de lucrari in Bucuresti.',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'instalator-sector-6', component: InstalatorSectorSixComponent,
-    data: {
-      title: 'instalator sector 6',
-      description: 'Instalator sector 6. Servicii complete pentru toata gama de instalatii. Intervenim rapid cu instalatori autorizati pentru orice tip de lucrari in Bucuresti.',
-      ogUrl: 'your og url'
-    }
-  },
+  
 
   {
     path: 'despre-noi', component: AboutComponent,
@@ -193,14 +67,6 @@ const routes: Routes = [
     data: {
       title: 'Termeni si conditii',
       description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'lucrari', component: LucrariComponent,
-    data: {
-      title: 'lucrari-instalator-bucuresti',
-      description: 'Esti curios ce am lucrat pana acum? Vezi in galeria noastra foto o parte din portofoliul nostru de lucrari instalator Bucuresti.',
       ogUrl: 'your og url'
     }
   },

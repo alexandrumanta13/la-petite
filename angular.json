@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lukinstall": {
+    "la-petite": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/lukinstall",
+            "outputPath": "dist/la-petite",
            
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -28,28 +28,34 @@
               "src/favicon.ico",
               "src/assets",
               "src/assets/images"
-       
             ],
             "styles": [
-             
+              "src/assets/css/font-awesome-all.css",
+              "src/assets/css/flaticon.css",
+              "src/assets/css/owl.css",
               "src/assets/css/bootstrap.css",
+              "src/assets/css/jquery.fancybox.min.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/color.css",
+              "src/assets/css/nice-select.css",
+              "src/assets/css/global.css",
               "src/assets/css/style.css",
-              "src/assets/css/responsive.css",
-              "src/styles.scss"
+              "src/assets/css/responsive.css"
             ],
             "scripts": [
-             "src/assets/js/jquery.js",
-             "src/assets/js/popper.min.js",
-             "src/assets/js/bootstrap.min.js",
-             "src/assets/js/jquery.mCustomScrollbar.concat.min.js",
-             "src/assets/js/jquery.fancybox.js",
-             "src/assets/js/appear.js",
-             "src/assets/js/owl.js",
-             "src/assets/js/wow.js",
-             "src/assets/js/jquery-ui.js",
-             "src/assets/js/script.js",
-             "src/assets/js/map-script.js"
-              
+              "src/assets/js/jquery.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/owl.js",
+              "src/assets/js/wow.js",
+              "src/assets/js/validation.js",
+              "src/assets/js/jquery.fancybox.js",
+              "src/assets/js/appear.js",
+              "src/assets/js/jquery.countTo.js",
+              "src/assets/js/scrollbar.js",
+              "src/assets/js/jquery.nice-select.min.js",
+              "src/assets/js/nav-tool.js",
+              "src/assets/js/script.js"
             ]
           },
           "configurations": {
@@ -88,18 +94,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lukinstall:build"
+            "browserTarget": "la-petite:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "lukinstall:build:production"
+              "browserTarget": "la-petite:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lukinstall:build"
+            "browserTarget": "la-petite:build"
           }
         },
         "test": {
@@ -137,15 +143,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "lukinstall:serve"
+            "devServerTarget": "la-petite:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "lukinstall:serve:production"
+              "devServerTarget": "la-petite:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "lukinstall"
+  "defaultProject": "la-petite"
 }

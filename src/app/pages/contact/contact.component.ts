@@ -38,7 +38,7 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.endpoint = "https://lukinstall.ro/data/sendEmail.php";
+    this.endpoint = "https://la-petite.ro/data/sendEmail.php";
   }
 
   submit() {

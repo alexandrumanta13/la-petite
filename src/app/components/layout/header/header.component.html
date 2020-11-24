@@ -1,184 +1,206 @@
-<!-- Main Header-->
-<header class="main-header header-style-one">
+ <!-- main header -->
+ <header class="main-header style-one">
 
-
-  <!--Header-Upper-->
-  <div class="header-upper">
-    <div class="auto-container">
-      <div class="inner-container clearfix">
-
-        <div class="pull-left logo-box">
-          <div class="logo"><a routerLink="/"><img src="/assets/images/logo_mob.png" alt="" title=""></a>
+  <!-- header-lower -->
+  <div class="header-lower">
+      <div class="outer-box">
+          <div class="logo-box">
+              <figure class="logo"><a href="index.html"><img src="assets/images/logo.png" alt=""></a></figure>
           </div>
-        </div>
-
-        <div class="nav-outer clearfix">
-          <!--Mobile Navigation Toggler-->
-          <div class="mobile-nav-toggler" (click)="mobileToggler()"><span class="icon flaticon-menu"></span></div>
-          <!-- Main Menu -->
-          <nav class="main-menu navbar-expand-md">
-            <div class="navbar-header">
-              <!-- Toggle Button -->
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-
-            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-              <ul class="navigation clearfix">
-                <li class="current"><a routerLink="/">Acasa</a></li>
-                <li class="dropdown"><a routerLink="/instalator-bucuresti">Instalator Bucuresti</a>
-                  <ul>
-                    <li><a routerLink="/instalator-sector-1">Instalator Sector 1</a></li>
-                    <li><a routerLink="/instalator-sector-2">Instalator Sector 2</a></li>
-                    <li><a routerLink="/instalator-sector-3">Instalator Sector 3</a></li>
-                    <li><a routerLink="/instalator-sector-4">Instalator Sector 4</a></li>
-                    <li><a routerLink="/instalator-sector-5">Instalator Sector 5</a></li>
-                    <li><a routerLink="/instalator-sector-6">Instalator Sector 6</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown"><a routerLink="/instalator-sanitar">Instalator Sanitar</a>
-                  <ul>
-                    <li><a routerLink="/desfundare-canalizare">Desfundare Canalizare</a></li>
-                    <li><a routerLink="/desfundare-wc">Desfundare WC</a></li>
-                  </ul>
-                </li>
-
-                <li class="dropdown"><a routerLink="/instalatii-termice">Instalatii Termice</a>
-                  <ul>
-                    <li><a routerLink="/montaj-centrale-termice">Montaj Centrale Termice</a></li>
-                  </ul>
-                </li>
-                <li><a routerLink="/instalator-non-stop">Instalator Non Stop</a></li>
-                <li><a routerLink="/lucrari">Lucrari</a></li>
-
-                <li><a routerLink="/contact">Contact</a></li>
-              </ul>
-            </div>
-          </nav>
-
-          <!-- Main Menu End-->
-          <div class="outer-box clearfix">
-
-
-
-
+          <div class="menu-area">
+              <!--Mobile Navigation Toggler-->
+              <div class="mobile-nav-toggler">
+                  <i class="icon-bar"></i>
+                  <i class="icon-bar"></i>
+                  <i class="icon-bar"></i>
+              </div>
+              <nav class="main-menu navbar-expand-md navbar-light">
+                  <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                      <ul class="navigation clearfix">
+                          <li class="current dropdown"><a href="index.html">Home</a>
+                              <ul>
+                                  <li><a href="index.html">Ice Cream Shop</a></li>
+                                  <li><a href="index-2.html">Cake Shop</a></li>
+                                  <li><a href="index-3.html">Coffe Shop</a></li>
+                                  <li><a href="index-4.html">Bread Shop</a></li>
+                                  <li><a href="index-onepage.html">OnePage Home</a></li>
+                                  <li><a href="index-rtl.html">RTL Home</a></li>
+                                  <li class="dropdown"><a href="index.html">Header Style</a>
+                                      <ul>
+                                          <li><a href="index.html">Header Style 01</a></li>
+                                          <li><a href="index-2.html">Header Style 02</a></li>
+                                          <li><a href="index-3.html">Header Style 03</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                          </li> 
+                          <li class="dropdown"><a href="index.html">Shop</a>
+                              <ul>
+                                  <li><a href="shop-1.html">Shop Page 01</a></li>
+                                  <li><a href="shop-2.html">Shop Page 02</a></li>
+                                  <li><a href="shop-details.html">Shop Details</a></li>
+                                  <li><a href="cart.html">Cart Page</a></li>
+                                  <li><a href="checkout.html">Checkout Page</a></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown"><a href="index.html">Pages</a>
+                              <ul>
+                                  <li><a href="about.html">About Us</a></li>
+                                  <li><a href="service.html">Our Services</a></li>
+                                  <li><a href="gallery-1.html">Gallery Page 01</a></li>
+                                  <li><a href="gallery-2.html">Gallery Page 02</a></li>
+                                  <li><a href="gallery-3.html">Gallery Page 03</a></li>
+                                  <li><a href="team.html">Our Team</a></li>
+                                  <li><a href="our-menu.html">Our Menu</a></li>
+                                  <li><a href="testimonial.html">Testimonials</a></li>
+                                  <li><a href="faq.html">Faq's</a></li>
+                                  <li><a href="error.html">404</a></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown"><a href="index.html">Elements</a>
+                              <div class="megamenu">
+                                  <div class="row clearfix">
+                                      <div class="col-xl-6 col-lg-12 col-md-12 column">
+                                          <ul>
+                                              <li><h4>Elements 1</h4></li>
+                                              <li><a href="about-element-1.html">About Block 01</a></li>
+                                              <li><a href="about-element-2.html">About Block 02</a></li>
+                                              <li><a href="service-element-1.html">Service Block 01</a></li>
+                                              <li><a href="service-element-2.html">Service Block 02</a></li>
+                                              <li><a href="shop-element-1.html">Shop Block 01</a></li>
+                                              <li><a href="shop-element-2.html">Shop Block 02</a></li>
+                                              <li><a href="news-element-1.html">News Block 01</a></li>
+                                              <li><a href="news-element-2.html">News Block 02</a></li>
+                                          </ul>
+                                      </div>
+                                      <div class="col-xl-6 col-lg-12 col-md-12 column">
+                                          <ul>
+                                              <li><h4>Elements 2</h4></li>
+                                              <li><a href="feature-element-1.html">Feature Block 01</a></li>
+                                              <li><a href="feature-element-2.html">Feature Block 02</a></li>
+                                              <li><a href="project-element-1.html">Project Block 01</a></li>
+                                              <li><a href="project-element-2.html">Project Block 02</a></li>
+                                              <li><a href="team-element-1.html">Team Block 01</a></li>
+                                              <li><a href="team-element-2.html">Team Block 02</a></li>
+                                              <li><a href="testimonial-element.html">Testimonial Block</a></li>
+                                              <li><a href="clients-element.html">Clients Block</a></li>
+                                          </ul>
+                                      </div>                                    
+                                  </div>                                        
+                              </div>
+                          </li>   
+                          <li class="dropdown"><a href="index.html">Blog</a>
+                              <ul>
+                                  <li><a href="blog-grid.html">Blog Grid</a></li>
+                                  <li><a href="blog-masonry.html">Blog Masonry</a></li>
+                                  <li><a href="blog-standard.html">Blog Standard</a></li>
+                                  <li><a href="blog-details.html">Blog Details</a></li>
+                              </ul>
+                          </li>  
+                          <li><a href="contact.html">Contact</a></li>   
+                      </ul>
+                  </div>
+              </nav>
           </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-  <!--End Header Upper-->
-
-  <!-- Sticky Header  -->
-  <div class="sticky-header">
-    <div class="auto-container clearfix">
-      <!--Logo-->
-      <div class="logo pull-left">
-        <a routerLink="/" title=""><img src="/assets/images/logo_mob.png" alt="" title=""></a>
-      </div>
-      <!--Right Col-->
-      <div class="pull-right">
-        <!-- Main Menu -->
-        <nav class="main-menu">
-          <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-            <ul class="navigation clearfix">
-              <li class="current"><a routerLink="/">Acasa</a></li>
-              <li class="dropdown"><a routerLink="/instalator-bucuresti">Instalator Bucuresti</a>
-                <ul>
-                  <li><a routerLink="/instalator-sector-1">Instalator Sector 1</a></li>
-                  <li><a routerLink="/instalator-sector-2">Instalator Sector 2</a></li>
-                  <li><a routerLink="/instalator-sector-3">Instalator Sector 3</a></li>
-                  <li><a routerLink="/instalator-sector-4">Instalator Sector 4</a></li>
-                  <li><a routerLink="/instalator-sector-5">Instalator Sector 5</a></li>
-                  <li><a routerLink="/instalator-sector-6">Instalator Sector 6</a></li>
-                </ul>
+          <ul class="menu-right-content clearfix">
+              <li class="search-box-outer">
+                  <div class="dropdown">
+                      <button class="search-box-btn" style="background-image: url(assets/images/icons/icon-bg-1.png);" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-Search"></i></button>
+                      <div class="dropdown-menu search-panel" aria-labelledby="dropdownMenu3">
+                          <div class="form-container">
+                              <form method="post" action="blog.html">
+                                  <div class="form-group">
+                                      <input type="search" name="search-field" value="" placeholder="Search...." required="">
+                                      <button type="submit" class="search-btn"><span class="fas fa-search"></span></button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
               </li>
-              <li class="dropdown"><a routerLink="/instalator-sanitar">Instalator Sanitar</a>
-                <ul>
-                  <li><a routerLink="/desfundare-canalizare">Desfundare Canalizare</a></li>
-                  <li><a routerLink="/desfundare-wc">Desfundare WC</a></li>
-                </ul>
+              <li class="user-btn">
+                  <a href="index.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                      <i class="icon-Profile"></i>
+                  </a>
               </li>
-
-              <li class="dropdown"><a routerLink="/instalatii-termice">Instalatii Termice</a>
-                <ul>
-                  <li><a routerLink="/montaj-centrale-termice">Montaj Centrale Termice</a></li>
-                </ul>
+              <li class="cart-btn">
+                  <a href="shop-1.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                      <i class="icon-Bag"></i>
+                      <span>3</span>
+                  </a>
               </li>
-              <li><a routerLink="/instalator-non-stop">Instalator Non Stop</a></li>
-              <li><a routerLink="/lucrari">Lucrari</a></li>
-              <li><a routerLink="/contact">Contact</a></li>
-            </ul>
-          </div>
-        </nav><!-- Main Menu End-->
-
-      </div>
-    </div>
-  </div><!-- End Sticky Menu -->
-
-  <!-- Mobile Menu  -->
-  <div class="mobile-menu">
-    <div class="menu-backdrop"></div>
-    <div class="close-btn" (click)="mobileToggler()"><span class="icon flaticon-multiply"></span></div>
-
-    <nav class="menu-box">
-      <div class="nav-logo"><a routerLink="/"><img src="/assets/images/logo_mob.png" alt="" title=""></a>
-      </div>
-      <div class="menu-outer">
-        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-          <ul class="navigation clearfix">
-            <li class="current"><a (click)="toggleSubmenu('/')" routerLink="/">Acasa</a></li>
-            <li class="dropdown"><a (click)="toggleSubmenu('/instalator-bucuresti')"
-                routerLink="/instalator-bucuresti">Instalator Bucuresti</a>
-              <ul class="submenu">
-                <li><a (click)="toggleSubmenu('/instalator-sector-1')" routerLink="/instalator-sector-1">Instalator
-                    Sector 1</a></li>
-                <li><a (click)="toggleSubmenu('/instalator-sector-2')" routerLink="/instalator-sector-2">Instalator
-                    Sector 2</a></li>
-                <li><a (click)="toggleSubmenu('/instalator-sector-3')" routerLink="/instalator-sector-3">Instalator
-                    Sector 3</a></li>
-                <li><a (click)="toggleSubmenu('/instalator-sector-4')" routerLink="/instalator-sector-4">Instalator
-                    Sector 4</a></li>
-                <li><a (click)="toggleSubmenu('/instalator-sector-5')" routerLink="/instalator-sector-5">Instalator
-                    Sector 5</a></li>
-                <li><a (click)="toggleSubmenu('/instalator-sector-6')" routerLink="/instalator-sector-6">Instalator
-                    Sector 6</a></li>
-              </ul>
-              <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
-            </li>
-            <li class="dropdown"><a (click)="toggleSubmenu('/instalator-sanitar')"
-                routerLink="/instalator-sanitar">Instalator Sanitar</a>
-              <ul class="submenu">
-                <li><a (click)="toggleSubmenu('/desfundare-canalizare')" routerLink="/desfundare-canalizare">Desfundare
-                    Canalizare</a></li>
-                <li><a (click)="toggleSubmenu('/desfundare-wc')" routerLink="/desfundare-wc">Desfundare WC</a></li>
-              </ul>
-              <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
-            </li>
-
-            <li class="dropdown"><a (click)="toggleSubmenu('/instalatii-termice')"
-                routerLink="/instalatii-termice">Instalatii Termice</a>
-              <ul class="submenu">
-                <li><a (click)="toggleSubmenu('/montaj-centrale-termice')" routerLink="/montaj-centrale-termice">Montaj
-                    Centrale Termice</a></li>
-              </ul>
-              <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
-            </li>
-            <li><a (click)="toggleSubmenu('/instalator-non-stop')" routerLink="/instalator-non-stop">Instalator Non
-                Stop</a></li>
-            <li><a (click)="toggleSubmenu('/lucrari')" routerLink="/lucrari">Lucrari</a></li>
-            <li><a (click)="toggleSubmenu('/contact')" routerLink="/contact">Contact</a></li>
           </ul>
-        </div>
       </div>
-    </nav>
-  </div><!-- End Mobile Menu -->
+  </div>
 
+  <!--sticky Header-->
+  <div class="sticky-header">
+      <div class="outer-box">
+          <div class="logo-box">
+              <figure class="logo"><a href="index.html"><img src="assets/images/small-logo.png" alt=""></a></figure>
+          </div>
+          <div class="menu-area">
+              <nav class="main-menu clearfix">
+                  <!--Keep This Empty / Menu will come through Javascript-->
+              </nav>
+          </div>
+          <ul class="menu-right-content clearfix">
+              <li class="search-box-outer">
+                  <div class="dropdown">
+                      <button class="search-box-btn" style="background-image: url(assets/images/icons/icon-bg-1.png);" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-Search"></i></button>
+                      <div class="dropdown-menu search-panel" aria-labelledby="dropdownMenu4">
+                          <div class="form-container">
+                              <form method="post" action="blog.html">
+                                  <div class="form-group">
+                                      <input type="search" name="search-field" value="" placeholder="Search...." required="">
+                                      <button type="submit" class="search-btn"><span class="fas fa-search"></span></button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              <li class="user-btn">
+                  <a href="index.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                      <i class="icon-Profile"></i>
+                  </a>
+              </li>
+              <li class="cart-btn">
+                  <a href="shop-1.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                      <i class="icon-Bag"></i>
+                      <span>3</span>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
 </header>
-<!-- End Main Header -->
+<!-- main-header end -->
+
+<!-- Mobile Menu  -->
+<div class="mobile-menu">
+  <div class="menu-backdrop"></div>
+  <div class="close-btn"><i class="fas fa-times"></i></div>
+  
+  <nav class="menu-box">
+      <div class="nav-logo"><a href="index.html"><img src="assets/images/logo-3.png" alt="" title=""></a></div>
+      <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+      <div class="contact-info">
+          <h4>Contact Info</h4>
+          <ul>
+              <li>Chicago 12, Melborne City, USA</li>
+              <li><a href="tel:+8801682648101">+88 01682648101</a></li>
+              <li><a href="mailto:info@example.com">info@example.com</a></li>
+          </ul>
+      </div>
+      <div class="social-links">
+          <ul class="clearfix">
+              <li><a href="index.html"><span class="fab fa-twitter"></span></a></li>
+              <li><a href="index.html"><span class="fab fa-facebook-square"></span></a></li>
+              <li><a href="index.html"><span class="fab fa-pinterest-p"></span></a></li>
+              <li><a href="index.html"><span class="fab fa-instagram"></span></a></li>
+              <li><a href="index.html"><span class="fab fa-youtube"></span></a></li>
+          </ul>
+      </div>
+  </nav>
+</div><!-- End Mobile Menu -->
