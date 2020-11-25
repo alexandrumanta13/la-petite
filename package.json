@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve —-ssl true --ssl-cert '/ssl/certs/la-petite_ro_bc8ca_14153_1616773532_14f4921a3426e685fae7566be626ad59.crt' --ssl-key '/ssl/keys/bc8ca_14153_cef43e1c88690983e059190bcc5ce53b.key",
+    "start": "ng serve —-ssl true --ssl-cert '/ssl/certs/kontracost_ro_bc8ca_14153_1616773532_14f4921a3426e685fae7566be626ad59.crt' --ssl-key '/ssl/keys/bc8ca_14153_cef43e1c88690983e059190bcc5ce53b.key",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -26,13 +26,13 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1100.2",
+    "@angular-devkit/build-angular": "~0.901.0",
     "@angular/cli": "~9.1.0",
     "@angular/compiler-cli": "~9.1.0",
     "@angular/language-service": "~9.1.0",
+    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
