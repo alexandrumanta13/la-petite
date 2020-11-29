@@ -30,6 +30,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { ProductSidebarComponent } from './components/layout/product-sidebar/product-sidebar.component';
+import { PreloaderComponent } from './components/preloader/preloader.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ProductSidebarComponent } from './components/layout/product-sidebar/pro
     SliderComponent,
     SidebarComponent,
     ProductSidebarComponent,
+    PreloaderComponent,
   ],
   imports: [
     BrowserModule,

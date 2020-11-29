@@ -4,9 +4,10 @@
 	
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
-		if($('.loader-wrap').length){
-			$('.loader-wrap').delay(1000).fadeOut(500);
-		}
+		
+		// if($('.loader-wrap').length){
+		// 	$('.loader-wrap').delay(1000).fadeOut(500);
+		// }
 	}
 
 	if ($(".preloader-close").length) {
