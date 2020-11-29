@@ -31,6 +31,7 @@
   height: calc(100vh + 150px);
   display: flex;
   align-items: center;
+
   @media only screen and (max-width: 767px) {
     height: calc(100vh - 106px);
   }
@@ -47,9 +48,9 @@
   }
 
   @media only screen and (max-width: 767px) {
-      span {
-          font-size: 40px;
-      }
+    span {
+      font-size: 40px;
+    }
   }
 }
 
@@ -63,17 +64,18 @@
 }
 
 .banner-section.style-one .anim-icon .icon-2 {
-   
-  
-    @media only screen and (max-width: 767px) {
-        width: 100px;
-        top: 380px;
-        left: 20px;
-    }
+
+
+  @media only screen and (max-width: 767px) {
+    width: 100px;
+    top: 380px;
+    left: 20px;
   }
+}
 
 .banner-section.style-one .anim-icon .icon-3 {
   bottom: 10px;
+
   @media only screen and (max-width: 767px) {
     bottom: 200px;
     width: 100px;
@@ -86,17 +88,18 @@
   right: 380px;
   width: 78px;
   height: 78px;
+
   @media only screen and (max-width: 767px) {
-      top: 240px;
+    top: 240px;
   }
 }
 
 .banner-section.style-one .anim-icon .icon-5 {
-   
-    @media only screen and (max-width: 767px) {
-        bottom: auto;
-    }
+
+  @media only screen and (max-width: 767px) {
+    bottom: auto;
   }
+}
 
 .banner-section.style-one {
   background: transparent;
@@ -109,6 +112,16 @@
 
   a.banner-btn {
     background: #6d4b50;
+
+    &:hover {
+      background: #ecbbb6;
+
+      &::before {
+        background: #ecbbb6;
+      }
+
+      color: #6d4b50;
+    }
   }
 
   @media only screen and (max-width: 767px) {

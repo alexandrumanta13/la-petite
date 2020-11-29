@@ -130,3 +130,12 @@
     justify-content: space-between;
   }
 }
+
+
+.main-menu .navigation > li > ul, .main-menu .navigation > li > .megamenu {
+    background: #ecbbb6;
+}
+
+.main-menu .navigation > li > ul > li > a:hover, .main-menu .navigation > li > .megamenu li > a:hover {
+    color: #6d4b50 !important;
+}
