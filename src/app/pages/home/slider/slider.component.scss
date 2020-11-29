@@ -13,7 +13,7 @@
 
       @media only screen and (max-width: 767px) {
         width: 100%;
-        top: 180px;
+        top: 140px;
         z-index: 99;
       }
     }
@@ -21,8 +21,8 @@
 
   @media only screen and (max-width: 767px) {
     position: relative;
-    top: -106px;
-    height: 100vh;
+    height: calc(100vh - 106px);
+    top: 0;
   }
 }
 
@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   @media only screen and (max-width: 767px) {
-      height: 100vh;
+    height: calc(100vh - 106px);
   }
 
 }
@@ -45,13 +45,19 @@
     font-size: 54px;
     font-weight: 400;
   }
+
+  @media only screen and (max-width: 767px) {
+      span {
+          font-size: 40px;
+      }
+  }
 }
 
 .banner-section.style-one .anim-icon .icon-1 {
   top: 350px;
 
   @media only screen and (max-width: 767px) {
-    top: 90px;
+    top: 0px;
     width: 100px;
   }
 }
@@ -81,9 +87,16 @@
   width: 78px;
   height: 78px;
   @media only screen and (max-width: 767px) {
-      top: 500px;
+      top: 240px;
   }
 }
+
+.banner-section.style-one .anim-icon .icon-5 {
+   
+    @media only screen and (max-width: 767px) {
+        bottom: auto;
+    }
+  }
 
 .banner-section.style-one {
   background: transparent;
@@ -99,7 +112,7 @@
   }
 
   @media only screen and (max-width: 767px) {
-    bottom: 20%;
+    bottom: 10%;
   }
 }
 
