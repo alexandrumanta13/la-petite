@@ -1,0 +1,120 @@
+.banner-section.style-one {
+  //height: calc(100vh - 160px);
+
+  width: 100%;
+
+  position: absolute;
+  top: -150px;
+
+  .content-inner {
+    .image-box.style-one {
+      width: 600px;
+      right: 0;
+
+      @media only screen and (max-width: 767px) {
+        width: 100%;
+        top: 180px;
+        z-index: 99;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    position: relative;
+    top: -106px;
+    height: 100vh;
+  }
+}
+
+.banner-carousel .content-box {
+  padding: 0;
+  height: calc(100vh + 150px);
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: 767px) {
+      height: 100vh;
+  }
+
+}
+
+.banner-carousel .content-box h1 {
+  color: #6d4b50;
+  margin-top: 50%;
+
+  span {
+    font-size: 54px;
+    font-weight: 400;
+  }
+}
+
+.banner-section.style-one .anim-icon .icon-1 {
+  top: 350px;
+
+  @media only screen and (max-width: 767px) {
+    top: 90px;
+    width: 100px;
+  }
+}
+
+.banner-section.style-one .anim-icon .icon-2 {
+   
+  
+    @media only screen and (max-width: 767px) {
+        width: 100px;
+        top: 380px;
+        left: 20px;
+    }
+  }
+
+.banner-section.style-one .anim-icon .icon-3 {
+  bottom: 10px;
+  @media only screen and (max-width: 767px) {
+    bottom: 200px;
+    width: 100px;
+    right: 100%;
+  }
+}
+
+.banner-section.style-one .anim-icon .icon-4 {
+  top: 320px;
+  right: 380px;
+  width: 78px;
+  height: 78px;
+  @media only screen and (max-width: 767px) {
+      top: 500px;
+  }
+}
+
+.banner-section.style-one {
+  background: transparent;
+}
+
+.banner-carousel .content-box .btn-box {
+  position: absolute;
+  bottom: 15%;
+  top: auto;
+
+  a.banner-btn {
+    background: #6d4b50;
+  }
+
+  @media only screen and (max-width: 767px) {
+    bottom: 20%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .banner-section .content-inner .image-box,
+  .banner-section.style-one .banner-carousel .slide-item .image-layer,
+  .banner-section .anim-icon {
+    display: block;
+  }
+}
+
+
+.banner-carousel .slide-item .image-layer {
+  @media only screen and (max-width: 767px) {
+    background-position: top left;
+  }
+}
