@@ -166,7 +166,7 @@
     display: flex;
 
     li {
-      color: #6d4b50;
+      color: #fff;
       padding: 8px 0;
 
 
@@ -176,13 +176,13 @@
 
       a {
         transition: 280ms all;
-        color: #6d4b50;
+        color: #fff;
         padding: 8px 0;
         margin: 8px 16px;
 
         &:hover {
           cursor: pointer;
-          color: #fff;
+          color: #6d4b50;
         }
       }
     }
@@ -199,21 +199,21 @@
         transition: 280ms all;
         padding: 8px 0;
         margin: 8px;
-        color: #6d4b50;
+        color: #fff;
 
         svg {
           transition: 280ms all;
 
-          fill: #6d4b50;
+          fill: #fff;
           height: 20px;
           margin-right: 8px;
         }
 
         &:hover {
-          color: #fff;
+          color: #6d4b50;
 
           svg {
-            fill: #fff
+            fill: #6d4b50
           }
         }
       }
