@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "@angular/service-worker": "~9.1.0",
+    "@ctrl/ngx-emoji-mart": "^4.1.0",
+    "isotope-layout": "^3.0.6",
     "ngx-owl-carousel-o": "^4.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

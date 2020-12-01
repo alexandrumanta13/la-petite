@@ -1,10 +1,17 @@
+:host {
+  position: relative;
+  height: calc(100vh - 173px);
+  display: flex;
+}
+
 .banner-section.style-one {
   //height: calc(100vh - 160px);
 
   width: 100%;
 
   position: absolute;
-  top: -150px;
+  z-index: 97;
+  top: -323px;
 
   .content-inner {
     .image-box.style-one {
@@ -13,16 +20,29 @@
 
       @media only screen and (max-width: 767px) {
         width: 100%;
-        top: 140px;
+        top: 10%;
+        bottom: auto;
         z-index: 99;
       }
     }
+  }
+
+  .logo {
+    display: none;
+    width: 130px;
+    position: absolute;
+    z-index: 99;
+    right: 20px;
   }
 
   @media only screen and (max-width: 767px) {
     position: relative;
     height: calc(100vh - 106px);
     top: 0;
+
+    .logo {
+      display: flex;
+    }
   }
 }
 

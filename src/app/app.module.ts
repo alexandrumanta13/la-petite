@@ -31,6 +31,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { ProductSidebarComponent } from './components/layout/product-sidebar/product-sidebar.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
+import { ShopSectionComponent } from './components/layout/shop-section/shop-section.component';
+import { PromotionSectionComponent } from './components/layout/promotion-section/promotion-section.component';
+import { PhotoGalleryComponent } from './components/layout/photo-gallery/photo-gallery.component';
+import { TestimonialsComponent } from './components/layout/testimonials/testimonials.component';
+
+
 
 @NgModule({
   declarations: [
@@ -52,6 +59,11 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
     SidebarComponent,
     ProductSidebarComponent,
     PreloaderComponent,
+    MobileMenuComponent,
+    ShopSectionComponent,
+    PromotionSectionComponent,
+    PhotoGalleryComponent,
+    TestimonialsComponent,
   ],
   imports: [
     BrowserModule,

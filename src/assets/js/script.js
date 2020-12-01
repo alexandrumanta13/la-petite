@@ -46,10 +46,10 @@
 	//Mobile Nav Hide Show
 	if($('.mobile-menu').length){
 		
-		$('.mobile-menu .menu-box').mCustomScrollbar();
+		//').mCustomScrollbar();
 		
 		var mobileMenuContent = $('.main-header .menu-area .main-menu').html();
-		$('.mobile-menu .menu-box .menu-outer').append(mobileMenuContent);
+		//$('.mobile-menu .menu-box .menu-outer').append(mobileMenuContent);
 		$('.sticky-header .main-menu').append(mobileMenuContent);
 		
 		//Dropdown Button
@@ -296,62 +296,62 @@
 
 	// Four Item Carousel
 	if ($('.four-item-carousel').length) {
-		$('.four-item-carousel').owlCarousel({
-			loop:true,
-			margin:30,
-			nav:true,
-			smartSpeed: 500,
-			autoplay: 1000,
-			navText: [ '<span class="icon-Arrow-Left"></span>', '<span class="icon-Arrow-Right"></span>' ],
-			responsive:{
-				0:{
-					items:1
-				},
-				600:{
-					items:2
-				},
-				800:{
-					items:3
-				},
-				1024:{
-					items:3
-				},
-				1200:{
-					items:4
-				}
-			}
-		});    		
+		// $('.four-item-carousel').owlCarousel({
+		// 	loop:true,
+		// 	margin:30,
+		// 	nav:true,
+		// 	smartSpeed: 500,
+		// 	autoplay: 1000,
+		// 	navText: [ '<span class="icon-Arrow-Left"></span>', '<span class="icon-Arrow-Right"></span>' ],
+		// 	responsive:{
+		// 		0:{
+		// 			items:1
+		// 		},
+		// 		600:{
+		// 			items:2
+		// 		},
+		// 		800:{
+		// 			items:3
+		// 		},
+		// 		1024:{
+		// 			items:3
+		// 		},
+		// 		1200:{
+		// 			items:4
+		// 		}
+		// 	}
+		// });    		
 	}
 
 
 	// single-item-carousel
 	if ($('.single-item-carousel').length) {
-		$('.single-item-carousel').owlCarousel({
-			loop:true,
-			margin:30,
-			nav:false,
-			smartSpeed: 3000,
-			autoplay: true,
-			navText: [ '<span class="icon-Arrow-Left"></span>', '<span class="icon-Arrow-Right"></span>' ],
-			responsive:{
-				0:{
-					items:1
-				},
-				480:{
-					items:1
-				},
-				600:{
-					items:1
-				},
-				800:{
-					items:1
-				},			
-				1200:{
-					items:1
-				}
+		// $('.single-item-carousel').owlCarousel({
+		// 	loop:true,
+		// 	margin:30,
+		// 	nav:false,
+		// 	smartSpeed: 3000,
+		// 	autoplay: true,
+		// 	navText: [ '<span class="icon-Arrow-Left"></span>', '<span class="icon-Arrow-Right"></span>' ],
+		// 	responsive:{
+		// 		0:{
+		// 			items:1
+		// 		},
+		// 		480:{
+		// 			items:1
+		// 		},
+		// 		600:{
+		// 			items:1
+		// 		},
+		// 		800:{
+		// 			items:1
+		// 		},			
+		// 		1200:{
+		// 			items:1
+		// 		}
 
-			}
-		});    		
+		// 	}
+		// });    		
 	}
 
 
