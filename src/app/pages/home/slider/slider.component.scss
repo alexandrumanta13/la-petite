@@ -29,10 +29,14 @@
 
   .logo {
     display: none;
-    width: 130px;
+   
     position: absolute;
     z-index: 99;
-    right: 20px;
+    right: 20px; 
+    img {
+      width: 130px;
+      height: auto;
+    }
   }
 
   @media only screen and (max-width: 767px) {
