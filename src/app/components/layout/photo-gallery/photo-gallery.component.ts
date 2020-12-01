@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 declare var $: any;
 
@@ -8,7 +9,7 @@ declare var $: any;
 })
 export class PhotoGalleryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private elRef:ElementRef) { }
 
   ngOnInit(): void {
     this.enableMasonry();
@@ -84,11 +85,19 @@ export class PhotoGalleryComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      let active: HTMLElement = document.querySelector('.filter-tabs .active') as HTMLElement;
-      active.click();
-    }, 1000);
+    let active: HTMLElement = document.querySelector('.filter-tabs .active') as HTMLElement;
+    let checkExist = setInterval(function() {
+      if (active && active instanceof HTMLElement) {
+        console.log(active)
+        setTimeout(() => {
+          active.click();
+        }, 3000);
+      
+        clearInterval(checkExist);
+      }
+   }, 100); // check every 100ms
 
+  
   }
 
 }

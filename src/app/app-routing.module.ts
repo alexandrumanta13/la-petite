@@ -20,8 +20,8 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent,
     data: {
-      title: 'instalator bucuresti si ilfov',
-      description: 'la-petite - instalator autorizat in Bucuresti si Ilfov',
+      title: 'La Petite',
+      description: '',
       ogUrl: 'your og url'
     }
   },
