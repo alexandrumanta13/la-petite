@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+declare var $: any;
 @Component({
   selector: 'app-testimonials',
   templateUrl: './testimonials.component.html',
@@ -32,10 +32,17 @@ export class TestimonialsComponent implements OnInit {
       }
     }
   }
+  video: any = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  
+  }
+
+  playVideo() {
+    this.video = !this.video
+    
   }
 
 }

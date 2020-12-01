@@ -87,10 +87,11 @@
 </section>
 <section class="video-section">
     <div class="auto-container">
-        <div class="video-inner" style="background-image: url(assets/images/background/cofetarie-la-petite-video.jpg);">
+        <div *ngIf="!video" class="video-inner" style="background-image: url(assets/images/background/cofetarie-la-petite-video.jpg);">
             <div class="video-btn">
-                <a href=" https://www.youtube.com/watch?v=QmAMNGEB0gQ&feature=youtu.be" class="lightbox-image video-btn" data-caption=""><i class="icon-Video"></i></a>
+                <a (click)="playVideo()" class="lightbox-image video-btn" data-caption=""><i class="icon-Video"></i></a>
             </div>
         </div>
+        <iframe *ngIf="video" width="100%" height="500" src="https://www.youtube.com/embed/QmAMNGEB0gQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </section>
