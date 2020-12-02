@@ -1,48 +1,117 @@
-
-
 .banner-carousel .owl-nav {
-    right: -100px;
+  right: -100px;
 }
 
 body {
-    height: 100%;
-    min-height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
-.boxed_wrapper{
-    height: 100%;
-    min-height: 100vh;
+.boxed_wrapper {
+  height: 100%;
+  min-height: 100vh;
 }
 
 .owl-dots {
-    background: transparent;
-    position: absolute;
-    bottom: 0;
+  background: transparent;
+  position: absolute;
+  bottom: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #6d4b50;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #6d4b50;
 }
 
 .theme-btn-two {
-    &:hover {
-        border-color: #ecbbb6;
-    }
-    &::before, &::after {
-        background: #ecbbb6;
-        box-shadow: 0 10px 20px rgba(236, 187, 182, 0.3);
-    }
+  &:hover {
+    border-color: #ecbbb6;
+  }
+
+  &::before,
+  &::after {
+    background: #ecbbb6;
+    box-shadow: 0 10px 20px rgba(236, 187, 182, 0.3);
+  }
 }
 
-.nav-style-one .owl-nav .owl-prev:hover, .nav-style-one .owl-nav .owl-next:hover {
-    background: #6d4b50;
+.nav-style-one .owl-nav .owl-prev:hover,
+.nav-style-one .owl-nav .owl-next:hover {
+  background: #6d4b50;
 }
 
 .theme-btn-one {
-    background: #ecbbb6;
-    box-shadow: 0 10px 20px rgba(236, 187, 182, 0.3);
+  background: #ecbbb6;
+  box-shadow: 0 10px 20px rgba(236, 187, 182, 0.3);
 
-    &::before, &::after {
-        background: #6d4b50;
+  &::before,
+  &::after {
+    background: #6d4b50;
+  }
+}
+
+.popover {
+  border-radius: 0;
+
+  ngb-datepicker {
+    border-radius: 0;
+  }
+
+  .ngb-dp-header,
+  .ngb-dp-weekdays {
+    background-color: #ecbbb6;
+    border-radius: 0;
+    color: #fff;
+  }
+
+  .ngb-dp-navigation-chevron {
+    color: #6d4b50;
+  }
+
+  .ngb-dp-weekday {
+    color: #fff;
+  }
+
+  .custom-select {
+    border-radius: 0;
+
+    &:focus {
+      border-color: #ecbbb6;
+      box-shadow: 0 10px 20px rgba(236, 187, 182, 0.3);
     }
+  }
+
+  .btn-light {
+    &.bg-primary {
+      background-color: #6d4b50 !important;
+      border-radius: 0;
+    }
+
+    &:hover {
+      background-color: #6d4b50;
+      color: #fff;
+      border-radius: 0;
+    }
+
+
+  }
+
+  .btn-toggle {
+    border-color: #ecbbb6;
+    background-color: #ecbbb6;
+    color: #fff;
+    border-radius: 0;
+    padding: 17px 27px;
+    margin: 16px 0;
+  }
+
+  .popover-body {
+      padding: 16px;
+  }
+
+
 }

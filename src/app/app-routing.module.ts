@@ -15,18 +15,27 @@ import { GdprComponent } from './pages/gdpr/gdpr.component';
 import { ConfidentialityComponent } from './pages/confidentiality/confidentiality.component';
 import { CookiesComponent } from "./pages/cookies/cookies.component";
 import { TermsComponent } from "./pages/terms/terms.component";
+import { ProductComponent } from './pages/product/product.component';
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
     data: {
-      title: 'La Petite',
-      description: '',
+      title: 'Cofetaria La Petite - Douce Revelation',
+      description: 'La Petite - Douce Revelation este un laborator de cofetarie artizanala din Bucuresti cu deserturi delicioase, din ingrediente naturale. Vezi prajiturile noastre!',
       ogUrl: 'your og url'
     }
   },
 
   
+  {
+    path: 'produs', component: ProductComponent,
+    data: {
+      title: 'Cofetaria La Petite - Douce Revelation',
+      description: '',
+      ogUrl: 'your og url'
+    }
+  },
 
   {
     path: 'despre-noi', component: AboutComponent,

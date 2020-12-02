@@ -1,0 +1,137 @@
+.qnt-box {
+  display: flex;
+  margin-bottom: 40px;
+
+  p {
+    color: #222;
+    margin-right: 16px;
+  }
+
+  ul {
+    display: flex;
+  }
+
+  &__qunatity {
+    transition: all 500ms ease;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    text-align: center;
+    color: #2b3c6b;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+    margin: 0 8px;
+
+    &:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &.active {
+      background: #ecbbb6;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+  }
+}
+
+.datetimepicker-container {
+  display: flex;
+  margin-bottom: 40px;
+
+  p {
+    color: #222;
+    margin-right: 16px;
+  }
+
+  app-datetimepicker {}
+}
+
+.accessories {
+  margin-bottom: 40px;
+
+  p {
+    color: #222;
+    margin-right: 16px;
+  }
+
+  ul {
+    margin-top: 20px;
+
+    li {
+      width: 100px;
+
+      a {
+        transition: all 500ms ease;
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+        img {
+          width: 100%;
+        }
+      }
+
+      ul {
+        li {
+          font-size: 14px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          span {
+            font-size: 14px;
+            font-weight: bold;
+            color: #6d4b50;
+          }
+
+          input {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 45px;
+            border: 1px solid #e6e6e6;
+            font-size: 15px;
+            color: #848484;
+            padding: 10px 15px;
+            transition: all 500ms ease;
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.other-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    p {
+        flex-basis: 100%;
+    }
+  img {
+    height: 40px;
+    margin-right: 8px;
+    
+  }
+}
+
+.shop-block-one .inner-box .lower-content h3 a {
+    font-size: 18px;
+}
+
+.shop-block-one .inner-box .lower-content .price-box {
+    background: #ecbbb6;
+    box-shadow: 0 10px 20px rgba(236, 187, 182, 0.3);
+    color: #fff;
+}

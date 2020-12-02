@@ -48,6 +48,7 @@
               "src/assets/js/jquery.js",
               "src/assets/js/popper.min.js",
               "src/assets/js/bootstrap.min.js",
+              "src/assets/js/bxslider.js",
               "src/assets/js/owl.js",
               "src/assets/js/wow.js",
               "src/assets/js/validation.js",

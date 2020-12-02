@@ -36,8 +36,17 @@ import { ShopSectionComponent } from './components/layout/shop-section/shop-sect
 import { PromotionSectionComponent } from './components/layout/promotion-section/promotion-section.component';
 import { PhotoGalleryComponent } from './components/layout/photo-gallery/photo-gallery.component';
 import { TestimonialsComponent } from './components/layout/testimonials/testimonials.component';
+import { ProductComponent } from './pages/product/product.component';
 
 
+import { DatetimepickerComponent } from './components/datetimepicker/datetimepicker.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import {
+  NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbDropdownModule,
+  NgbDateNativeAdapter, NgbDate
+} from "@ng-bootstrap/ng-bootstrap"
 
 @NgModule({
   declarations: [
@@ -64,6 +73,8 @@ import { TestimonialsComponent } from './components/layout/testimonials/testimon
     PromotionSectionComponent,
     PhotoGalleryComponent,
     TestimonialsComponent,
+    ProductComponent,
+    DatetimepickerComponent
   ],
   imports: [
     BrowserModule,
@@ -71,12 +82,14 @@ import { TestimonialsComponent } from './components/layout/testimonials/testimon
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    NgbModule,
   ],
   exports: [],
-  providers: [],
+  providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
