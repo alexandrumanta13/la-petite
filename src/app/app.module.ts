@@ -46,7 +46,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbDropdownModule,
   NgbDateNativeAdapter, NgbDate
-} from "@ng-bootstrap/ng-bootstrap"
+} from "@ng-bootstrap/ng-bootstrap";
+import { ProductsComponent } from './pages/products/products.component'
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {
     PhotoGalleryComponent,
     TestimonialsComponent,
     ProductComponent,
-    DatetimepickerComponent
+    DatetimepickerComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

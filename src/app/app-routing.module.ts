@@ -16,6 +16,7 @@ import { ConfidentialityComponent } from './pages/confidentiality/confidentialit
 import { CookiesComponent } from "./pages/cookies/cookies.component";
 import { TermsComponent } from "./pages/terms/terms.component";
 import { ProductComponent } from './pages/product/product.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,16 @@ const routes: Routes = [
   
   {
     path: 'produs', component: ProductComponent,
+    data: {
+      title: 'Cofetaria La Petite - Douce Revelation',
+      description: '',
+      ogUrl: 'your og url'
+    }
+  },
+
+
+  {
+    path: 'produse', component: ProductsComponent,
     data: {
       title: 'Cofetaria La Petite - Douce Revelation',
       description: '',
