@@ -24,6 +24,22 @@ export class ProductComponent implements OnInit {
 
   }
 
+  addToCart(product) {
+    console.log(product)
+    // product.selectedQnt = this.selectedQnt;
+    // product.selectedColorName = this.selectedColorName;
+    // product.selectedColor = this.selectedColor;
+    // product.cart_uuid = uuidv4();
+    // if (this.selectedColor) {
+    //   product.selectedPrice = parseInt(this.price) + 20;
+    // } else {
+    //   product.selectedPrice = this.price;
+    // }
+    // const inputValue = (<HTMLInputElement>document.querySelector('.horizontal-quantity')).value;
+    // this._cartService.addToCart(product, parseInt(inputValue));
+
+  }
+
 
 
 

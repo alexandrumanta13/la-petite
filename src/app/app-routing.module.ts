@@ -28,7 +28,7 @@ const routes: Routes = [
     }
   },
 
-  
+
   {
     path: 'produs', component: ProductComponent,
     data: {
@@ -41,6 +41,14 @@ const routes: Routes = [
 
   {
     path: 'produse', component: ProductsComponent,
+    data: {
+      title: 'Cofetaria La Petite - Douce Revelation',
+      description: '',
+      ogUrl: 'your og url'
+    }
+  },
+  {
+    path: 'produse/:categorySlug', component: ProductsComponent,
     data: {
       title: 'Cofetaria La Petite - Douce Revelation',
       description: '',

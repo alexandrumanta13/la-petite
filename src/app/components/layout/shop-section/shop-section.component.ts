@@ -3,16 +3,18 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
-  selector: 'app-shop-section',
-  templateUrl: './shop-section.component.html',
-  styleUrls: ['./shop-section.component.scss']
+	selector: 'app-shop-section',
+	templateUrl: './shop-section.component.html',
+	styleUrls: ['./shop-section.component.scss']
 })
 export class ShopSectionComponent implements OnInit {
-  customOptions: OwlOptions = {
+	customOptions: OwlOptions = {
 		loop: true,
 		margin: 30,
-		nav: true,
+
+		
 		smartSpeed: 500,
+		autoplay: true,
 		navText: ['<span class="icon-Arrow-Left"></span>', '<span class="icon-Arrow-Right"></span>'],
 		responsive: {
 			0: {
@@ -34,9 +36,9 @@ export class ShopSectionComponent implements OnInit {
 	}
 
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+	}
 
 }

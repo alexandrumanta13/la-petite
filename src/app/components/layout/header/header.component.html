@@ -73,11 +73,11 @@
             <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
               <ul class="navigation clearfix">
                 <li class="current dropdown">
-                  <a href="index.html">
+                  <a>
                     <img src="/assets/images/icons/cupcake.svg" alt="">
                     Prajituri</a>
                   <ul>
-                    <li><a href="index.html">Prajituri La Petite</a></li>
+                    <li><a href="/produse/prajituri-la-petite">Prajituri La Petite</a></li>
                     <li><a href="index-2.html">Clasice & Traditionale</a></li>
                   </ul>
                   <div class="dropdown-btn"><span class="fas fa-angle-down"></span></div>
@@ -153,9 +153,9 @@
           </a>
         </li>
         <li class="cart-btn">
-          <a href="shop-1.html" style="background-image: url(assets/images/icons/icon-bg-6.png);">
+          <a href="/cos-cumparaturi" style="background-image: url(assets/images/icons/icon-bg-6.png);">
             <i class="icon-Bag"></i>
-            <span>3</span>
+            <span>{{cartTotal$}}</span>
           </a>
         </li>
       </ul>
@@ -325,9 +325,9 @@
           </a>
         </li>
         <li class="cart-btn">
-          <a href="shop-1.html" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+          <a routerLink="/cos-cumparaturi" style="background-image: url(assets/images/icons/icon-bg-1.png);">
             <i class="icon-Bag"></i>
-            <span>3</span>
+            <span>{{cartTotal$}}</span>
           </a>
         </li>
       </ul>

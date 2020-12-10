@@ -32,7 +32,7 @@ export class ProductsService {
                     resolve(response);
                 }, reject);
             } else {
-                this._httpClient.get<Product[]>(this.REST_API_SERVER + 'products/' + route + '/page/' + currentPage)
+                this._httpClient.get<Product[]>(this.REST_API_SERVER + 'products/category/' + route + '/page/' + currentPage)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -68,7 +68,7 @@ export class ProductsService {
     public getCategory(route): Promise<any> {
 
         return new Promise((resolve, reject) => {
-            this._httpClient.get<Product[]>(this.REST_API_SERVER + 'categories')
+            this._httpClient.get<Product[]>(this.REST_API_SERVER + 'category/' + route)
                 .subscribe((response: any) => {
                     console.log(response)
 

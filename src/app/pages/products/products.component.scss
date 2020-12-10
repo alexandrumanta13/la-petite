@@ -1,0 +1,9 @@
+.pagination li a:not(.active) {
+ &:hover {
+     cursor: pointer;
+ }
+}
+
+.cart-btn {
+    margin-top: 16px;
+}

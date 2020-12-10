@@ -47,7 +47,8 @@ import {
   NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbDropdownModule,
   NgbDateNativeAdapter, NgbDate
 } from "@ng-bootstrap/ng-bootstrap";
-import { ProductsComponent } from './pages/products/products.component'
+import { ProductsComponent } from './pages/products/products.component';
+import { CartComponent } from './pages/cart/cart.component'
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ProductsComponent } from './pages/products/products.component'
     TestimonialsComponent,
     ProductComponent,
     DatetimepickerComponent,
-    ProductsComponent
+    ProductsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

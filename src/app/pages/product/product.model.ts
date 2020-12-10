@@ -1,5 +1,6 @@
 export class Product {
     alias: string;
+    num: number;
     id: number;
     product_name: string;
     description: string;
@@ -17,6 +18,7 @@ export class Product {
 
     constructor(product?) {
         product = product || {};
+        this.num = product.num;
         this.alias = product.alias;
         this.id = parseInt(product.id)
         this.product_name = product.product_name || '';
