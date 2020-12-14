@@ -75,7 +75,7 @@
                   </figure>
                   <div class="lower-content">
                     <span class="price-box">{{product.information[0].price}} lei</span>
-                    <h3><a href="shop-details.html">{{product.product_name}}</a></h3>
+                    <h3><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}">{{product.product_name}}</a></h3>
                     <ul>
                         <li *ngFor="let qnt of product.information">
                             <span>{{qnt.quantity}} {{qnt.um}}</span>

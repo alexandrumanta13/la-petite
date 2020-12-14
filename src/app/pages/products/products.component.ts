@@ -84,11 +84,14 @@ export class ProductsComponent implements OnInit {
 
         this.setTotalPages(data.no_of_pages);
         this.setPagesArray(this.totalPages);
-
+        console.log(this.products)
         this._ProductsService.getCategory(this._categoryRoute);
       });
 
     }
+
+
+    
     // console.log(window.pageYOffset);
     // const shopElement = (<HTMLElement>document.querySelector('.shop-page-section')).offsetTop;
     // if(window.pageYOffset > shopElement)

@@ -28,16 +28,16 @@ export class ProductsService {
         return new Promise((resolve, reject) => {
             if (!route) {
                 this._httpClient.get<Product[]>(this.REST_API_SERVER + 'products/' + currentPage)
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, reject);
+                    .subscribe((response: any) => {
+                        resolve(response);
+                    }, reject);
             } else {
                 this._httpClient.get<Product[]>(this.REST_API_SERVER + 'products/category/' + route + '/page/' + currentPage)
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, reject);
+                    .subscribe((response: any) => {
+                        resolve(response);
+                    }, reject);
             }
-            
+
         });
     }
 
@@ -52,8 +52,6 @@ export class ProductsService {
         return new Promise((resolve, reject) => {
             this._httpClient.get<Product[]>(this.REST_API_SERVER + 'categories')
                 .subscribe((response: any) => {
-                    console.log(response)
-
                     resolve(response);
                 }, reject);
         });
@@ -70,8 +68,6 @@ export class ProductsService {
         return new Promise((resolve, reject) => {
             this._httpClient.get<Product[]>(this.REST_API_SERVER + 'category/' + route)
                 .subscribe((response: any) => {
-                    console.log(response)
-
                     resolve(response);
                 }, reject);
         });

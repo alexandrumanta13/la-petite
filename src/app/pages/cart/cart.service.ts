@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { take, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Product } from '../product/product.model';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable({
     providedIn: 'root',
@@ -17,7 +19,7 @@ export class CartService {
     public shippingSubject = new BehaviorSubject({});
 
 
-    constructor(public router: Router) {
+    constructor(public router: Router, private toaster: ToastrService) {
         let existingCartItems = JSON.parse(localStorage.getItem('products'));
         if (!existingCartItems) {
             existingCartItems = [];
@@ -33,26 +35,39 @@ export class CartService {
     shippingItems$ = this.shippingSubject.asObservable();
 
 
-    addToCart(product, value: number) {
-      
+    addToCart(product, value) {
 
         this.items$.pipe(
             take(1),
             map((products) => {
-                const existing = products.find(({ product_name }) => product.product_name === product_name);
-                if (existing) {
-                    existing.num += value;
-                    
+
+                const filter = {
+                    'id': product.id,
+                    'selectedQnt': product.selectedQnt,
+                };
+
+                const existing = products.filter(function (v, i) {
+                    return (v["id"] == product.id && v["selectedQnt"] == product.selectedQnt);
+                });
+
+                console.log(existing)
+
+                if (existing.length > 0) {
+                    console.log(existing)
+                    existing[0].num = value;
                 } else {
                     products.push({ ...product, num: value });
                 }
-                
+
                 localStorage.setItem('products', JSON.stringify(products));
                 this.calcTotal();
+                
             }),
         ).subscribe();
-
-
+        this.toaster.success(`${product.product_name + ' ' + product.selectedQnt}`, 'Produsul fost adaugat in cos!', {
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right'
+          });
     }
 
     removeFromCart(product: Product) {

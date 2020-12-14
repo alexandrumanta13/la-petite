@@ -61,22 +61,40 @@
   }
 
   ul {
-    margin-top: 20px;
-
+    margin: 20px -8px 0;
+    display: flex;
     li {
-      width: 100px;
+      width: 110px;
+      margin: 0 8px;
 
       a {
-        transition: all 500ms ease;
+        transition: all 280ms ease;
         position: relative;
         width: 100%;
         display: flex;
         align-items: center;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        
 
         img {
           width: 100%;
+          border: 2px solid #fff;
+          transition: all 280ms ease;
         }
+
+        &:hover {
+          cursor: pointer;
+        }
+        .active {
+          border: 2px solid #ecbbb6;
+        }
+      }
+
+      span {
+        font-size: 14px;
+        font-weight: bold;
+        color: #6d4b50;
       }
 
       ul {
@@ -138,4 +156,8 @@
 
 figure.image {
     margin-bottom: 40px;
+}
+
+.qnt-box__qunatity {
+  width: auto;
 }

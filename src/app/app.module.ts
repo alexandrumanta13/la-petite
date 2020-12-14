@@ -48,7 +48,10 @@ import {
   NgbDateNativeAdapter, NgbDate
 } from "@ng-bootstrap/ng-bootstrap";
 import { ProductsComponent } from './pages/products/products.component';
-import { CartComponent } from './pages/cart/cart.component'
+import { CartComponent } from './pages/cart/cart.component';
+import { ToasterComponent } from './components/toaster/toaster.component'
+import { ToasterContainerComponent } from './components/toaster/toaster-container.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,9 @@ import { CartComponent } from './pages/cart/cart.component'
     ProductComponent,
     DatetimepickerComponent,
     ProductsComponent,
-    CartComponent
+    CartComponent,
+    ToasterComponent,
+    ToasterContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +96,7 @@ import { CartComponent } from './pages/cart/cart.component'
     BrowserAnimationsModule,
     CarouselModule,
     NgbModule,
+    ToastrModule.forRoot(), 
   ],
   exports: [],
   providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter },],
