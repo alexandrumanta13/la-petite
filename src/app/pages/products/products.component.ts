@@ -101,13 +101,8 @@ export class ProductsComponent implements OnInit {
 
 
   addToCart(product) {
-    console.log(product)
-
     product.cart_uuid = uuidv4();
-    
-   // const inputValue = (<HTMLInputElement>document.querySelector('.horizontal-quantity')).value;
     this._cartService.addToCart(product, 1);
-
   }
 
   getTotalPages() {

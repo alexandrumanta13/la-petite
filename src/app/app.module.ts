@@ -52,6 +52,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { ToasterComponent } from './components/toaster/toaster.component'
 import { ToasterContainerComponent } from './components/toaster/toaster-container.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { PlaceOrderComponent } from './pages/place-order/place-order.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { ToastrModule } from 'ngx-toastr';
     ProductsComponent,
     CartComponent,
     ToasterComponent,
-    ToasterContainerComponent
+    ToasterContainerComponent,
+    CheckoutComponent,
+    PlaceOrderComponent
   ],
   imports: [
     BrowserModule,

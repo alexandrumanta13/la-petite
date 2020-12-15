@@ -12,7 +12,18 @@
   </div>
 </section>
 
-<section class="cart-section cart-page">
+<section class="cart-section cart-page" *ngIf="products.length === 0">
+  <div class="auto-container">
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 table-column">
+        <p>Nu ai niciun produs in cos!</p>
+        <a routerLink="/produse" class="theme-btn-one back-to-shop">Inapoi la cumparaturi</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cart-section cart-page" *ngIf="products.length > 0">
   <div class="auto-container">
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 table-column">
@@ -33,24 +44,31 @@
               <tr *ngFor="let product of products">
                 <td colspan="4" class="prod-column">
                   <div class="column-box">
-                    <div class="remove-btn">
+                    <div class="remove-btn" (click)="removeFromCart(product)">
                       <i class="fal fa-times"></i>
                     </div>
                     <div class="prod-thumb">
-                      <a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}"><img
-                          src="/assets/images/resource/shop/{{product.images[0].image_url}}" alt=""></a>
+                      <a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}">
+                        <img src="/assets/images/resource/shop/{{product.images[0].image_url}}" alt="">
+                      </a>
+
                     </div>
                     <div class="prod-title">
                       {{product.product_name}} {{product.selectedQnt}}
                       <ul class="accessories">
-                          <li *ngFor="let accessory of product.accessories">
-                              {{accessory.accessory_name}} - {{accessory.price}} lei
-                          </li>
+                        <li *ngFor="let accessory of product.accessories">
+                          {{accessory.accessory_name}} - {{accessory.price}} lei
+                        </li>
                       </ul>
                     </div>
                   </div>
+                  <div class="delivery-date">
+                    Data de livrare:
+                    {{product.deliverydate.day}}.{{product.deliverydate.month}}.{{product.deliverydate.year}} -
+                    {{product.deliverydate.hour}}:{{product.deliverydate.minute}}
+                  </div>
                 </td>
-                <td class="price">{{product.selectedPrice}} lei</td>
+                <td class="price">{{product.selectedPrice | number:'1.2-2'}} lei</td>
                 <td class="qty">
                   <div class="item-quantity">
                     <div class="input-group bootstrap-touchspin">
@@ -59,10 +77,12 @@
                         (blur)="addToCart(product, $event, true)" name="quantity" style="display: block;">
                       <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
                       <span class="input-group-btn-vertical">
-                        <button (click)="addOneToCart(product)" class="btn btn-default bootstrap-touchspin-up" type="button">
+                        <button (click)="addOneToCart(product)" class="btn btn-default bootstrap-touchspin-up"
+                          type="button">
                           <i class="glyphicon glyphicon-chevron-up"></i>
                         </button>
-                        <button (click)="removeOneFromCart(product)" class="btn btn-default bootstrap-touchspin-down" type="button">
+                        <button (click)="removeOneFromCart(product)" class="btn btn-default bootstrap-touchspin-down"
+                          type="button">
                           <i class="glyphicon glyphicon-chevron-down"></i>
                         </button>
                       </span>
@@ -71,7 +91,6 @@
                 </td>
                 <td class="sub-total">{{product.num * product.selectedPrice | number:'1.2-2'}} lei</td>
               </tr>
-
             </tbody>
           </table>
         </div>
@@ -79,27 +98,25 @@
     </div>
     <div class="othre-content clearfix">
       <div class="coupon-box pull-left clearfix">
-        <input type="text" placeholder="Enter coupon code...">
-        <button type="submit" class="theme-btn-one">Apply coupon<i class="flaticon-right-1"></i></button>
+        <input type="text" placeholder="Adauga codul...">
+        <button type="submit" class="theme-btn-one">Aplica coupon<i class="flaticon-right-1"></i></button>
       </div>
-      <div class="update-btn pull-right">
-        <button type="submit">Update Cart<i class="flaticon-right-1"></i></button>
-      </div>
+
     </div>
     <div class="cart-total">
       <div class="row">
         <div class="col-xl-5 col-lg-12 col-md-12 offset-xl-7 cart-column">
           <div class="total-cart-box clearfix">
-            <h4>Cart Totals</h4>
+            <h4>Total comanda</h4>
             <ul class="list clearfix">
-              <li>Subtotal:<span>$150</span></li>
-              <li>Order Total:<span>$150</span></li>
+              <li>Discount:<span>0</span></li>
+              <li>Total:<span>{{totalPrice$ | number:'1.2-2'}} lei</span></li>
             </ul>
-            <a href="cart.html" class="theme-btn-one">Proceed to Checkout</a>
+            <a routerLink="/finalizeaza-comanda" class="theme-btn-one">Finalizeaza comanda</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<app-toaster-container></app-toaster-container>
+<app-toaster-container *ngIf="products.length > 0"></app-toaster-container>

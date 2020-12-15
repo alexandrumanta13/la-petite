@@ -9,6 +9,7 @@ export class Product {
     images: [];
     information: [];
     availableQuantities: [];
+    cart_uuid: string;
 
     /**
      * Constructor
@@ -28,6 +29,7 @@ export class Product {
         this.images = product.images || [];
         this.information = product.information || [];
         this.availableQuantities = product.availableQuantities || [];
+        this.cart_uuid = product.cart_uuid || '';
     }
   }
 

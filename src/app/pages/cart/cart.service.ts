@@ -74,7 +74,7 @@ export class CartService {
         this.items$.pipe(
             take(1),
             map((products) => {
-                //products = products.filter(({ cart_uuid }) => cart_uuid !== product.cart_uuid);
+                products = products.filter(({ cart_uuid }) => cart_uuid !== product.cart_uuid);
                 localStorage.setItem('products', JSON.stringify(products));
                 this.calcTotal();
             }),

@@ -55,7 +55,7 @@
             </div>
             <div class="datetimepicker-container">
               <p>Data livrarii:</p>
-              <app-datetimepicker [(ngModel)]="stringDateModel" ngDefaultControl name="activeEndDate">
+              <app-datetimepicker [(ngModel)]="stringDateModel" (onDatePicked)="addDeliveryDate($event)" ngDefaultControl name="activeEndDate">
               </app-datetimepicker>
             </div>
             <div class="accessories">

@@ -17,14 +17,6 @@
     <div class="row clearfix">
       <div class="col-lg-3 col-md-12 col-sm-12 sidebar-side">
         <div class="shop-sidebar default-sidebar">
-          <div class="sidebar-widget sidebar-search">
-            <form action="shop-1.html" method="post" class="search-form">
-              <div class="form-group">
-                <input type="search" name="search-field" placeholder="Search..." required="">
-                <button type="submit"><i class="icon-Search"></i></button>
-              </div>
-            </form>
-          </div>
           <div class="sidebar-widget sidebar-categories">
             <div class="widget-title">
               <h3>Categorii</h3>
@@ -42,30 +34,6 @@
       </div>
       <div class="col-lg-9 col-md-12 col-sm-12 content-side">
         <div class="our-shop">
-          <div class="item-shorting clearfix">
-            <div class="left-column pull-left clearfix">
-              <div class="text">
-                <p>Arata 1–12 of 50 Results</p>
-              </div>
-            </div>
-            <div class="right-column pull-right clearfix">
-              <div class="short-box clearfix">
-                <p>Short by</p>
-                <div class="select-box">
-                  <select class="wide">
-                    <option data-display="Popularity">Popularity</option>
-                    <option value="1">New Collection</option>
-                    <option value="2">Top Sell</option>
-                    <option value="4">Top Ratted</option>
-                  </select>
-                </div>
-              </div>
-              <div class="menu-box">
-                <a href="shop.html"><i class="icon-Menu"></i></a>
-                <a href="shop.html"><i class="icon-List-View"></i></a>
-              </div>
-            </div>
-          </div>
           <div class="row clearfix">
             <div class="col-lg-4 col-md-6 col-sm-12 shop-block" *ngFor="let product of products">
               <div class="shop-block-one">
@@ -82,7 +50,7 @@
                         </li>
                     </ul>
                     
-                    <div class="cart-btn"><a (click)="addToCart(product)" class="theme-btn-two">Adauga in cos</a></div>
+                    <div class="cart-btn"><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}" class="theme-btn-two">Vezi detalii</a></div>
                   </div>
                 </div>
               </div>
@@ -90,7 +58,7 @@
 
           </div>
 
-          <div class="pagination-wrapper centred">
+          <div class="pagination-wrapper centred" *ngIf="totalPages > 1">
             <ul class="pagination">
               <li><a (click)="decreaseCurrentPage();"><i class="fas fa-angle-left"></i></a></li>
               <li *ngFor="let number of pages" (click)="setCurrentPage(number)">

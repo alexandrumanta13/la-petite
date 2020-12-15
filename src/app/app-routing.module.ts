@@ -18,6 +18,7 @@ import { TermsComponent } from "./pages/terms/terms.component";
 import { ProductComponent } from './pages/product/product.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,15 @@ const routes: Routes = [
 
   {
     path: 'cos-cumparaturi', component: CartComponent,
+    data: {
+      title: 'Cofetaria La Petite - Douce Revelation',
+      description: '',
+      ogUrl: 'your og url'
+    }
+  },
+
+  {
+    path: 'finalizeaza-comanda', component: CheckoutComponent,
     data: {
       title: 'Cofetaria La Petite - Douce Revelation',
       description: '',

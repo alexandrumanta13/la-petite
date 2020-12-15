@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../cart/cart.service';
 import { ProductService } from './product.service';
+import { v4 as uuidv4 } from 'uuid';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 
@@ -44,6 +46,7 @@ export class ProductComponent implements OnInit {
     private _ProductService: ProductService,
     private _cartService: CartService,
     public router: Router,
+    private toaster: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -69,24 +72,42 @@ export class ProductComponent implements OnInit {
     });
 
     this._ProductService.getAccesories().then(data => {
-      console.log(data)
       this.accessories = data;
     });
   }
 
+  addDeliveryDate(date) {
+    this.product.deliverydate = date;
+  }
+
   addToCart(product) {
-    this.product.selectedPrice = this.price;
-    this._cartService.addToCart(product, this.cartQuantity);
+    console.log(this.price)
+
+    if(this.product.deliverydate) {
+      this.product.selectedPrice = this.price;
+      product.cart_uuid = uuidv4();
+      this._cartService.addToCart(product, this.cartQuantity);
+    } else {
+      this.toaster.info(`${product.product_name + ' ' + product.selectedQnt}`, 'Va rugam sa adaugati data livrarii!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+    }
+    
   }
 
   selectQnt(qnt) {
+
     this.isActive = qnt.id;
     this.price = parseInt(qnt.price);
     this.portions = qnt.portions;
     this.product.selectedQnt = qnt.quantity + qnt.um;
+    console.log(this.price)
+
   }
 
   addAccessory(event, product, accessory) {
+    
     const existing = product.accessories.findIndex(obj => obj.id === accessory.id);
     if(existing > -1) {
       product.accessories = product.accessories.filter(item => item.id !== accessory.id);
@@ -95,6 +116,7 @@ export class ProductComponent implements OnInit {
       product.accessories.push(accessory);
       this.price += 10;
     }
+    console.log(this.price)
     event.target.classList.toggle('active');
   }
 
