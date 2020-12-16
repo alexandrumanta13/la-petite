@@ -54,9 +54,9 @@ export class CartService {
 
                 if (existing.length > 0) {
                     console.log(existing)
-                    existing[0].num = value;
+                    existing[0].num += parseInt(value);
                 } else {
-                    products.push({ ...product, num: value });
+                    products.push({ ...product, num: parseInt(value) });
                 }
 
                 localStorage.setItem('products', JSON.stringify(products));

@@ -19,6 +19,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { CandyBarComponent } from './pages/candy-bar/candy-bar.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,14 @@ const routes: Routes = [
 
   {
     path: 'produse', component: ProductsComponent,
+    data: {
+      title: 'Cofetaria La Petite - Douce Revelation',
+      description: '',
+      ogUrl: 'your og url'
+    }
+  },
+  {
+    path: 'candy-bar', component: CandyBarComponent,
     data: {
       title: 'Cofetaria La Petite - Douce Revelation',
       description: '',

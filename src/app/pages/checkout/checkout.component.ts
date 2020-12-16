@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { from } from 'rxjs';
 import { CartService } from '../cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-checkout',
@@ -11,18 +13,21 @@ import { CartService } from '../cart/cart.service';
 })
 export class CheckoutComponent implements OnInit {
   @ViewChild('sendOrder') ngForm: NgForm;
-  
+
   order: any[];
   discount: number = 0;
   payment: any;
   note_box: any;
+  accessories: any;
 
   constructor(
     private cartService: CartService,
-    private _httpClient: HttpClient
+    private _httpClient: HttpClient,
+    private toaster: ToastrService
   ) { }
 
   private SEND_ORDER = "https://la-petite.ro/data/sendOrder.php";
+  private ADD_ORDER = "https://la-petite.ro/la-petite-api/v1/order/add";
   public items$ = this.cartService.items$;
   public products;
   public totalPrice$;
@@ -32,46 +37,66 @@ export class CheckoutComponent implements OnInit {
       this.products = data
     })
 
+    console.log(this.products)
+
     this.cartService.totalPrice.subscribe(info => {
       this.totalPrice$ = info;
     });
   }
 
-  send() { 
-    this.ngForm.ngSubmit.emit(); 
+  send() {
+    this.ngForm.ngSubmit.emit();
   }
 
   placeOrder(form: NgForm) {
-   
-    if(!form.valid) {
+
+    if (!form.valid) {
+      this.toaster.warning('Va rugam sa completati toate campurile obligatorii!', 'Comanda nu poate fi trimisa!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
       return;
     }
 
     this.order = [
       {
         customer: {
-          name: form.value.first_name + ' ' + form.value.last_name,
+          firstName: form.value.first_name,
+          lastName: form.value.last_name,
           email: form.value.email,
           phone: form.value.phone,
-          address: form.value.address + ' ' + form.value.address_1,
-          town: form.value.town_city,
-          county: form.value.county,
-          zip: form.value.zip
+          shippingAddress: {
+            address: form.value.address + ' ' + form.value.address_1,
+            town: form.value.town_city,
+            county: form.value.county,
+            zip: form.value.zip
+          }
         },
-        order_details: {
-          total: this.totalPrice$,
-          discount: this.discount,
-          payment: this.payment,
-          notes: this.note_box
-        },
-        products: this.products 
+
+        total: this.totalPrice$,
+        discount: this.discount,
+        method: this.payment,
+        notes: this.note_box,
+        products: this.products,
+        accessories: this.products[0].accessories
       }
     ];
 
-    this._httpClient.post(`https://la-petite.ro/data/sendOrder.php`, this.order).subscribe((data: any) => {
+    this._httpClient.post(this.ADD_ORDER, this.order).subscribe((data: any) => {
       if (data.status == "success") {
-        form.reset();
+        this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
+          if (data.status == "success") {
+
+            this.toaster.success('Va multumim!', `${data.message}`, {
+              timeOut: 3000,
+              positionClass: 'toast-bottom-right'
+            });
+
+            this.cartService.emptyCart();
+            form.reset();
+          }
+        })
       }
-    })
+    });
   }
 }

@@ -1,0 +1,118 @@
+ <!--Page Title-->
+ <section class="page-title centred" style="background-image: url(assets/images/background/imagine-category-la-petite.jpg);">
+    <div class="auto-container">
+        <div class="content-box">
+            <div class="title">
+                <h1>Candy Bar</h1>
+            </div>
+            <ul class="bread-crumb clearfix">
+                <li><a routerLink="/">Acasa</a></li>
+                <li>Candy Bar</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+
+
+<!-- service-section -->
+<section class="service-section sec-pad centred" style="background-image: url(assets/images/background/single-shop-1.jpg)">
+    <div class="auto-container">
+        
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-6 col-sm-12 service-block">
+                <div class="service-block-one">
+                    <div class="inner-box">
+                        <div class="icon-box wow fadeInDown animated animated" data-wow-delay="400ms" data-wow-duration="1500ms">
+                            <div class="bg-layer" style="background-image: url(assets/images/icons/icon-bg-4.png);"></div>
+                            <i class="icon-Cake"></i>
+                        </div>
+                        <div class="lower-content wow fadeInUp animated animated" data-wow-delay="400ms" data-wow-duration="1500ms">
+                            <h3>Prajituri Proaspete</h3>
+                            <p>Producem totul pe baza de comanda, asa ca fiecare prajiturica pleaca din laborator exact la momentul potrivit.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-12 service-block">
+                <div class="service-block-one">
+                    <div class="inner-box">
+                        <div class="icon-box wow fadeInDown animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                            <div class="bg-layer" style="background-image: url(assets/images/icons/icon-bg-4.png);"></div>
+                            <i class="icon-Ice-Cream"></i>
+                        </div>
+                        <div class="lower-content wow fadeInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                            <h3>Livram cu Masini Frigorifice</h3>
+                            <p>Nicio prajitura nu vine altfel decat in starea ei perfecta. Gust si aspect, totul la superlativ.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 service-block">
+                <div class="service-block-one">
+                    <div class="inner-box">
+                        <div class="icon-box wow fadeInDown animated animated" data-wow-delay="200ms" data-wow-duration="1500ms">
+                            <div class="bg-layer" style="background-image: url(assets/images/icons/icon-bg-4.png);"></div>
+                            <i class="icon-certify"></i>
+                        </div>
+                        <div class="lower-content wow fadeInUp animated animated" data-wow-delay="200ms" data-wow-duration="1500ms">
+                            <h3>Certificat de Conformitate</h3>
+                            <p>Iti oferim toate documentele de care ai nevoie pentru a asigura buna desfasurare a evenimentului.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-lg-3 col-md-6 col-sm-12 service-block">
+                <div class="service-block-one">
+                    <div class="inner-box">
+                        <div class="icon-box wow fadeInDown animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
+                            <div class="bg-layer" style="background-image: url(assets/images/icons/icon-bg-4.png);"></div>
+                            <i class="icon-macaroons"></i>
+                        </div>
+                        <div class="lower-content wow fadeInUp animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
+                            <h3>Candy Bar Personalizat</h3>
+                            <p>La cerere, realizam un candy bar cu tematica. Venim cu recipiente si decor. Tot noi montam si strangem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- service-section end -->
+
+
+ <!-- specialmenu-section -->
+ <section class="specialmenu-section sec-pad" style="background-image: url(assets/images/background/candy-bar-bg.jpg);">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="col-lg-6 col-md-12 col-sm-12 content-column" *ngFor="let item of candyBar">
+                <div class="special-menu-box wow fadeInLeft animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                    <div class="bg-layer" style="background-image: url(assets/images/shape/shape-88.png);"></div>
+                    <div class="border-shape" style="background-image: url(assets/images/shape/shape-99.png);"></div>
+                    <div class="inner-box">
+                        <ul class="menu-list">
+                            <li *ngFor="let candy of item.version">
+                                <div class="single-menu">
+                                    <div class="text">
+                                        <h4>{{candy.title}}</h4>
+                                    </div>
+                                    <p>{{candy.description}}</p>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
+<!-- specialmenu-section end -->

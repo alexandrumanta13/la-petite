@@ -54,6 +54,7 @@ import { ToasterContainerComponent } from './components/toaster/toaster-containe
 import { ToastrModule } from 'ngx-toastr';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PlaceOrderComponent } from './pages/place-order/place-order.component';
+import { CandyBarComponent } from './pages/candy-bar/candy-bar.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { PlaceOrderComponent } from './pages/place-order/place-order.component';
     ToasterComponent,
     ToasterContainerComponent,
     CheckoutComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    CandyBarComponent
   ],
   imports: [
     BrowserModule,

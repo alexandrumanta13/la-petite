@@ -63,6 +63,7 @@ export class ProductComponent implements OnInit {
       console.log(data)
       this.product = data;
       this.product.accessories = [];
+      this.product.selectedAccessories = '';
       this.productCategoryName = this.product.categories[0].category_name;
       this.productCategorySlug = this.product.categories[0].slug;
       this.price = parseInt(this.product.information[0].price);
@@ -77,7 +78,8 @@ export class ProductComponent implements OnInit {
   }
 
   addDeliveryDate(date) {
-    this.product.deliverydate = date;
+    this.product.deliverydate = `${date.day + '.' + date.month + '.' + date.year + '-' + date.hour + ':' + date.minute}`;
+    //this.product.deliverydate = date;
   }
 
   addToCart(product) {
@@ -97,13 +99,10 @@ export class ProductComponent implements OnInit {
   }
 
   selectQnt(qnt) {
-
     this.isActive = qnt.id;
     this.price = parseInt(qnt.price);
     this.portions = qnt.portions;
     this.product.selectedQnt = qnt.quantity + qnt.um;
-    console.log(this.price)
-
   }
 
   addAccessory(event, product, accessory) {
@@ -114,9 +113,10 @@ export class ProductComponent implements OnInit {
       this.price -= 10;
     } else {
       product.accessories.push(accessory);
+      this.product.selectedAccessories += accessory.accessory_name + ', '
       this.price += 10;
     }
-    console.log(this.price)
+    console.log(this.product)
     event.target.classList.toggle('active');
   }
 
