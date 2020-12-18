@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { map, take } from 'rxjs/operators';
 import { CartService } from 'src/app/pages/cart/cart.service';
 declare var $: any;
@@ -30,11 +30,23 @@ export class HeaderComponent implements OnInit {
     this._cartService.numTotal.subscribe(info => {
       console.log(info)
       this.cartTotal$ = info;
-    })
+    });
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      this.open = false;
+      
+    });
   }
 
   toggleMenu() {
     this.open = !this.open;
+  }
+
+  goToUrl() {
+    
   }
 
   getProducts() {

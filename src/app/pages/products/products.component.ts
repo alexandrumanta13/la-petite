@@ -76,6 +76,7 @@ export class ProductsComponent implements OnInit {
         this.setPagesArray(this.totalPages);
       });
 
+      this.moveToTop();
 
     } else {
       this._ProductsService.getProducts(this._categoryRoute, this.currentPage).then(data => {
@@ -86,17 +87,20 @@ export class ProductsComponent implements OnInit {
         this.setPagesArray(this.totalPages);
         console.log(this.products)
         this._ProductsService.getCategory(this._categoryRoute);
+
+        this.moveToTop();
       });
 
     }
-
-
     
     // console.log(window.pageYOffset);
     // const shopElement = (<HTMLElement>document.querySelector('.shop-page-section')).offsetTop;
     // if(window.pageYOffset > shopElement)
-    document.querySelector('.shop-page-section').scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 
+  }
+
+  moveToTop() {
+    document.querySelector('.shop-page-section').scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
   }
 
 
