@@ -57,6 +57,7 @@
               <p>Data livrarii:</p>
               <app-datetimepicker [(ngModel)]="stringDateModel" (onDatePicked)="addDeliveryDate($event)" ngDefaultControl name="activeEndDate">
               </app-datetimepicker>
+              <p class="interval">Interval: <strong>{{product?.interval}}</strong></p>
             </div>
             <div class="accessories">
               <p>Adauga acestui produs accesoriile dorite:</p>

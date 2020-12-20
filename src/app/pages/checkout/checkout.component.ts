@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { from } from 'rxjs';
 import { CartService } from '../cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -31,6 +33,19 @@ export class CheckoutComponent implements OnInit {
   public items$ = this.cartService.items$;
   public products;
   public totalPrice$;
+  model: any = {};
+
+  form = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.pattern(new RegExp("[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}"))]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(new RegExp("[0-9 ]{10}"))]),
+    body: new FormControl('', Validators.required),
+    categories: new FormControl('', Validators.required)
+  });
+
+  get f() {
+    return this.form.controls;
+  }
 
   ngOnInit(): void {
     this.items$.subscribe(data => {
@@ -50,19 +65,19 @@ export class CheckoutComponent implements OnInit {
 
   placeOrder(form: NgForm) {
 
-    if (!form.valid) {
-      this.toaster.warning('Va rugam sa completati toate campurile obligatorii!', 'Comanda nu poate fi trimisa!', {
-        timeOut: 3000,
-        positionClass: 'toast-bottom-right'
-      });
-      return;
-    }
+    // if (!form.errors) {
+    //   this.toaster.warning('Va rugam sa completati toate campurile obligatorii!', 'Comanda nu poate fi trimisa!', {
+    //     timeOut: 3000,
+    //     positionClass: 'toast-bottom-right'
+    //   });
+    //   return;
+    // }
 
     this.order = [
       {
         customer: {
-          firstName: form.value.first_name,
-          lastName: form.value.last_name,
+          firstName: form.value.firstName,
+          lastName: form.value.lastName,
           email: form.value.email,
           phone: form.value.phone,
           shippingAddress: {
@@ -72,7 +87,6 @@ export class CheckoutComponent implements OnInit {
             zip: form.value.zip
           }
         },
-
         total: this.totalPrice$,
         discount: this.discount,
         method: this.payment,
@@ -82,21 +96,36 @@ export class CheckoutComponent implements OnInit {
       }
     ];
 
-    this._httpClient.post(this.ADD_ORDER, this.order).subscribe((data: any) => {
-      if (data.status == "success") {
-        this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
-          if (data.status == "success") {
+    console.log(this.order);
 
-            this.toaster.success('Va multumim!', `${data.message}`, {
-              timeOut: 3000,
-              positionClass: 'toast-bottom-right'
-            });
+    this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
+            if (data.status == "success") {
+  
+              this.toaster.success('Va multumim!', `${data.message}`, {
+                timeOut: 3000,
+                positionClass: 'toast-bottom-right'
+              });
+  
+              // this.cartService.emptyCart();
+              // form.reset();
+            }
+          })
 
-            this.cartService.emptyCart();
-            form.reset();
-          }
-        })
-      }
-    });
+    // this._httpClient.post(this.ADD_ORDER, this.order).subscribe((data: any) => {
+    //   if (data.status == "success") {
+    //     this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
+    //       if (data.status == "success") {
+
+    //         this.toaster.success('Va multumim!', `${data.message}`, {
+    //           timeOut: 3000,
+    //           positionClass: 'toast-bottom-right'
+    //         });
+
+    //         this.cartService.emptyCart();
+    //         form.reset();
+    //       }
+    //     })
+    //   }
+    // });
   }
 }

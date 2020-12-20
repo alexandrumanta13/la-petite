@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { version } from 'process';
-
+import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-candy-bar',
   templateUrl: './candy-bar.component.html',
@@ -8,10 +9,15 @@ import { version } from 'process';
 })
 export class CandyBarComponent implements OnInit {
   candyBar: any;
-  selectNoPerson: any;
+  selectNoPerson: number;
   selectedPrice: number;
   price: number;
   noPersons: any;
+  toaster: any;
+  private _httpClient: any;
+  order: any;
+
+  private SEND_ORDER = "https://la-petite.ro/data/candyBar.php"; 
 
 
   constructor() {
@@ -154,24 +160,30 @@ export class CandyBarComponent implements OnInit {
   toggleFlip(event) {
     const parent = event.target.closest('.content-column');
     const flip = document.querySelectorAll('.content-column');
+    const flips = Array.from(flip);
 
-    console.log(flip)
-
-    if(flip.length > 0) {
-      
-      for(let i in flip) {
-        if(flip[i]) {
-          console.log(flip[i])
-        }
-        
-      }
-    }
     
-    parent.classList.toggle('flip');
+
+    for (let i in flips) {
+      if (flip[i].classList.contains('flip')) {
+        flip[i].classList.remove('flip')
+      }
+
+    }
+
+
+    parent.classList.add('flip');
+    this.selectedPrice = 0;
+    this.selectNoPerson = 0;
+  }
+
+  removeFlip(event) {
+    const parent = event.target.closest('.content-column');
+ 
+
+    parent.classList.remove('flip');
     this.selectedPrice = this.price;
     this.selectNoPerson = this.noPersons;
-
-    console.log(this.selectedPrice, this.selectNoPerson)
   }
 
   ngOnInit(): void {
@@ -180,7 +192,7 @@ export class CandyBarComponent implements OnInit {
   }
 
   chooseNoPersons(event) {
-   
+
     let order = event.target.closest('.menu-actions');
     let price = order.querySelector('.order h3');
     price.innerHTML = event.target.dataset.price;
@@ -188,7 +200,32 @@ export class CandyBarComponent implements OnInit {
     this.price = event.target.dataset.price;
     this.noPersons = event.target.value;
 
+
+  }
+
+  placeOrder(form: NgForm) {
+
+    if (!form.valid) {
+      this.toaster.warning('Va rugam sa completati toate campurile obligatorii!', 'Comanda nu poate fi trimisa!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
     
+        this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
+          if (data.status == "success") {
+
+            this.toaster.success('Va multumim!', `${data.message}`, {
+              timeOut: 3000,
+              positionClass: 'toast-bottom-right'
+            });
+
+            
+            form.reset();
+          }
+        })
+      
   }
 
 }

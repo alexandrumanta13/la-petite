@@ -56,7 +56,7 @@ h6 {
 
 .popover {
   border-radius: 0;
-  min-width: 230px;
+  min-width: 250px;
 
   ngb-datepicker {
     border-radius: 0;
@@ -123,4 +123,13 @@ h6 {
   button {
     color: #6d4b50;
   }
+}
+
+.popover .ngb-dp-header, .popover .ngb-dp-weekdays {
+  padding: 10px 0;
+}
+
+
+.popover .btn-light:hover {
+  color: #fff !important;
 }

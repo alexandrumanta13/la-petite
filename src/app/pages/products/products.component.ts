@@ -100,7 +100,11 @@ export class ProductsComponent implements OnInit {
   }
 
   moveToTop() {
-    document.querySelector('.shop-page-section').scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    const scrollToContainer = document.querySelector('.shop-page-section');
+    if(window.innerWidth > 991 && scrollToContainer) {
+      scrollToContainer.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
+    }
   }
 
 

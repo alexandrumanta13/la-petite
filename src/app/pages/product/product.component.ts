@@ -78,8 +78,11 @@ export class ProductComponent implements OnInit {
   }
 
   addDeliveryDate(date) {
-    this.product.deliverydate = `${date.day + '.' + date.month + '.' + date.year + '-' + date.hour + ':' + date.minute}`;
-    //this.product.deliverydate = date;
+    console.log(date)
+    console.log(date.interval)
+
+    this.product.deliverydate = `${date.datetime.day + '.' + date.datetime.month + '.' + date.datetime.year}`;
+    this.product.interval = date.interval;
   }
 
   addToCart(product) {
