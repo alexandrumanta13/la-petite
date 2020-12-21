@@ -525,18 +525,18 @@
 	}
 
 
-	if ($('.product-details-content .bxslider').length) {
-		$('.product-details-content .bxslider').bxSlider({
-	        nextSelector: '.product-details-content #slider-next',
-	        prevSelector: '.product-details-content #slider-prev',
-	        nextText: '<i class="fa fa-angle-right"></i>',
-	        prevText: '<i class="fa fa-angle-left"></i>',
-	        mode: 'fade',
-	        auto: 'true',
-	        speed: '700',
-	        pagerCustom: '.product-details-content .slider-pager .thumb-box'
-	    });
-	}; 
+	// if ($('.product-details-content .bxslider').length) {
+	// 	$('.product-details-content .bxslider').bxSlider({
+	//         nextSelector: '.product-details-content #slider-next',
+	//         prevSelector: '.product-details-content #slider-prev',
+	//         nextText: '<i class="fa fa-angle-right"></i>',
+	//         prevText: '<i class="fa fa-angle-left"></i>',
+	//         mode: 'fade',
+	//         auto: 'true',
+	//         speed: '700',
+	//         pagerCustom: '.product-details-content .slider-pager .thumb-box'
+	//     });
+	// }; 
 
 
 	//Jquery Spinner / Quantity Spinner

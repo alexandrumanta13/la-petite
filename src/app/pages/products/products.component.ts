@@ -110,7 +110,7 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product) {
     product.cart_uuid = uuidv4();
-    this._cartService.addToCart(product, 1);
+    this._cartService.addToCart(product, 1, false);
   }
 
   getTotalPages() {

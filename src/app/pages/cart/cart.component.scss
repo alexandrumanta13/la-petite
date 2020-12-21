@@ -49,3 +49,14 @@
           }
       }
   }
+
+
+  .cart-section .othre-content .update-btn button {
+    color: #6d4b50;
+    border: 2px solid #6d4b50;
+    &:hover {
+        opacity: 1;
+        color: #fff;
+        background: #6d4b50;
+    }
+  }

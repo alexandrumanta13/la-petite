@@ -154,7 +154,7 @@ export class PromotionSectionComponent implements OnInit {
   }
 
   addToCart(product) {
-    this._cartService.addToCart(product, 1);
+    this._cartService.addToCart(product, 1, false);
   }
 
 }

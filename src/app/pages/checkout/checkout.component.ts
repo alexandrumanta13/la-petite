@@ -127,8 +127,8 @@ export class CheckoutComponent implements OnInit {
               positionClass: 'toast-bottom-right'
             });
 
-            // this.cartService.emptyCart();
-            // form.reset();
+            this.cartService.emptyCart();
+            form.reset();
           }
         })
       }

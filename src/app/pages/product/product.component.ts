@@ -100,7 +100,7 @@ export class ProductComponent implements OnInit {
     if (this.product.deliverydate) {
       this.product.selectedPrice = this.price;
       product.cart_uuid = uuidv4();
-      this._cartService.addToCart(product, this.cartQuantity);
+      this._cartService.addToCart(product, this.cartQuantity, false);
     } else {
       this.toaster.info(`${product.product_name + ' ' + product.selectedQnt}`, 'Va rugam sa adaugati data livrarii!', {
         timeOut: 3000,
@@ -155,16 +155,16 @@ export class ProductComponent implements OnInit {
 		});
 	}
 
-    $('.product-details-content .bxslider').bxSlider({
-      nextSelector: '.product-details-content #slider-next',
-      prevSelector: '.product-details-content #slider-prev',
-      nextText: '<i class="fa fa-angle-right"></i>',
-      prevText: '<i class="fa fa-angle-left"></i>',
-      mode: 'fade',
-      auto: 'true',
-      speed: '700',
-      pagerCustom: '.product-details-content .slider-pager .thumb-box'
-    });
+    // $('.product-details-content .bxslider').bxSlider({
+    //   nextSelector: '.product-details-content #slider-next',
+    //   prevSelector: '.product-details-content #slider-prev',
+    //   nextText: '<i class="fa fa-angle-right"></i>',
+    //   prevText: '<i class="fa fa-angle-left"></i>',
+    //   mode: 'fade',
+    //   auto: 'true',
+    //   speed: '700',
+    //   pagerCustom: '.product-details-content .slider-pager .thumb-box'
+    // });
 
     $('.tabs-box .tab-buttons .tab-btn').on('click', function (e) {
       e.preventDefault();

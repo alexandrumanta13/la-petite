@@ -26,8 +26,7 @@
             <div class="slider-content">
               <div class="product-image">
                 <figure class="image" *ngFor="let image of product?.images">
-                  <a class="lightbox-image"
-                    data-fancybox="gallery">
+                  <a class="lightbox-image" data-fancybox="gallery">
                     <img src="/assets/images/resource/shop/{{image.image_url}}" alt="">
                   </a>
                 </figure>
@@ -55,7 +54,8 @@
             </div>
             <div class="datetimepicker-container">
               <p>Data livrarii:</p>
-              <app-datetimepicker [(ngModel)]="stringDateModel" (onDatePicked)="addDeliveryDate($event)" ngDefaultControl name="activeEndDate">
+              <app-datetimepicker [(ngModel)]="stringDateModel" (onDatePicked)="addDeliveryDate($event)"
+                ngDefaultControl name="activeEndDate">
               </app-datetimepicker>
               <p class="interval">Interval: <strong>{{product?.interval}}</strong></p>
             </div>
@@ -84,7 +84,7 @@
               <span>
                 Transport gratuit*
               </span>
-             
+
               <p>Comanda minima de 150 Lei</p>
             </div>
 
@@ -146,7 +146,7 @@
                 <p> Comanda minima: 150 lei pentru sectoarele 3, 4, 5, 6</p>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -166,10 +166,16 @@
                 </a>
               </figure>
               <div class="lower-content">
-                <span class="price-box">16 Lei</span>
-                <h3><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}">Prajitura Choco Fraise</a></h3>
-                
-                <div class="cart-btn"><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}" class="theme-btn-two">Vezi detalii</a></div>
+                <span class="price-box">{{product.information[0].price}} lei</span>
+                <h3><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}">Prajitura Choco Fraise</a>
+                </h3>
+                <ul>
+                  <li *ngFor="let qnt of product.information">
+                    <span>{{qnt.quantity}} {{qnt.um}}</span>
+                  </li>
+                </ul>
+                <div class="cart-btn"><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}"
+                    class="theme-btn-two">Vezi detalii</a></div>
               </div>
             </div>
           </div>

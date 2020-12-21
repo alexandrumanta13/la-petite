@@ -38,23 +38,24 @@ export class CartComponent implements OnInit {
   }
 
   addToCart(product, event, isBlur: boolean = false) {
+    console.log(isBlur)
     if(isBlur) {
-      this.cartService.addToCart(product, event.target.value);
+      this.cartService.addToCart(product, event.target.value, true);
     } else {
-      this.cartService.addToCart(product, event);
+      this.cartService.addToCart(product, event, false);
     }
   }
 
   addOneToCart(product) {
-    this.cartService.addToCart(product, product.num + 1);
+    console.log(product.num + 1)
+    this.cartService.addToCart(product, product.num + 1, true);
   }
 
   removeOneFromCart(product) {
-    this.cartService.addToCart(product, product.num - 1);
+    this.cartService.addToCart(product, product.num - 1, true);
   }
   removeFromCart(product) {
     this.cartService.removeFromCart(product);
   }
-
-
+  
 }

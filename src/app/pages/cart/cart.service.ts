@@ -35,7 +35,7 @@ export class CartService {
     shippingItems$ = this.shippingSubject.asObservable();
 
 
-    addToCart(product, value) {
+    addToCart(product, value, increment) {
 
         this.items$.pipe(
             take(1),
@@ -50,11 +50,15 @@ export class CartService {
                     return (v["id"] == product.id && v["selectedQnt"] == product.selectedQnt);
                 });
 
-                console.log(existing)
+                
 
                 if (existing.length > 0) {
-                    console.log(existing)
-                    existing[0].num += parseInt(value);
+                    console.log(increment)
+                    if(increment) {
+                        existing[0].num = parseInt(value);
+                    } else {
+                        existing[0].num += parseInt(value);
+                    }
                 } else {
                     products.push({ ...product, num: parseInt(value) });
                 }
