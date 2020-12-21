@@ -134,6 +134,27 @@ export class ProductComponent implements OnInit {
 
   ngAfterViewInit() {
 
+    //LightBox / Fancybox
+	if($('.lightbox-image').length) {
+		$('.lightbox-image').fancybox({
+			openEffect  : 'fade',
+			closeEffect : 'fade',
+			helpers : {
+				media : {}
+			}
+		});
+  
+  }//LightBox / Fancybox
+	if($('.lightbox-image').length) {
+		$('.lightbox-image').fancybox({
+			openEffect  : 'fade',
+			closeEffect : 'fade',
+			helpers : {
+				media : {}
+			}
+		});
+	}
+
     $('.product-details-content .bxslider').bxSlider({
       nextSelector: '.product-details-content #slider-next',
       prevSelector: '.product-details-content #slider-prev',

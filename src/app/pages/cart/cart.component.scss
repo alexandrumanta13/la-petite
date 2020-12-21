@@ -17,3 +17,35 @@
 .back-to-shop {
     margin-top: 40px;
 }
+
+.other-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  
+    small {
+      flex-basis: 100%;
+      color: #f60000;
+    }
+  
+    img {
+      height: 20px;
+      margin-right: 8px;
+  
+    }
+  }
+
+  .cart-section .othre-content .coupon-box {
+      width: 50%;
+  }
+
+  .theme-btn-one:disabled{
+      background: #ddd;
+      box-shadow: none;
+      &:hover {
+          cursor: not-allowed;
+          &:before, &:after {
+              content: none;
+          }
+      }
+  }

@@ -5,6 +5,7 @@ import { from } from 'rxjs';
 import { CartService } from '../cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -25,7 +26,8 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private _httpClient: HttpClient,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    public router: Router,
   ) { }
 
   private SEND_ORDER = "https://la-petite.ro/data/sendOrder.php";
@@ -56,6 +58,9 @@ export class CheckoutComponent implements OnInit {
 
     this.cartService.totalPrice.subscribe(info => {
       this.totalPrice$ = info;
+      if(this.totalPrice$ < 100) {
+        this.router.navigate(['/cos-cumparaturi']);
+      }
     });
   }
 
@@ -98,34 +103,35 @@ export class CheckoutComponent implements OnInit {
 
     console.log(this.order);
 
-    this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
-            if (data.status == "success") {
-  
-              this.toaster.success('Va multumim!', `${data.message}`, {
-                timeOut: 3000,
-                positionClass: 'toast-bottom-right'
-              });
-  
-              // this.cartService.emptyCart();
-              // form.reset();
-            }
-          })
-
-    // this._httpClient.post(this.ADD_ORDER, this.order).subscribe((data: any) => {
+    // this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
     //   if (data.status == "success") {
-    //     this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
-    //       if (data.status == "success") {
 
-    //         this.toaster.success('Va multumim!', `${data.message}`, {
-    //           timeOut: 3000,
-    //           positionClass: 'toast-bottom-right'
-    //         });
+    //     this.toaster.success('Va multumim!', `${data.message}`, {
+    //       timeOut: 3000,
+    //       positionClass: 'toast-bottom-right'
+    //     });
 
-    //         this.cartService.emptyCart();
-    //         form.reset();
-    //       }
-    //     })
+    //     // this.cartService.emptyCart();
+    //     // form.reset();
     //   }
-    // });
+    // })
+
+   
+    this._httpClient.post(this.ADD_ORDER, this.order).subscribe((data: any) => {
+      if (data.status == "success") {
+        this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
+          if (data.status == "success") {
+
+            this.toaster.success('Va multumim!', `${data.message}`, {
+              timeOut: 3000,
+              positionClass: 'toast-bottom-right'
+            });
+
+            // this.cartService.emptyCart();
+            // form.reset();
+          }
+        })
+      }
+    });
   }
 }

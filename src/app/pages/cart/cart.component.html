@@ -64,8 +64,9 @@
                   </div>
                   <div class="delivery-date">
                     Data de livrare:
-                    {{product.deliverydate.day}}.{{product.deliverydate.month}}.{{product.deliverydate.year}} -
-                    {{product.deliverydate.hour}}:{{product.deliverydate.minute}}
+                    {{product.deliverydate}} -
+                    Interval:
+                    {{product.interval}}
                   </div>
                 </td>
                 <td class="price">{{product.selectedPrice | number:'1.2-2'}} lei</td>
@@ -101,7 +102,7 @@
         <input type="text" placeholder="Adauga codul...">
         <button type="submit" class="theme-btn-one">Aplica coupon<i class="flaticon-right-1"></i></button>
       </div>
-
+      
     </div>
     <div class="cart-total">
       <div class="row">
@@ -112,7 +113,12 @@
               <li>Discount:<span>0</span></li>
               <li>Total:<span>{{totalPrice$ | number:'1.2-2'}} lei</span></li>
             </ul>
-            <a routerLink="/finalizeaza-comanda" class="theme-btn-one">Finalizeaza comanda</a>
+            <div class="other-links">
+              <img src="/assets/images/icons/delivery.svg" alt=""><span> Transport gratuit* </span>
+              
+              <small *ngIf="totalPrice$ < 100">Comanda minima de 150</small>
+            </div>
+            <button [disabled]="totalPrice$ > 100 ? false : true" routerLink="/finalizeaza-comanda" class="theme-btn-one">Finalizeaza comanda</button>
           </div>
         </div>
       </div>

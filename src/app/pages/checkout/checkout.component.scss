@@ -5,3 +5,21 @@
         cursor: pointer;
     }
 }
+
+.other-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  
+    small {
+      flex-basis: 100%;
+      color: #f60000;
+    }
+  
+    img {
+      height: 20px;
+      margin-right: 8px;
+  
+    }
+  }
