@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
   isActive: number;
   accessories: any;
   cartQuantity: number = 1;
+  recommended: any;
 
 
   /**
@@ -47,7 +48,11 @@ export class ProductComponent implements OnInit {
     private _cartService: CartService,
     public router: Router,
     private toaster: ToastrService
-  ) { }
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+  }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -60,7 +65,6 @@ export class ProductComponent implements OnInit {
     });
 
     this._ProductService.getProduct(this._productRoute).then(data => {
-      console.log(data)
       this.product = data;
       this.product.accessories = [];
       this.product.selectedAccessories = '';
@@ -75,6 +79,11 @@ export class ProductComponent implements OnInit {
     this._ProductService.getAccesories().then(data => {
       this.accessories = data;
     });
+
+
+    this._ProductService.getRecomended(this._categoryRoute).then(data => {
+      this.recommended = data.products;
+    });
   }
 
   addDeliveryDate(date) {
@@ -88,7 +97,7 @@ export class ProductComponent implements OnInit {
   addToCart(product) {
     console.log(this.price)
 
-    if(this.product.deliverydate) {
+    if (this.product.deliverydate) {
       this.product.selectedPrice = this.price;
       product.cart_uuid = uuidv4();
       this._cartService.addToCart(product, this.cartQuantity);
@@ -98,7 +107,7 @@ export class ProductComponent implements OnInit {
         positionClass: 'toast-bottom-right'
       });
     }
-    
+
   }
 
   selectQnt(qnt) {
@@ -109,9 +118,9 @@ export class ProductComponent implements OnInit {
   }
 
   addAccessory(event, product, accessory) {
-    
+
     const existing = product.accessories.findIndex(obj => obj.id === accessory.id);
-    if(existing > -1) {
+    if (existing > -1) {
       product.accessories = product.accessories.filter(item => item.id !== accessory.id);
       this.price -= 10;
     } else {

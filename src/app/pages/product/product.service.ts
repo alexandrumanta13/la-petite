@@ -64,4 +64,20 @@ export class ProductService {
                 }, reject);
         });
     }
+
+    /**
+     * Get remommended
+     *
+     * @returns {Promise<any>}
+     */
+
+    public getRecomended(categorySlug): Promise<any> {
+
+        return new Promise((resolve, reject) => {
+            this._httpClient.get<Product[]>(this.REST_API_SERVER + 'recommended/category/' + categorySlug)
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
 }

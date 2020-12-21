@@ -19,22 +19,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private _cartService: CartService) { }
 
   ngOnInit(): void { 
-    $('.mobile-menu li.dropdown .dropdown-btn').on('click', function() {
-     
-      $(this).toggleClass('open');
-      $(this).prev('ul').slideToggle(500);
-    });
-    $('.mobile-menu li a.dropdown-btn-parent_1').on('click', function() {
-     console.log($('.dropdon-list-toggle_1'))
-      $(this).next().next().toggleClass('open');
-      $('.dropdon-list-toggle_1').slideToggle(500);
-    });
-    $('.mobile-menu li a.dropdown-btn-parent_2').on('click', function() {
-      console.log($('.dropdon-list-toggle_2'))
-       $(this).next().next().toggleClass('open');
-       $('.dropdon-list-toggle_2').slideToggle(500);
-     });
-
+    
     this.getProducts();
 
     this._cartService.numTotal.subscribe(info => {
@@ -69,6 +54,36 @@ export class HeaderComponent implements OnInit {
     ).subscribe();
   }
 
+  ngAfterViewInit() {
+    
+
+     let mobileMenu: HTMLElement = document.querySelector('.mobile-menu') as HTMLElement;
+     let checkExist = setInterval(function() {
+       if (mobileMenu && mobileMenu instanceof HTMLElement) {
+         
+         setTimeout(() => {
+          $('.mobile-menu li.dropdown .dropdown-btn').on('click', function() {
+     
+            $(this).toggleClass('open');
+            $(this).prev('ul').slideToggle(500);
+          });
+          $('.mobile-menu li a.dropdown-btn-parent_1').on('click', function() {
+           console.log($('.dropdon-list-toggle_1'))
+            $(this).next().next().toggleClass('open');
+            $('.dropdon-list-toggle_1').slideToggle(500);
+          });
+          $('.mobile-menu li a.dropdown-btn-parent_2').on('click', function() {
+            console.log($('.dropdon-list-toggle_2'))
+             $(this).next().next().toggleClass('open');
+             $('.dropdon-list-toggle_2').slideToggle(500);
+           });
+         }, 3000);
+       
+         clearInterval(checkExist);
+       }
+    }, 100); // check every 100ms
+
+  }
 
   // removeCart(product) {
   //   this._cartService.removeFromCart(product);

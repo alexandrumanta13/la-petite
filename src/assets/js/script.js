@@ -50,7 +50,7 @@
 		
 		var mobileMenuContent = $('.main-header .menu-area .main-menu').html();
 		//$('.mobile-menu .menu-box .menu-outer').append(mobileMenuContent);
-		$('.sticky-header .main-menu').append(mobileMenuContent);
+		//$('.sticky-header .main-menu').append(mobileMenuContent);
 		
 		//Dropdown Button
 		$('.mobile-menu li.dropdown .dropdown-btn').on('click', function() {

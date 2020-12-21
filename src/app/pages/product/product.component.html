@@ -26,7 +26,7 @@
             <div class="slider-content">
               <div class="product-image">
                 <figure class="image" *ngFor="let image of product?.images">
-                  <a href="/assets/images/resource/shop/{{image.image_url}}" class="lightbox-image"
+                  <a routerLink="/assets/images/resource/shop/{{image.image_url}}" class="lightbox-image"
                     data-fancybox="gallery">
                     <img src="/assets/images/resource/shop/{{image.image_url}}" alt="">
                   </a>
@@ -42,7 +42,7 @@
             <h3>{{price}} Lei {{portions}}</h3>
 
             <div class="text">
-              <p>{{product?.descrption}}</p>
+              <p>{{product?.description}}</p>
             </div>
             <div class="qnt-box">
               <p>Gramaj:</p>
@@ -74,7 +74,7 @@
             <div class="addto-cart-box">
               <ul class="clearfix">
                 <li><input type="text" [(ngModel)]="cartQuantity" name="cart-quantity" placeholder="1" value="1"></li>
-                <!-- <li><a href="shop-details.html.html"><i class="far fa-heart"></i></a></li> -->
+                <!-- <li><a routerLink="shop-details.html.html"><i class="far fa-heart"></i></a></li> -->
                 <li><button type="button" (click)="addToCart(product)" class="theme-btn-one">Adauga in cos</button></li>
               </ul>
             </div>
@@ -106,8 +106,7 @@
           <div class="tab active-tab" id="tab-1">
             <div class="content-box">
               <h3>Descriere produs</h3>
-              <p>Mousse de ciocolată albă belgianã cu baton vanilie, mousse de căpșune, inserție de zmeură cu piure de
-                vișine</p>
+              <p>{{product?.ingredients}}</p>
             </div>
           </div>
         </div>
@@ -121,7 +120,7 @@
                 <p>Pentru a comanda, este necesar sa fiti logat in contul dvs. de utilizator.</p>
                 <p>Dupa realizarea comenzii, veti primi un email de confirmare.</p>
                 <p>Pentru comenzi personalizate, intrebari sau nelamuriri, ne puteti suna la <a
-                    href="tel:+40762.023.004">0762.023.004</a></p>
+                    routerLink="tel:+40762.023.004">0762.023.004</a></p>
 
                 <p><strong>Informatii despre livrare* </strong></p>
                 <p>Comenzile trimise pana in ora 11:00 se pot livra in aceeasi zi intre orele 16-20</p>
@@ -158,23 +157,38 @@
         <h2>Cumparate frecvent impreuna</h2>
       </div>
       <div class="row clearfix">
-        <div class="col-lg-3 col-md-6 col-sm-12 shop-block">
+        <div class="col-lg-3 col-md-6 col-sm-12 shop-block" *ngFor="let product of recommended">
           <div class="shop-block-one">
             <div class="inner-box">
               <figure class="image-box">
-                <img src="assets/images/resource/shop/Choco-Fraise-1.jpg" alt="">
+                <a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}">
+                  <img src="/assets/images/resource/shop/{{product.images[0].image_url}}" alt="">
+                </a>
               </figure>
               <div class="lower-content">
                 <span class="price-box">16 Lei</span>
-                <h3><a href="shop-details.html">Prajitura Choco Fraise</a></h3>
-                <ul class="rating clearfix">
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                </ul>
-                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Adauga in cos</a></div>
+                <h3><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}">Prajitura Choco Fraise</a></h3>
+                
+                <div class="cart-btn"><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}" class="theme-btn-two">Vezi detalii</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- <div class="col-lg-3 col-md-6 col-sm-12 shop-block">
+          <div class="shop-block-one">
+            <div class="inner-box">
+              <figure class="image-box">
+                <a routerLink="/produs/prajituri-la-petite/choco-fraise">
+                  <img src="assets/images/resource/shop/choco-fraise-1.jpg" alt="">
+                </a>
+              </figure>
+              <div class="lower-content">
+                <span class="price-box">16 Lei</span>
+                <h3><a routerLink="/produs/prajituri-la-petite/choco-fraise">Prajitura Choco Fraise</a></h3>
+                
+                <div class="cart-btn"><a routerLink="/produs/prajituri-la-petite/choco-fraise" class="theme-btn-two">Vezi detalii</a></div>
               </div>
             </div>
           </div>
@@ -183,19 +197,14 @@
           <div class="shop-block-one">
             <div class="inner-box">
               <figure class="image-box">
+                <a routerLink="/produs/produse-sarate/saratele-cu-telemea-mac-si-susan"></a>
                 <img src="assets/images/resource/shop/Saratele-cu-telemea.jpg" alt="">
               </figure>
               <div class="lower-content">
                 <span class="price-box">16 Lei</span>
-                <h3><a href="shop-details.html">Saratele cu telemea</a></h3>
-                <ul class="rating clearfix">
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                </ul>
-                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Adauga in cos</a></div>
+                <h3><a routerLink="/produs/produse-sarate/saratele-cu-telemea-mac-si-susan">Saratele cu telemea</a></h3>
+               
+                <div class="cart-btn"><a routerLink="/produs/produse-sarate/saratele-cu-telemea-mac-si-susan" class="theme-btn-two">Vezi detalii</a></div>
               </div>
             </div>
           </div>
@@ -204,19 +213,16 @@
           <div class="shop-block-one">
             <div class="inner-box">
               <figure class="image-box">
-                <img src="assets/images/resource/shop/Tort-Petite-Fraise-1.jpg" alt="">
+                <a routerLink="/produs/torturi-aniversare/tort-petite-fraise">
+                  <img src="assets/images/resource/shop/Tort-Petite-Fraise-1.jpg" alt="">
+                </a>
+                
               </figure>
               <div class="lower-content">
                 <span class="price-box">16 Lei</span>
-                <h3><a href="shop-details.html">Tort Petite Fraise</a></h3>
-                <ul class="rating clearfix">
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                </ul>
-                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Adauga in cos</a></div>
+                <h3><a routerLink="/produs/torturi-aniversare/tort-petite-fraise">Tort Petite Fraise</a></h3>
+               
+                <div class="cart-btn"><a routerLink="/produs/torturi-aniversare/tort-petite-fraise" class="theme-btn-two">Vezi detalii</a></div>
               </div>
             </div>
           </div>
@@ -225,23 +231,18 @@
           <div class="shop-block-one">
             <div class="inner-box">
               <figure class="image-box">
+                <a href=""></a>
                 <img src="assets/images/resource/shop/cozonac-editie-limitata.jpg" alt="">
               </figure>
               <div class="lower-content">
                 <span class="price-box">16 lei</span>
-                <h3><a href="shop-details.html">Cozonac Editie Limitata</a></h3>
-                <ul class="rating clearfix">
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                  <li><i class="icon-Star"></i></li>
-                </ul>
-                <div class="cart-btn"><a href="shop-details.html" class="theme-btn-two">Adauga in cos</a></div>
+                <h3><a routerLink="shop-details.html">Cozonac Editie Limitata</a></h3>
+               
+                <div class="cart-btn"><a routerLink="shop-details.html" class="theme-btn-two">Vezi detalii</a></div>
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
