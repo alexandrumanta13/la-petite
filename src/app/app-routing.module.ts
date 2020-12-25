@@ -20,6 +20,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CandyBarComponent } from './pages/candy-bar/candy-bar.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -135,6 +136,7 @@ const routes: Routes = [
       ogUrl: 'your og url'
     }
   },
+  { path: 'login', component: LoginComponent },
   { path: '404', component: NotFoundComponent },
 
   { path: 'mesaj-trimis', component: ThankYouComponent },

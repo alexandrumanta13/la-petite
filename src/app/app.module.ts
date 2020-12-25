@@ -55,6 +55,19 @@ import { ToastrModule } from 'ngx-toastr';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PlaceOrderComponent } from './pages/place-order/place-order.component';
 import { CandyBarComponent } from './pages/candy-bar/candy-bar.component';
+import { LoginComponent } from './pages/login/login.component';
+import { UserComponent } from './pages/user/user.component';
+
+import { AuthAPIService } from './pages/login/auth-api.service';
+import { UserService } from './pages/user/user.service';
+
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';
+import { PopupDiscountComponent } from './components/popup-discount/popup-discount.component';
+
 
 @NgModule({
   declarations: [
@@ -89,7 +102,10 @@ import { CandyBarComponent } from './pages/candy-bar/candy-bar.component';
     ToasterContainerComponent,
     CheckoutComponent,
     PlaceOrderComponent,
-    CandyBarComponent
+    CandyBarComponent,
+    LoginComponent,
+    UserComponent,
+    PopupDiscountComponent
   ],
   imports: [
     BrowserModule,
@@ -97,15 +113,40 @@ import { CandyBarComponent } from './pages/candy-bar/candy-bar.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    
+
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     CarouselModule,
     NgbModule,
-    ToastrModule.forRoot(), 
+    ToastrModule.forRoot(),
+    SocialLoginModule
   ],
   exports: [],
-  providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter },],
+  providers: [
+    {
+      provide: NgbDateAdapter,
+      useClass: NgbDateNativeAdapter,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '1087172953936-7dvrdpqboiep79098ieuv4k0adf23r2m.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('218154493124799')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

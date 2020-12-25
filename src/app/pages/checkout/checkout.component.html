@@ -22,7 +22,11 @@
       <div class="col-lg-12 col-md-12 col-sm-12 upper-column">
         <div class="upper-box">
           <div class="customer single-box">Ai deja cont? <a href="checkbox.html">Te rugam sa te autentifici</a></div>
-          <div class="coupon single-box">Ai un cupon de reducere? <a href="checkbox.html">Aplica-l aici</a></div>
+          <div class="coupon single-box">Ai un cupon de reducere? <a (click)="toggle()">Aplica-l aici</a></div>
+          <div class="coupon-box pull-left clearfix" *ngIf="show">
+            <input [(ngModel)]="discountCode" type="text" placeholder="Adauga codul...">
+            <button (click)="checkDiscount()" class="theme-btn-one">Aplica coupon<i class="flaticon-right-1"></i></button>
+          </div>
         </div>
       </div>
     </div>
@@ -54,7 +58,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                   <label>Email*</label>
                   <div class="field-input">
-                    <input type="email" name="email" ngModel required minlength="6" email>
+                    <input type="email" name="email" [(ngModel)]="discountEmail" ngModel required minlength="6" email>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
@@ -132,7 +136,7 @@
 
                   <li class="sub-total clearfix">
                     <h6>Discount</h6>
-                    <span>0</span>
+                    <span *ngIf="discount">{{discount}}%</span>
                   </li>
                   <li class="order-total clearfix">
                     <h6>Total</h6>
@@ -142,7 +146,7 @@
               </div>
             </div>
             <div class="payment-info">
-              <h4 class="sub-title">Detalii plata</h4>
+              <h4 class="sub-title payment-info">Detalii plata</h4>
               <div class="payment-inner">
                 <div class="option-block">
                   <div class="custom-controls-stacked">

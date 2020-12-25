@@ -26,7 +26,8 @@ export class CandyBarComponent implements OnInit {
     nav: false,
     smartSpeed: 3000,
     autoplay: true,
-    navText: ['<span class="icon-Arrow-Left"></span>', '<span class="icon-Arrow-Right"></span>'],
+    dots: false,
+    navText: ['', ''],
     responsive: {
       0: {
         items: 1
@@ -35,13 +36,13 @@ export class CandyBarComponent implements OnInit {
         items: 1
       },
       600: {
-        items: 1
+        items: 2
       },
       800: {
-        items: 1
+        items: 3
       },
       1200: {
-        items: 1
+        items: 3
       }
     }
   }

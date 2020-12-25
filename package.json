@@ -28,6 +28,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
+    "angularx-social-login": "^3.5.4",
     "isotope-layout": "^3.0.6",
     "ngx-owl-carousel-o": "^4.0.0",
     "ngx-toastr": "^13.2.0",

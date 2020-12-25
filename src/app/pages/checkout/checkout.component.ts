@@ -6,6 +6,7 @@ import { CartService } from '../cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 
 
 
@@ -22,6 +23,14 @@ export class CheckoutComponent implements OnInit {
   payment: any;
   note_box: any;
   accessories: any;
+  show: boolean = false;
+
+  private CHECK_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/check"; 
+  private USE_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/use"; 
+
+  discountCode: any;
+  discountEmail: any;
+
 
   constructor(
     private cartService: CartService,
@@ -67,6 +76,35 @@ export class CheckoutComponent implements OnInit {
   send() {
     this.ngForm.ngSubmit.emit();
   }
+
+  toggle() {
+    this.show = !this.show;
+  }
+
+  getData() {
+    return JSON.parse(localStorage.getItem('discountApplied'));
+  }
+
+  checkDiscount() {
+    this._httpClient.post(this.CHECK_COUPON, {email: this.discountEmail, coupon: this.discountCode}).subscribe((data: any) => {
+      if (data.success === true) {
+      
+        this.discount = data.percent;
+        this.totalPrice$ = this.totalPrice$ - ( this.totalPrice$ * this.discount/100 );
+        this.toaster.success('Va multumim!', `${data.message}`, {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right'
+        });
+      } else {
+        this.toaster.warning('', `${data.message}`, {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right'
+        });
+      }
+    })
+  }
+
+  
 
   placeOrder(form: NgForm) {
 
@@ -126,6 +164,17 @@ export class CheckoutComponent implements OnInit {
               timeOut: 3000,
               positionClass: 'toast-bottom-right'
             });
+
+            if(this.discount > 0) {
+              this._httpClient.post(this.USE_COUPON, {email: this.discountEmail, coupon: this.discountCode}).subscribe((data: any) => {
+                if (data.success === true) {
+                  this.toaster.success('Va multumim!', `${data.message}`, {
+                    timeOut: 3000,
+                    positionClass: 'toast-bottom-right'
+                  });
+                } 
+              })
+            }
 
             this.cartService.emptyCart();
             form.reset();
