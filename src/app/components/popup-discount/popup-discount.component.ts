@@ -14,6 +14,7 @@ export class PopupDiscountComponent implements OnInit {
   constructor(private _httpClient: HttpClient, private toaster: ToastrService) { }
 
   private SEND_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/generate"; 
+  private SEND_EMAIL = "https://la-petite.ro/data/sendCoupon.php";
 
 
   ngOnInit(): void {
@@ -23,14 +24,22 @@ export class PopupDiscountComponent implements OnInit {
   }
 
   sendDiscount() {
-    console.log(this.discount)
     this._httpClient.post(this.SEND_COUPON, {email: this.discount}).subscribe((data: any) => {
      
       if (data.success === true) {
-        console.log(data.coupon)
+        this._httpClient.post(this.SEND_EMAIL, {email: this.discount, coupon: data.coupon}).subscribe((data: any) => {
+          console.log(data)
+        })
         localStorage.setItem('discount', JSON.stringify(data.coupon));
         this.showPopup = false;
-        this.toaster.success('Va multumim!', `${data.message}`, {
+        this.toaster.success('Iti multumim!', `${data.message}`, {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right'
+        });
+      } else {
+        this.showPopup = false;
+        localStorage.setItem('discount', JSON.stringify({closed: 'closed'}));
+        this.toaster.warning('Iti multumim!', `${data.message}`, {
           timeOut: 3000,
           positionClass: 'toast-bottom-right'
         });

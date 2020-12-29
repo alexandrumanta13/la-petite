@@ -59,7 +59,7 @@ input {}
     flex-direction: column;
     margin: 20px 0;
 
-    button {
+    a {
       background: #fff;
       margin: 8px 0;
       display: flex;
@@ -68,6 +68,13 @@ input {}
       }
       &:hover {
           color: #6d4b50;
+          cursor: pointer;
+      }
+
+      &.disabled {
+        pointer-events: none;
+        color: rgba(0,0,0,.4);
+        cursor: not-allowed;
       }
     }
   }

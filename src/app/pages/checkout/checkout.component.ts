@@ -25,11 +25,12 @@ export class CheckoutComponent implements OnInit {
   accessories: any;
   show: boolean = false;
 
-  private CHECK_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/check"; 
-  private USE_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/use"; 
+  private CHECK_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/check";
+  private USE_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/use";
 
   discountCode: any;
-  discountEmail: any;
+  deliverydate: string;
+  interval: any;
 
 
   constructor(
@@ -45,6 +46,12 @@ export class CheckoutComponent implements OnInit {
   public products;
   public totalPrice$;
   model: any = {};
+
+
+  formGroup: FormGroup;
+  dateModel: Date = new Date();
+
+  stringDateModel: string = new Date().toString();
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -63,14 +70,16 @@ export class CheckoutComponent implements OnInit {
       this.products = data
     })
 
-    console.log(this.products)
-
     this.cartService.totalPrice.subscribe(info => {
       this.totalPrice$ = info;
-      if(this.totalPrice$ < 100) {
+      if (this.totalPrice$ < 100) {
         this.router.navigate(['/cos-cumparaturi']);
       }
     });
+
+    this.formGroup = new FormGroup({
+      activeEndDate: new FormControl(new Date(), { validators: [Validators.required, DateTimeValidator] })
+    }, { updateOn: 'change' });
   }
 
   send() {
@@ -86,27 +95,44 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkDiscount() {
-    this._httpClient.post(this.CHECK_COUPON, {email: this.discountEmail, coupon: this.discountCode}).subscribe((data: any) => {
-      if (data.success === true) {
-      
-        this.discount = data.percent;
-        this.totalPrice$ = this.totalPrice$ - ( this.totalPrice$ * this.discount/100 );
-        this.toaster.success('Va multumim!', `${data.message}`, {
-          timeOut: 3000,
-          positionClass: 'toast-bottom-right'
-        });
-      } else {
-        this.toaster.warning('', `${data.message}`, {
-          timeOut: 3000,
-          positionClass: 'toast-bottom-right'
-        });
-      }
-    })
+    if (this.model.email) {
+      this._httpClient.post(this.CHECK_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
+        if (data.success === true) {
+
+          this.discount = data.percent;
+          this.totalPrice$ = this.totalPrice$ - (this.totalPrice$ * this.discount / 100);
+          this.toaster.success('Iti multumim!', `${data.message}`, {
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right'
+          });
+        } else {
+          this.toaster.warning('', `${data.message}`, {
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right'
+          });
+        }
+      })
+    } else {
+      this.toaster.warning('', 'Te rugam sa introduci adresa de email!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+    }
+
   }
 
-  
 
-  placeOrder(form: NgForm) {
+  addDeliveryDate(date) {
+    console.log(date)
+    console.log(date.interval)
+
+    this.deliverydate = `${date.datetime.day + '.' + date.datetime.month + '.' + date.datetime.year}`;
+    this.interval = date.interval;
+  }
+
+
+
+  placeOrder(f: NgForm) {
 
     // if (!form.errors) {
     //   this.toaster.warning('Va rugam sa completati toate campurile obligatorii!', 'Comanda nu poate fi trimisa!', {
@@ -116,18 +142,42 @@ export class CheckoutComponent implements OnInit {
     //   return;
     // }
 
+    if (!this.deliverydate) {
+      this.toaster.warning('Comanda nu poate fi trimisa!', 'Te rugam sa alegi data livraii!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
+    if (!this.interval) {
+      this.toaster.warning('Comanda nu poate fi trimisa!', 'Te rugam sa alegi intervalul de livrare!',  {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
+    if (!this.payment) {
+      this.toaster.warning('Comanda nu poate fi trimisa!', 'Te rugam sa alegi metoda de plata!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
     this.order = [
       {
         customer: {
-          firstName: form.value.firstName,
-          lastName: form.value.lastName,
-          email: form.value.email,
-          phone: form.value.phone,
+          firstName: this.model.firstName,
+          lastName: this.model.lastName,
+          email: this.model.email,
+          phone: this.model.phone,
           shippingAddress: {
-            address: form.value.address + ' ' + form.value.address_1,
-            town: form.value.town_city,
-            county: form.value.county,
-            zip: form.value.zip
+            address: this.model.address + ' ' + this.model.address_1,
+            town: this.model.town_city,
+            county: this.model.county,
+            zip: this.model.zip
           }
         },
         total: this.totalPrice$,
@@ -135,7 +185,9 @@ export class CheckoutComponent implements OnInit {
         method: this.payment,
         notes: this.note_box,
         products: this.products,
-        accessories: this.products[0].accessories
+        accessories: this.products[0].accessories,
+        deliverydate: this.deliverydate,
+        interval: this.interval
       }
     ];
 
@@ -154,21 +206,21 @@ export class CheckoutComponent implements OnInit {
     //   }
     // })
 
-   
+
     this._httpClient.post(this.ADD_ORDER, this.order).subscribe((data: any) => {
       if (data.status == "success") {
         this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
           if (data.status == "success") {
 
-            this.toaster.success('Va multumim!', `${data.message}`, {
+            this.toaster.success('Iti multumim!', `${data.message}`, {
               timeOut: 3000,
               positionClass: 'toast-bottom-right'
             });
 
             if(this.discount > 0) {
-              this._httpClient.post(this.USE_COUPON, {email: this.discountEmail, coupon: this.discountCode}).subscribe((data: any) => {
+              this._httpClient.post(this.USE_COUPON, {email: this.model.email, coupon: this.discountCode}).subscribe((data: any) => {
                 if (data.success === true) {
-                  this.toaster.success('Va multumim!', `${data.message}`, {
+                  this.toaster.success('Iti multumim!', `${data.message}`, {
                     timeOut: 3000,
                     positionClass: 'toast-bottom-right'
                   });
@@ -177,10 +229,20 @@ export class CheckoutComponent implements OnInit {
             }
 
             this.cartService.emptyCart();
-            form.reset();
+            f.reset();
           }
         })
       }
     });
   }
 }
+
+export const DateTimeValidator = (fc: FormControl) => {
+  const date = new Date(fc.value);
+  const isValid = !isNaN(date.valueOf());
+  return isValid ? null : {
+    isValid: {
+      valid: false
+    }
+  };
+};

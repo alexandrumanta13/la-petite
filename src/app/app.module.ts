@@ -67,6 +67,7 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { PopupDiscountComponent } from './components/popup-discount/popup-discount.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 @NgModule({
@@ -119,7 +120,8 @@ import { PopupDiscountComponent } from './components/popup-discount/popup-discou
     CarouselModule,
     NgbModule,
     ToastrModule.forRoot(),
-    SocialLoginModule
+    SocialLoginModule,
+    YouTubePlayerModule
   ],
   exports: [],
   providers: [

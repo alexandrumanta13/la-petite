@@ -186,7 +186,7 @@ export class DatetimepickerComponent implements ControlValueAccessor, OnInit, Af
         console.log(this.datetime);
         
         //this.dp.navigateTo({ year: date.year, month: date.month });
-        console.log('test');
+        
         this.setDateStringModel();
         this.checkIfToday();
        

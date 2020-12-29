@@ -233,7 +233,7 @@ export class CandyBarComponent implements OnInit {
   placeOrder(form: NgForm) {
 
     if (!form.valid) {
-      this.toaster.warning('Va rugam sa completati toate campurile obligatorii!', 'Comanda nu poate fi trimisa!', {
+      this.toaster.warning('Te rugam sa completati toate campurile obligatorii!', 'Comanda nu poate fi trimisa!', {
         timeOut: 3000,
         positionClass: 'toast-bottom-right'
       });
@@ -243,7 +243,7 @@ export class CandyBarComponent implements OnInit {
         this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
           if (data.status == "success") {
 
-            this.toaster.success('Va multumim!', `${data.message}`, {
+            this.toaster.success('Iti multumim!', `${data.message}`, {
               timeOut: 3000,
               positionClass: 'toast-bottom-right'
             });

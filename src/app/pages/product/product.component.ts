@@ -95,18 +95,10 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(product) {
-    console.log(this.price)
 
-    if (this.product.deliverydate) {
-      this.product.selectedPrice = this.price;
-      product.cart_uuid = uuidv4();
-      this._cartService.addToCart(product, this.cartQuantity, false);
-    } else {
-      this.toaster.info(`${product.product_name + ' ' + product.selectedQnt}`, 'Va rugam sa adaugati data livrarii!', {
-        timeOut: 3000,
-        positionClass: 'toast-bottom-right'
-      });
-    }
+    this.product.selectedPrice = this.price;
+    product.cart_uuid = uuidv4();
+    this._cartService.addToCart(product, this.cartQuantity, false);
 
   }
 
@@ -135,25 +127,25 @@ export class ProductComponent implements OnInit {
   ngAfterViewInit() {
 
     //LightBox / Fancybox
-	if($('.lightbox-image').length) {
-		$('.lightbox-image').fancybox({
-			openEffect  : 'fade',
-			closeEffect : 'fade',
-			helpers : {
-				media : {}
-			}
-		});
-  
-  }//LightBox / Fancybox
-	if($('.lightbox-image').length) {
-		$('.lightbox-image').fancybox({
-			openEffect  : 'fade',
-			closeEffect : 'fade',
-			helpers : {
-				media : {}
-			}
-		});
-	}
+    if ($('.lightbox-image').length) {
+      $('.lightbox-image').fancybox({
+        openEffect: 'fade',
+        closeEffect: 'fade',
+        helpers: {
+          media: {}
+        }
+      });
+
+    }//LightBox / Fancybox
+    if ($('.lightbox-image').length) {
+      $('.lightbox-image').fancybox({
+        openEffect: 'fade',
+        closeEffect: 'fade',
+        helpers: {
+          media: {}
+        }
+      });
+    }
 
     // $('.product-details-content .bxslider').bxSlider({
     //   nextSelector: '.product-details-content #slider-next',

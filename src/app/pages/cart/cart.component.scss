@@ -37,6 +37,10 @@
 
   .cart-section .othre-content .coupon-box {
       width: 50%;
+      @media only screen and (max-width: 767px) {
+        width: 100%;
+    }
+  
   }
 
   .theme-btn-one:disabled{
@@ -60,3 +64,5 @@
         background: #6d4b50;
     }
   }
+
+  

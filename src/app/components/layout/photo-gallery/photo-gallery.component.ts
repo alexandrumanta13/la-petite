@@ -24,11 +24,11 @@ export class PhotoGalleryComponent implements OnInit {
       if (active && active instanceof HTMLElement) {
         console.log(active)
         setTimeout(() => {
-          active.click();
+          
           
           
           if ($('.sortable-masonry').length) {
-
+            
             var winDow = $(window);
             // Needed variables
             var $container = $('.sortable-masonry .items-container');
@@ -95,7 +95,10 @@ export class PhotoGalleryComponent implements OnInit {
 
 
         }, 3000);
-      
+        setTimeout(() => {
+          active.click();
+        }, 2000)
+        
         clearInterval(checkExist);
       }
    }, 100); // check every 100ms

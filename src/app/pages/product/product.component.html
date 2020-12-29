@@ -52,13 +52,13 @@
                 </li>
               </ul>
             </div>
-            <div class="datetimepicker-container">
+            <!-- <div class="datetimepicker-container">
               <p>Data livrarii:</p>
               <app-datetimepicker [(ngModel)]="stringDateModel" (onDatePicked)="addDeliveryDate($event)"
                 ngDefaultControl name="activeEndDate">
               </app-datetimepicker>
               <p class="interval">Interval: <strong>{{product?.interval}}</strong></p>
-            </div>
+            </div> -->
             <div class="accessories">
               <p>Adauga acestui produs accesoriile dorite:</p>
               <ul class="clearfix">
@@ -167,7 +167,7 @@
               </figure>
               <div class="lower-content">
                 <span class="price-box">{{product.information[0].price}} lei</span>
-                <h3><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}">Prajitura Choco Fraise</a>
+                <h3><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}">{{product.product_name}}</a>
                 </h3>
                 <ul>
                   <li *ngFor="let qnt of product.information">

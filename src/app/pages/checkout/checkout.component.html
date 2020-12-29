@@ -1,5 +1,6 @@
 <!--Page Title-->
-<section class="page-title centred" style="background-image: url(assets/images/background/imagine-category-la-petite.jpg)">
+<section class="page-title centred"
+  style="background-image: url(assets/images/background/imagine-category-la-petite.jpg)">
   <div class="auto-container">
     <div class="content-box">
       <div class="title">
@@ -21,16 +22,17 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 upper-column">
         <div class="upper-box">
-          <div class="customer single-box">Ai deja cont? <a href="checkbox.html">Te rugam sa te autentifici</a></div>
+          <!-- <div class="customer single-box">Ai deja cont? <a href="checkbox.html">Te rugam sa te autentifici</a></div> -->
           <div class="coupon single-box">Ai un cupon de reducere? <a (click)="toggle()">Aplica-l aici</a></div>
           <div class="coupon-box pull-left clearfix" *ngIf="show">
             <input [(ngModel)]="discountCode" type="text" placeholder="Adauga codul...">
-            <button (click)="checkDiscount()" class="theme-btn-one">Aplica coupon<i class="flaticon-right-1"></i></button>
+            <button (click)="checkDiscount()" class="theme-btn-one">Aplica coupon<i
+                class="flaticon-right-1"></i></button>
           </div>
         </div>
       </div>
     </div>
-    <form #sendOrder="ngForm" name="form" (ngSubmit)="placeOrder(sendOrder)" class="billing-form" novalidate>
+    <form class="billing-form" name="form" (ngSubmit)="f.form.valid && placeOrder(f)" #f="ngForm" novalidate>
       <div class="row">
         <div class="col-lg-6 col-md-12 col-sm-12 left-column">
           <div class="inner-box">
@@ -42,58 +44,79 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                   <label>Nume*</label>
                   <div class="field-input">
-                    <input class="form-control" type="text" name="firstName" #firstName="ngModel"
-                      [(ngModel)]="model.firstName" required minlength="3">
-
+                    <input type="text" name="firstName" class="form-control" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid}" required minlength="3">
+                    <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                        <div *ngIf="firstName.errors.required">Te rugam sa introduci numele!</div>
+                        <div *ngIf="firstName.errors.minlength">Numele trebuie sa contina cel putin 3 litere!</div>
+                    </div>
                   </div>
-
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                   <label>Prenume*</label>
                   <div class="field-input">
-                    <input type="text" name="lastName" ngModel required minlength="6">
+                    <input type="text" name="lastName" class="form-control" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required minlength="3">
+                    <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                        <div *ngIf="lastName.errors.required">Te rugam sa introduci prenumele!</div>
+                        <div *ngIf="lastName.errors.minlength">Prenumele trebuie sa contina cel putin 3 litere!</div>
+                    </div>
                   </div>
                 </div>
 
                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                   <label>Email*</label>
                   <div class="field-input">
-                    <input type="email" name="email" [(ngModel)]="discountEmail" ngModel required minlength="6" email>
+                    <input type="text" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
+                    <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                        <div *ngIf="email.errors.required">Te rugam sa introduci adresa de email!</div>
+                        <div *ngIf="email.errors.email">Email-ul nu este valid</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                   <label>Telefon*</label>
                   <div class="field-input">
-                    <input type="text" name="phone" ngModel required>
+                    <input type="text" name="phone" class="form-control" [(ngModel)]="model.phone" #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required>
+                    <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                        <div *ngIf="phone.errors.required">Te rugam sa introduci numarul de telefon!</div>
+                    </div>
                   </div>
                 </div>
 
                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                   <label>Adresa*</label>
                   <div class="field-input">
-                    <input type="text" name="address" class="address" ngModel required minlength="6">
-                    <input type="text" name="address_1" ngModel required>
+                    <input type="text" name="address" class="address form-control" [(ngModel)]="model.address" #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required>
+                    <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+                        <div *ngIf="address.errors.required">Te rugam sa introduci adresa!</div>
+                    </div>
+                    <input type="text" name="address_1" [(ngModel)]="model.address_1">
                   </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                   <label>Oras*</label>
                   <div class="field-input">
-                    <input type="text" name="town_city" ngModel required>
+                    <input type="text" name="town_city" class="form-control" [(ngModel)]="model.town_city" #town_city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && town_city.invalid }" required>
+                    <div *ngIf="f.submitted && town_city.invalid" class="invalid-feedback">
+                        <div *ngIf="town_city.errors.required">Te rugam sa introduci orasul!</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                   <label>Judet*</label>
                   <div class="field-input">
-                    <input type="text" name="county" ngModel required minlength="6">
+                    <input type="text" name="county" class="form-control" [(ngModel)]="model.county" #county="ngModel" [ngClass]="{ 'is-invalid': f.submitted && county.invalid }" required>
+                    <div *ngIf="f.submitted && county.invalid" class="invalid-feedback">
+                        <div *ngIf="county.errors.required">Te rugam sa introduci judetul!</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                   <label>Cod postal</label>
                   <div class="field-input">
-                    <input type="text" name="zip" ngModel>
+                    <input type="text" name="zip" [(ngModel)]="model.zip">
                   </div>
                 </div>
-                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                <!-- <div class="form-group col-lg-12 col-md-12 col-sm-12">
                   <div class="create-acc">
                     <div class="custom-controls-stacked">
                       <label class="custom-control material-checkbox">
@@ -103,9 +126,8 @@
                       </label>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
-
             </div>
             <div class="additional-info">
               <div class="note-book">
@@ -145,6 +167,18 @@
                 </ul>
               </div>
             </div>
+            <div class="delivery-info">
+              <h4 class="sub-title payment-info">Alege data livrarii</h4>
+              <div class="delivery-inner">
+                <app-datetimepicker [(ngModel)]="stringDateModel" (onDatePicked)="addDeliveryDate($event)"
+                  ngDefaultControl name="activeEndDate">
+                </app-datetimepicker>
+                <div class="delivery-box" *ngIf="deliverydate">
+                  <span><strong>Data livrarii:</strong> {{deliverydate}}</span>
+                  <span><strong>Interval:</strong> {{interval}}</span>
+                </div>
+              </div>
+            </div>
             <div class="payment-info">
               <h4 class="sub-title payment-info">Detalii plata</h4>
               <div class="payment-inner">
@@ -170,7 +204,7 @@
                   </div>
                 </div>
                 <div class="btn-box">
-                  
+
                   <button type="submit" class="theme-btn-one">Plaseaza comanda</button>
                 </div>
               </div>

@@ -36,35 +36,47 @@ export class TestimonialsComponent implements OnInit {
 
   constructor() { }
 
+  id = 'btfgGf2wDgI';
+  private player;
+  private ytEvent;
+
+
+
+
   ngOnInit(): void {
-   
-      
-    
+
+    const tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
   }
 
   playVideo() {
     this.video = !this.video
-    
+    // this.video.playVideo();
   }
 
+  
+
   ngAfterViewInit() {
-    let playVideo: HTMLElement = document.querySelector('#play-video') as HTMLElement;
-    let checkExist = setInterval(function() {
-      if (playVideo && playVideo instanceof HTMLElement) {
-        
-        setTimeout(() => {
-          $('#play-video').on('click', function(ev) {
-     
-            $("#video")[0].src += "&autoplay=1";
-            ev.preventDefault();
-         
-          });
-        }, 3000);
-      
-        clearInterval(checkExist);
-      }
-   }, 100); // check every 100ms
-    
+    // let playVideo: HTMLElement = document.querySelector('#play-video') as HTMLElement;
+    // let checkExist = setInterval(function () {
+    //   if (playVideo && playVideo instanceof HTMLElement) {
+
+    //     setTimeout(() => {
+    //       $('#play-video').on('click', function (ev) {
+
+    //         $("#video")[0].src += "&autoplay=1";
+    //         ev.preventDefault();
+
+    //       });
+    //     }, 3000);
+
+    //     clearInterval(checkExist);
+    //   }
+    // }, 100); // check every 100ms
+
   }
 
 }
