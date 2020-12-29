@@ -68,6 +68,9 @@ import {
 } from 'angularx-social-login';
 import { PopupDiscountComponent } from './components/popup-discount/popup-discount.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { HowToBuyComponent } from './pages/how-to-buy/how-to-buy.component';
+import { HowToPayComponent } from './pages/how-to-pay/how-to-pay.component';
+import { DeliveryInfoComponent } from './pages/delivery-info/delivery-info.component';
 
 
 @NgModule({
@@ -106,7 +109,10 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     CandyBarComponent,
     LoginComponent,
     UserComponent,
-    PopupDiscountComponent
+    PopupDiscountComponent,
+    HowToBuyComponent,
+    HowToPayComponent,
+    DeliveryInfoComponent
   ],
   imports: [
     BrowserModule,

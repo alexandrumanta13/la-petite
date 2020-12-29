@@ -21,6 +21,9 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CandyBarComponent } from './pages/candy-bar/candy-bar.component';
 import { LoginComponent } from './pages/login/login.component';
+import { HowToBuyComponent } from './pages/how-to-buy/how-to-buy.component';
+import { HowToPayComponent } from './pages/how-to-pay/how-to-pay.component';
+import { DeliveryInfoComponent } from './pages/delivery-info/delivery-info.component';
 
 const routes: Routes = [
   {
@@ -124,6 +127,30 @@ const routes: Routes = [
     path: 'termeni-si-conditii', component: TermsComponent,
     data: {
       title: 'Termeni si conditii',
+      description: '',
+      ogUrl: 'your og url'
+    }
+  },
+  {
+    path: 'cum-cumpar', component: HowToBuyComponent,
+    data: {
+      title: 'Cum cumpar',
+      description: '',
+      ogUrl: 'your og url'
+    }
+  },
+  {
+    path: 'cum-platesc', component: HowToPayComponent,
+    data: {
+      title: 'Cum platesc',
+      description: '',
+      ogUrl: 'your og url'
+    }
+  },
+  {
+    path: 'info-livrare', component: DeliveryInfoComponent,
+    data: {
+      title: 'Info livrare',
       description: '',
       ogUrl: 'your og url'
     }
