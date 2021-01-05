@@ -1,8 +1,13 @@
 .main-header.style-two .main-menu .navigation>li.logo-box {
-  margin: -60px 32px;
+  margin: -24px 32px;
+
 
   @media only screen and (max-width: 1366px) {
-    margin: -40px 32px;
+    margin: -42px 32px;
+  }
+
+  @media only screen and (min-width: 1367px) {
+    margin: -60px 32px;
   }
 }
 
@@ -281,7 +286,7 @@
 .mobile-menu .menu-box {
   background: #ecbbb6;
 
-   #mCSB_1 {
+  #mCSB_1 {
     height: 100%;
   }
 }
@@ -308,7 +313,7 @@
     }
   }
 
-  
+
 }
 
 div#mCSB_1_container {
@@ -324,5 +329,31 @@ div#mCSB_1_container {
 }
 
 .sticky-header {
-    background: #ecbbb6;
+  background: #ecbbb6;
+}
+
+.menu-area {
+
+  &.mobile {
+    display: flex;
+
+    .mobile-nav-toggler {
+      margin-left: auto;
+    }
+  }
+
+  .logo-mobile {
+    display: none;
+    @media only screen and (max-width: 767px) {
+      height: 70px;
+      display: flex;
+    }
+  }
+}
+
+
+.sticky-header {
+  .logo-mobile {
+    display: none;
+  }
 }

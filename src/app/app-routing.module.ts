@@ -24,6 +24,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HowToBuyComponent } from './pages/how-to-buy/how-to-buy.component';
 import { HowToPayComponent } from './pages/how-to-pay/how-to-pay.component';
 import { DeliveryInfoComponent } from './pages/delivery-info/delivery-info.component';
+import { SuccessOrderComponent } from './pages/success-order/success-order.component';
 
 const routes: Routes = [
   {
@@ -166,6 +167,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '404', component: NotFoundComponent },
 
+  { path: 'comanda-finalizata', component: SuccessOrderComponent },
   { path: 'mesaj-trimis', component: ThankYouComponent },
 
   { path: '**', redirectTo: '/404' }

@@ -103,7 +103,7 @@
         <button type="submit" class="theme-btn-one">Aplica coupon<i class="flaticon-right-1"></i></button>
       </div> -->
       <div class="update-btn pull-right">
-        <button (click)="emptyCart">Golire cos<i class="flaticon-right-1"></i></button>
+        <button (click)="emptyCart()">Golire cos<i class="flaticon-right-1"></i></button>
     </div>
     </div>
     <div class="cart-total">
@@ -118,7 +118,7 @@
             <div class="other-links">
               <img src="/assets/images/icons/delivery.svg" alt=""><span> Transport gratuit* </span>
               
-              <small *ngIf="totalPrice$ < 100">Comanda minima de 150</small>
+              <small *ngIf="totalPrice$ < 100">Comanda minima de 100</small>
             </div>
             <button [disabled]="totalPrice$ > 100 ? false : true" routerLink="/finalizeaza-comanda" class="theme-btn-one">Finalizeaza comanda</button>
           </div>

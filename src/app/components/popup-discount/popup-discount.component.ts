@@ -52,7 +52,7 @@ export class PopupDiscountComponent implements OnInit {
   }
 
   hidePopup() {
-    localStorage.setItem('discount', JSON.stringify({closed: 'closed'}));
+    //localStorage.setItem('discount', JSON.stringify({closed: 'closed'}));
     this.showPopup = false;
   }
 

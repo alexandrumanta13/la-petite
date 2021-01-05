@@ -66,6 +66,7 @@ export class ProductComponent implements OnInit {
 
     this._ProductService.getProduct(this._productRoute).then(data => {
       this.product = data;
+      console.log(this.product)
       this.product.accessories = [];
       this.product.selectedAccessories = '';
       this.productCategoryName = this.product.categories[0].category_name;
@@ -87,8 +88,8 @@ export class ProductComponent implements OnInit {
   }
 
   addDeliveryDate(date) {
-    console.log(date)
-    console.log(date.interval)
+    
+    
 
     this.product.deliverydate = `${date.datetime.day + '.' + date.datetime.month + '.' + date.datetime.year}`;
     this.product.interval = date.interval;
@@ -120,7 +121,7 @@ export class ProductComponent implements OnInit {
       this.product.selectedAccessories += accessory.accessory_name + ', '
       this.price += 10;
     }
-    console.log(this.product)
+    
     event.target.classList.toggle('active');
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, forwardRef, ViewChild, AfterViewInit, Injector, Output, EventEmitter } from '@angular/core';
-import { NgbTimeStruct, NgbDateStruct, NgbPopoverConfig, NgbPopover, NgbDatepicker, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTimeStruct, NgbDateStruct, NgbPopoverConfig, NgbPopover, NgbDatepicker, NgbDatepickerConfig, NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { DateTimeModel } from './date-time.model';
@@ -63,7 +63,31 @@ export class DatetimepickerComponent implements ControlValueAccessor, OnInit, Af
     isSecondInterval: boolean = false;
     interval: any;
 
-    constructor(private config: NgbPopoverConfig, private inj: Injector, private pickerConfig: NgbDatepickerConfig) {
+    json = {
+        disable: [0],
+        disabledDates: [
+          { year: 2020, month: 12, day: 31 },
+          { year: 2021, month: 1, day: 1 },
+          { year: 2021, month: 1, day: 2 },
+          { year: 2021, month: 1, day: 3 },
+          { year: 2021, month: 1, day: 4 },
+          { year: 2021, month: 1, day: 5 },
+          
+
+        ]
+      };
+      isDisabled;
+    
+    isNewYearTowmorrow: boolean = false;
+    isNewYearToday: boolean = false;
+
+    constructor(
+        private config: NgbPopoverConfig, 
+        private inj: Injector, 
+        private pickerConfig: NgbDatepickerConfig,
+        private calendar: NgbCalendar) 
+        
+        {
         config.autoClose = 'outside';
         config.placement = 'auto';
         const current = new Date();
@@ -72,13 +96,34 @@ export class DatetimepickerComponent implements ControlValueAccessor, OnInit, Af
             month: current.getMonth() + 1,
             day: current.getDate()
         };
+        this.isDisabled = (date: NgbDateStruct) => {
+            return this.json.disabledDates.find(
+              x =>
+                new NgbDate(x.year, x.month, x.day).equals(date) ||
+                this.json.disable.includes(
+                  this.calendar.getWeekday(
+                    new NgbDate(date.year, date.month, date.day)
+                  )
+                )
+            )
+              ? true
+              : false;
+          };
 
+          
     }
 
     ngOnInit(): void {
         this.ngControl = this.inj.get(NgControl);
-        console.log(this.datetime.day)
+        const date = new Date();
+     
+        if(date.getFullYear() == 2020 && date.getMonth() == 11 && date.getDate() + 1 == 31) {
+            console.log(date.getDate() + 1)
+            this.isNewYearTowmorrow = true;
+        }
 
+        if(date.getFullYear() == 2020 && date.getMonth() == 11 && date.getDate() == 31)
+            this.isNewYearToday = true;
     }
 
     ngAfterViewInit(): void {
@@ -87,6 +132,8 @@ export class DatetimepickerComponent implements ControlValueAccessor, OnInit, Af
         });
 
     }
+
+  
 
     checkIfToday() {
         const date = new Date();
@@ -108,6 +155,8 @@ export class DatetimepickerComponent implements ControlValueAccessor, OnInit, Af
 
         if(date.getHours() < 18)
         this.isSecondInterval = true;
+
+        
     }
 
     selectInterval(event) {

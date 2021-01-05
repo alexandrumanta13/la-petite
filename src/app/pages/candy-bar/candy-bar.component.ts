@@ -18,7 +18,7 @@ export class CandyBarComponent implements OnInit {
   private _httpClient: any;
   order: any;
 
-  private SEND_ORDER = "https://la-petite.ro/data/candyBar.php"; 
+  private SEND_ORDER = "https://la-petite.ro/data/candyBar.php";
 
   customOptions: OwlOptions = {
     loop: true,
@@ -46,6 +46,8 @@ export class CandyBarComponent implements OnInit {
       }
     }
   }
+  terms: any;
+  gdpr: any;
   constructor() {
     this.candyBar = [
       {
@@ -188,7 +190,7 @@ export class CandyBarComponent implements OnInit {
     const flip = document.querySelectorAll('.content-column');
     const flips = Array.from(flip);
 
-    
+
 
     for (let i in flips) {
       if (flip[i].classList.contains('flip')) {
@@ -205,7 +207,7 @@ export class CandyBarComponent implements OnInit {
 
   removeFlip(event) {
     const parent = event.target.closest('.content-column');
- 
+
 
     parent.classList.remove('flip');
     this.selectedPrice = this.price;
@@ -214,7 +216,7 @@ export class CandyBarComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.candyBar)
-     
+
 
   }
 
@@ -239,20 +241,37 @@ export class CandyBarComponent implements OnInit {
       });
       return;
     }
-    
-        this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
-          if (data.status == "success") {
 
-            this.toaster.success('Iti multumim!', `${data.message}`, {
-              timeOut: 3000,
-              positionClass: 'toast-bottom-right'
-            });
+    if (!this.terms) {
+      console.log('asdads')
+      this.toaster.warning('', 'Trebuie sa fii de acord cu termenii si conditiile site-ului!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
 
-            
-            form.reset();
-          }
-        })
-      
+    if (!this.gdpr) {
+      this.toaster.warning('', 'Trebuie sa fii de acord cu politica de confidentialitate a site-ului!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
+    this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
+      if (data.status == "success") {
+
+        this.toaster.success('Iti multumim!', `${data.message}`, {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right'
+        });
+
+
+        form.reset();
+      }
+    })
+
   }
 
 }

@@ -24,7 +24,8 @@
             <div class="widget-content">
               <ul class="categories-list clearfix">
                 <li *ngFor="let category of categories">
-                    <a routerLink="/produse/{{category.slug}}">{{category.category_name}}</a>
+                    <a *ngIf="category.category_name != 'Accesorii' && category.slug != 'candy-bar'" routerLink="/produse/{{category.slug}}">{{category.category_name}}</a>
+                    <a *ngIf="category.slug === 'candy-bar'" routerLink="/{{category.slug}}">{{category.category_name}}</a>
                 </li>
               </ul>
             </div>

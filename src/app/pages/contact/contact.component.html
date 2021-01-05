@@ -56,8 +56,9 @@
            <div class="single-box">
              <h3>Social contact</h3>
              <ul class="social-links clearfix">
-               <li><a href="contact.html"><i class="fab fa-facebook-f"></i></a></li>
-               <li><a href="contact.html"><i class="fab fa-instagram"></i></a></li>
+               <li><a href="https://www.facebook.com/Lapetite0/"><i class="fab fa-facebook-f"></i></a></li>
+               <li><a href="https://www.instagram.com/lapetitedoucerevelation/"><i class="fab fa-instagram"></i></a>
+               </li>
              </ul>
            </div>
          </div>
@@ -95,6 +96,25 @@
                </div>
                <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
                  <button class="theme-btn-one" type="submit" name="submit-form">Trimite</button>
+               </div>
+               <div class="gdpr">
+                 <div class="custom-controls-stacked">
+                   <label class="custom-control material-checkbox">
+                     <input type="checkbox" [(ngModel)]="terms" name="terms" class="material-control-input">
+                     <span class="material-control-indicator"></span>
+                     <span class="description">Sunt de acord cu <a
+                         routerLink="https://la-petite.ro/termeni-si-conditii">Termeni si Conditii </a></span>
+                   </label>
+                 </div>
+                 <div class="custom-controls-stacked">
+                   <label class="custom-control material-checkbox">
+                     <input type="checkbox" [(ngModel)]="gdpr" name="gdpr" class="material-control-input">
+                     <span class="material-control-indicator"></span>
+                     <span class="description">Sunt de acord cu <a
+                         routerLink="https://la-petite.ro/confidentialitate">Politica de Confidentialitate</a>
+                       si <a routerLink="https://la-petite.ro/politica-cookies">GDPR</a> </span>
+                   </label>
+                 </div>
                </div>
              </div>
            </form>

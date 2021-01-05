@@ -97,7 +97,7 @@ export class PhotoGalleryComponent implements OnInit {
         }, 3000);
         setTimeout(() => {
           active.click();
-        }, 2000)
+        }, 3000)
         
         clearInterval(checkExist);
       }

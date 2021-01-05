@@ -71,6 +71,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { HowToBuyComponent } from './pages/how-to-buy/how-to-buy.component';
 import { HowToPayComponent } from './pages/how-to-pay/how-to-pay.component';
 import { DeliveryInfoComponent } from './pages/delivery-info/delivery-info.component';
+import { SuccessOrderComponent } from './pages/success-order/success-order.component';
 
 
 @NgModule({
@@ -112,7 +113,8 @@ import { DeliveryInfoComponent } from './pages/delivery-info/delivery-info.compo
     PopupDiscountComponent,
     HowToBuyComponent,
     HowToPayComponent,
-    DeliveryInfoComponent
+    DeliveryInfoComponent,
+    SuccessOrderComponent
   ],
   imports: [
     BrowserModule,

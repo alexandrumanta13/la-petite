@@ -982,14 +982,14 @@ table th {
 .c18 {
   text-decoration-skip-ink: none;
   -webkit-text-decoration-skip: none;
-  color: #1155cc;
-  text-decoration: underline
+  color: #000000;
+  font-size: 11pt;
 }
 
 .c10 {
   background-color: #ffffff;
-  max-width: 451.4pt;
-  padding: 72pt 72pt 72pt 72pt
+  max-width: 100%;
+  padding: 0
 }
 
 .c23 {
@@ -998,8 +998,9 @@ table th {
 }
 
 .c20 {
-  margin-left: 36pt;
-  padding-left: 0pt
+  margin-left: 0;
+  padding-left: 0pt;
+  font-size: 11pt;
 }
 
 .c11 {
@@ -1013,7 +1014,7 @@ table th {
 }
 
 .c2 {
-  color: inherit;
+  line-height: 2;
   text-decoration: inherit
 }
 
@@ -1028,15 +1029,18 @@ table th {
 }
 
 .c32 {
-  padding-left: 0pt
+  padding-left: 0pt;
+  line-height: 2;
 }
 
 .c24 {
-  font-size: 11pt
+  font-size: 11pt;
+  line-height: 2;
 }
 
 .c33 {
-  margin-left: 36pt
+  margin-left: 0;
+  font-size: 11pt;
 }
 
 .c29 {

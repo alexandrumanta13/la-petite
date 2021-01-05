@@ -59,7 +59,7 @@
               </app-datetimepicker>
               <p class="interval">Interval: <strong>{{product?.interval}}</strong></p>
             </div> -->
-            <div class="accessories">
+            <div class="accessories" *ngIf="product?.categories[0].id == 3 || product?.categories[0].id == 4">
               <p>Adauga acestui produs accesoriile dorite:</p>
               <ul class="clearfix">
                 <li (click)="addAccessory($event, product, accessory)" *ngFor="let accessory of accessories">
@@ -85,7 +85,7 @@
                 Transport gratuit*
               </span>
 
-              <p>Comanda minima de 150 Lei</p>
+              <p>Comanda minima de 100 Lei</p>
             </div>
 
           </div>
@@ -106,7 +106,9 @@
           <div class="tab active-tab" id="tab-1">
             <div class="content-box">
               <h3>Descriere produs</h3>
-              <p>{{product?.ingredients}}</p>
+              <p *ngIf="!product?.descriptionInfo">{{product?.ingredients}}</p>
+              <p *ngIf="product?.descriptionInfo" [innerHTML]="product?.descriptionInfo"></p>
+
             </div>
           </div>
         </div>
@@ -142,8 +144,7 @@
 
                 <p>Costuri de transport</p>
                 <p>Transportul este gratuit* </p>
-                <p>* Comanda minima: 100 lei pentru Sector 2, Chitila, Mogosoaia, Otopeni, Corbeanca</p>
-                <p> Comanda minima: 150 lei pentru sectoarele 3, 4, 5, 6</p>
+                <p>* Comanda minima: 100 lei</p>
             </div>
           </div>
 
