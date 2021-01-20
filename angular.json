@@ -42,7 +42,8 @@
               "src/assets/css/style.css",
               "src/assets/css/responsive.css",
               "src/assets/css/toaster.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-lightbox/lightbox.css"
               
             ],
             "scripts": [

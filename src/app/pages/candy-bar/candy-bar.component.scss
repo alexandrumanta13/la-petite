@@ -27,11 +27,11 @@
 
     .order {
         display: flex;
-        margin-top: 20px;
+        margin-top: 40px;
         align-items: center;
 
         button {
-            margin: 0 40px 0 auto;
+            margin: 0 0 0 auto;
         }
     }
 }
@@ -60,7 +60,7 @@
 
 .content-column {
     position: relative;
-    height: 1020px;
+    height: 1160px;
     perspective: 150rem;
     @media only screen and (max-width: 991px) {
         margin-bottom: 40px;
@@ -70,6 +70,7 @@
 .message-btn {
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
 }
 
 .inner-box {
@@ -79,11 +80,35 @@
     .form-inner {
         display: flex;
         height: 100%;
-        margin-right: 30px;
+        margin-right: 0;
 
         form {
             display: flex;
             margin: auto;
         }
     }
+
+    &__title {
+        margin-bottom: 20px;
+    }
+}
+
+.fluid-container {
+    margin: 0 32px;
+}
+
+.special-menu-box {
+    background: #fff;
+    width: calc(100% - 16px);
+    left: 8px;
+    padding: 80px 50px;
+}
+
+.menu-actions {
+    margin-top: 50px;
+}
+
+
+.special-menu-box .menu-list .single-menu .text h4 {
+    margin-right: 0;
 }

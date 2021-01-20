@@ -72,6 +72,13 @@ import { HowToBuyComponent } from './pages/how-to-buy/how-to-buy.component';
 import { HowToPayComponent } from './pages/how-to-pay/how-to-pay.component';
 import { DeliveryInfoComponent } from './pages/delivery-info/delivery-info.component';
 import { SuccessOrderComponent } from './pages/success-order/success-order.component';
+import { LightboxModule } from 'ngx-lightbox';
+import { MyAccountComponent } from './pages/my-account/my-account.component';
+import { MyOrdersComponent } from './pages/my-account/my-orders/my-orders.component';
+import { OrderDetailsComponent } from './pages/my-account/order-details/order-details.component';
+import { MustMatchDirective } from './pages/login/must-match.directive';
+
+
 
 
 @NgModule({
@@ -114,7 +121,11 @@ import { SuccessOrderComponent } from './pages/success-order/success-order.compo
     HowToBuyComponent,
     HowToPayComponent,
     DeliveryInfoComponent,
-    SuccessOrderComponent
+    SuccessOrderComponent,
+    MyAccountComponent,
+    MyOrdersComponent,
+    OrderDetailsComponent,
+    MustMatchDirective,
   ],
   imports: [
     BrowserModule,
@@ -129,7 +140,8 @@ import { SuccessOrderComponent } from './pages/success-order/success-order.compo
     NgbModule,
     ToastrModule.forRoot(),
     SocialLoginModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    LightboxModule
   ],
   exports: [],
   providers: [

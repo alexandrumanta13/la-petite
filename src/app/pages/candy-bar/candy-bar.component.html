@@ -97,13 +97,13 @@
 
  <!-- specialmenu-section -->
  <section class="specialmenu-section sec-pad" style="background-image: url(assets/images/background/candy-bar-bg.jpg);">
-   <div class="auto-container">
+   <div class="fluid-container">
      <div class="row clearfix">
-       <div class="col-lg-6 col-md-12 col-sm-12 content-column" *ngFor="let item of candyBar; let i = index">
+       <div class="col-lg-4 col-md-4 col-sm-12 content-column" *ngFor="let item of candyBar; let i = index">
          <div class="special-menu-box side side--front" data-wow-delay="00ms" data-wow-duration="1500ms">
-           <div class="bg-layer" style="background-image: url(assets/images/shape/shape-88.png);"></div>
-           <div class="border-shape" style="background-image: url(assets/images/shape/shape-99.png);"></div>
+          
            <div class="inner-box">
+            <h4 class="inner-box__title">Pachet {{i + 1}}</h4>
              <ul class="menu-list">
                <li *ngFor="let candy of item.version">
                  <div class="single-menu">
@@ -115,6 +115,7 @@
                </li>
              </ul>
              <div class="menu-actions">
+               <h4>Alege numarul de invitati:</h4>
                <ul>
                  <li>
                    <div class="option-block">
@@ -163,8 +164,8 @@
          </div>
 
          <div class="special-menu-box side side--back" data-wow-delay="00ms" data-wow-duration="1500ms">
-           <div class="bg-layer" style="background-image: url(assets/images/shape/shape-88.png);"></div>
-           <div class="border-shape" style="background-image: url(assets/images/shape/shape-99.png);"></div>
+           <!-- <div class="bg-layer" style="background-image: url(assets/images/shape/shape-88.png);"></div>
+           <div class="border-shape" style="background-image: url(assets/images/shape/shape-99.png);"></div> -->
            <div class="inner-box">
              <div class="form-inner">
 

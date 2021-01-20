@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialAuthService, SocialLoginModule } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
-import { AuthAPIService } from './auth-api.service';
+
+import { AuthAPIService, AuthResponseData } from './auth-api.service';
 import { UserService } from '../user/user.service';
 import { Observable, Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login.component.html',
@@ -22,12 +25,15 @@ export class LoginComponent implements OnInit {
     token: ''
   };
 
+  public model: any = {};
+
   authObs: Observable<any>;
   private userSub: Subscription;
   isAuthentificated: boolean;
 
   constructor(private SocialAuthService: SocialAuthService,
     public authAPIService: AuthAPIService,
+    public router: Router,
     public user: UserService) {
     this.user.sessionIn();
   }
@@ -76,5 +82,31 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  onSubmit(form: NgForm) {
+    if(!form.valid) {
+      return;
+    }
+   
+    const email = form.value.email;
+    const password = form.value.password;
+
+   
+
+    let authObs: Observable<AuthResponseData>;
+
+    authObs = this.authAPIService.login(email, password);
+
+    authObs.subscribe(data => {
+      console.log(data)
+      this.router.navigate(['/contul-meu']);
+    }, error => {
+      console.log(error)
+    });
+    form.reset();
+  }
+
+  signup() {
+
+  }
   
 }

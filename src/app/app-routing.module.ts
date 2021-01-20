@@ -25,6 +25,11 @@ import { HowToBuyComponent } from './pages/how-to-buy/how-to-buy.component';
 import { HowToPayComponent } from './pages/how-to-pay/how-to-pay.component';
 import { DeliveryInfoComponent } from './pages/delivery-info/delivery-info.component';
 import { SuccessOrderComponent } from './pages/success-order/success-order.component';
+import { MyAccountComponent } from './pages/my-account/my-account.component';
+import { AuthGuard } from './pages/login/auth.guard';
+import { AuthAPIService } from './pages/login/auth-api.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './pages/login/jwt-interceptor';
 
 const routes: Routes = [
   {
@@ -165,6 +170,9 @@ const routes: Routes = [
     }
   },
   { path: 'login', component: LoginComponent },
+  { path: 'autentificare', component: LoginComponent },
+  { path: 'contul-meu', component: MyAccountComponent, canActivate: [AuthGuard] },
+
   { path: '404', component: NotFoundComponent },
 
   { path: 'comanda-finalizata', component: SuccessOrderComponent },
@@ -175,6 +183,16 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    //fakeBackendProvider,
+    //{ provide: LOCALE_ID, useValue: "ro-RO" },
+
+    AuthAPIService
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

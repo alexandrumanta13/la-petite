@@ -5,6 +5,7 @@ import { CartService } from '../cart/cart.service';
 import { ProductService } from './product.service';
 import { v4 as uuidv4 } from 'uuid';
 import { ToastrService } from 'ngx-toastr';
+import { Lightbox } from 'ngx-lightbox';
 
 declare var $: any;
 
@@ -31,6 +32,8 @@ export class ProductComponent implements OnInit {
   cartQuantity: number = 1;
   recommended: any;
 
+  productImages = [];
+
 
   /**
    * Constructor
@@ -47,7 +50,8 @@ export class ProductComponent implements OnInit {
     private _ProductService: ProductService,
     private _cartService: CartService,
     public router: Router,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private _lightbox: Lightbox
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -75,6 +79,12 @@ export class ProductComponent implements OnInit {
       this.portions = this.product.information[0].portions;
       this.isActive = this.product.information[0].id;
       this.product.selectedQnt = this.product.information[0].quantity + this.product.information[0].um;
+      this.product.images.map(productImage => {
+
+        this.productImages.push({ src: '/assets/images/resource/shop/' + productImage.image_url, thumb: '/assets/images/resource/shop/' + productImage.image_url })
+      })
+      console.log(this.productImages)
+
     });
 
     this._ProductService.getAccesories().then(data => {
@@ -88,8 +98,8 @@ export class ProductComponent implements OnInit {
   }
 
   addDeliveryDate(date) {
-    
-    
+
+
 
     this.product.deliverydate = `${date.datetime.day + '.' + date.datetime.month + '.' + date.datetime.year}`;
     this.product.interval = date.interval;
@@ -121,7 +131,7 @@ export class ProductComponent implements OnInit {
       this.product.selectedAccessories += accessory.accessory_name + ', '
       this.price += 10;
     }
-    
+
     event.target.classList.toggle('active');
   }
 
@@ -138,15 +148,15 @@ export class ProductComponent implements OnInit {
       });
 
     }//LightBox / Fancybox
-    if ($('.lightbox-image').length) {
-      $('.lightbox-image').fancybox({
-        openEffect: 'fade',
-        closeEffect: 'fade',
-        helpers: {
-          media: {}
-        }
-      });
-    }
+    // if ($('.lightbox-image').length) {
+    //   $('.lightbox-image').fancybox({
+    //     openEffect: 'fade',
+    //     closeEffect: 'fade',
+    //     helpers: {
+    //       media: {}
+    //     }
+    //   });
+    // }
 
     // $('.product-details-content .bxslider').bxSlider({
     //   nextSelector: '.product-details-content #slider-next',
@@ -159,22 +169,33 @@ export class ProductComponent implements OnInit {
     //   pagerCustom: '.product-details-content .slider-pager .thumb-box'
     // });
 
-    $('.tabs-box .tab-buttons .tab-btn').on('click', function (e) {
-      e.preventDefault();
-      var target = $($(this).attr('data-tab'));
+    // $('.tabs-box .tab-buttons .tab-btn').on('click', function (e) {
+    //   e.preventDefault();
+    //   var target = $($(this).attr('data-tab'));
 
-      if ($(target).is(':visible')) {
-        return false;
-      } else {
-        target.parents('.tabs-box').find('.tab-buttons').find('.tab-btn').removeClass('active-btn');
-        $(this).addClass('active-btn');
-        target.parents('.tabs-box').find('.tabs-content').find('.tab').fadeOut(0);
-        target.parents('.tabs-box').find('.tabs-content').find('.tab').removeClass('active-tab');
-        $(target).fadeIn(300);
-        $(target).addClass('active-tab');
-      }
-    });
+    //   if ($(target).is(':visible')) {
+    //     return false;
+    //   } else {
+    //     target.parents('.tabs-box').find('.tab-buttons').find('.tab-btn').removeClass('active-btn');
+    //     $(this).addClass('active-btn');
+    //     target.parents('.tabs-box').find('.tabs-content').find('.tab').fadeOut(0);
+    //     target.parents('.tabs-box').find('.tabs-content').find('.tab').removeClass('active-tab');
+    //     $(target).fadeIn(300);
+    //     $(target).addClass('active-tab');
+    //   }
+    // });
   }
+
+  open(index: number): void {
+    // open lightbox
+    this._lightbox.open(this.productImages, index);
+  }
+
+  close(): void {
+    // close lightbox programmatically
+    this._lightbox.close();
+  }
+
 
 }
 

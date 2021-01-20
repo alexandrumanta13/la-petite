@@ -41,6 +41,11 @@ export class CartService {
             take(1),
             map((products) => {
 
+                if(value <= 0) {
+                    this.removeFromCart(product);
+                    return;
+                }
+
                 const filter = {
                     'id': product.id,
                     'selectedQnt': product.selectedQnt,

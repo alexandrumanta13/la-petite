@@ -25,10 +25,9 @@
           <div class="bxslider">
             <div class="slider-content">
               <div class="product-image">
-                <figure class="image" *ngFor="let image of product?.images">
-                  <a class="lightbox-image" data-fancybox="gallery">
-                    <img src="/assets/images/resource/shop/{{image.image_url}}" alt="">
-                  </a>
+                <figure class="image" *ngFor="let image of productImages; let i=index">
+                 
+                  <img [src]="image.thumb" (click)="open(i)" />
                 </figure>
 
               </div>
