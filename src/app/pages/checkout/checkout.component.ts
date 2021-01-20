@@ -93,10 +93,15 @@ export class CheckoutComponent implements OnInit {
 
           this.discount = data.percent;
           this.totalPrice$ = this.totalPrice$ - (this.totalPrice$ * this.discount / 100);
-          this.toaster.success('Iti multumim!', `${data.message}`, {
-            timeOut: 3000,
-            positionClass: 'toast-bottom-right'
-          });
+          this._httpClient.post(this.USE_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
+            if (data.success === true) {
+              this.toaster.success('Iti multumim!', `${data.message}`, {
+                timeOut: 3000,
+                positionClass: 'toast-bottom-right'
+              });
+            }
+          })
+         
         } else {
           this.toaster.warning('', `${data.message}`, {
             timeOut: 3000,
@@ -225,16 +230,11 @@ export class CheckoutComponent implements OnInit {
               positionClass: 'toast-bottom-right'
             });
 
-            if (this.discount > 0) {
-              this._httpClient.post(this.USE_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
-                if (data.success === true) {
-                  this.toaster.success('Iti multumim!', `${data.message}`, {
-                    timeOut: 3000,
-                    positionClass: 'toast-bottom-right'
-                  });
-                }
-              })
-            }
+            // if (this.discount > 0) {
+            //   this._httpClient.post(this.USE_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
+                
+            //   })
+            // }
 
             this.cartService.emptyCart();
             f.reset();
