@@ -42,10 +42,18 @@ youtube-player {
 
   h4 {
     margin: auto;
+    background: #ecbbb6;
+    color: #fff;
+    padding: 16px 32px;
   }
 
   .btn-box {
     margin-top: 40px;
+
+    a {
+        background: #6d4b50;
+        box-shadow: 0 10px 20px rgba(109, 75, 80, .3)
+    }
 
   }
 
