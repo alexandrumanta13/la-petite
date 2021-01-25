@@ -77,6 +77,7 @@ import { MyAccountComponent } from './pages/my-account/my-account.component';
 import { MyOrdersComponent } from './pages/my-account/my-orders/my-orders.component';
 import { OrderDetailsComponent } from './pages/my-account/order-details/order-details.component';
 import { MustMatchDirective } from './pages/login/must-match.directive';
+import { MaintenanceComponent } from './components/maintenance/maintenance.component';
 
 
 
@@ -126,6 +127,7 @@ import { MustMatchDirective } from './pages/login/must-match.directive';
     MyOrdersComponent,
     OrderDetailsComponent,
     MustMatchDirective,
+    MaintenanceComponent,
   ],
   imports: [
     BrowserModule,

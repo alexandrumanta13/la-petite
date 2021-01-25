@@ -120,9 +120,6 @@ export class CheckoutComponent implements OnInit {
 
 
   addDeliveryDate(date) {
-    console.log(date)
-    console.log(date.interval)
-
     this.deliverydate = `${date.datetime.day + '.' + date.datetime.month + '.' + date.datetime.year}`;
     this.interval = date.interval;
   }

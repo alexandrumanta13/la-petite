@@ -1,0 +1,54 @@
+.video-section .video-inner .video-btn a {
+  background: #ecbbb6;
+}
+
+youtube-player {
+  margin-top: 0;
+  display: flex;
+}
+
+.video-section .video-inner {
+  margin: 0;
+}
+
+.video {
+  display: flex;
+
+  .video-section {
+    margin: auto;
+    width: 100%;
+  }
+
+  .auto-container {
+    padding: 0;
+  }
+}
+
+.maintenance-continer {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .container,
+  .row {
+    height: 100%;
+  }
+}
+
+.info {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+
+  h4 {
+    margin: auto;
+  }
+
+  .btn-box {
+    margin-top: 40px;
+
+  }
+
+
+
+}

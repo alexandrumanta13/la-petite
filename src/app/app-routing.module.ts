@@ -30,10 +30,20 @@ import { AuthGuard } from './pages/login/auth.guard';
 import { AuthAPIService } from './pages/login/auth-api.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './pages/login/jwt-interceptor';
+import { MaintenanceComponent } from './components/maintenance/maintenance.component';
 
 const routes: Routes = [
+  // {
+  //   path: '', component: HomeComponent,
+  //   data: {
+  //     title: 'Cofetaria La Petite - Douce Revelation',
+  //     description: 'La Petite - Douce Revelation este un laborator de cofetarie artizanala din Bucuresti cu deserturi delicioase, din ingrediente naturale. Vezi prajiturile noastre!',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+
   {
-    path: '', component: HomeComponent,
+    path: '', component: MaintenanceComponent,
     data: {
       title: 'Cofetaria La Petite - Douce Revelation',
       description: 'La Petite - Douce Revelation este un laborator de cofetarie artizanala din Bucuresti cu deserturi delicioase, din ingrediente naturale. Vezi prajiturile noastre!',
@@ -41,142 +51,141 @@ const routes: Routes = [
     }
   },
 
+  // {
+  //   path: 'produs/:categorySlug/:productSlug', component: ProductComponent,
+  //   data: {
+  //     title: 'Cofetaria La Petite - Douce Revelation',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
 
-  {
-    path: 'produs/:categorySlug/:productSlug', component: ProductComponent,
-    data: {
-      title: 'Cofetaria La Petite - Douce Revelation',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
 
+  // {
+  //   path: 'produse', component: ProductsComponent,
+  //   data: {
+  //     title: 'Cofetaria La Petite - Douce Revelation',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // {
+  //   path: 'candy-bar', component: CandyBarComponent,
+  //   data: {
+  //     title: 'Cofetaria La Petite - Douce Revelation',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // {
+  //   path: 'produse/:categorySlug', pathMatch: 'full', component: ProductsComponent,
+  //   data: {
+  //     title: 'Cofetaria La Petite - Douce Revelation',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
 
-  {
-    path: 'produse', component: ProductsComponent,
-    data: {
-      title: 'Cofetaria La Petite - Douce Revelation',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'candy-bar', component: CandyBarComponent,
-    data: {
-      title: 'Cofetaria La Petite - Douce Revelation',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'produse/:categorySlug', pathMatch: 'full', component: ProductsComponent,
-    data: {
-      title: 'Cofetaria La Petite - Douce Revelation',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
+  // {
+  //   path: 'cos-cumparaturi', component: CartComponent,
+  //   data: {
+  //     title: 'Cofetaria La Petite - Douce Revelation',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
 
-  {
-    path: 'cos-cumparaturi', component: CartComponent,
-    data: {
-      title: 'Cofetaria La Petite - Douce Revelation',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
+  // {
+  //   path: 'finalizeaza-comanda', component: CheckoutComponent,
+  //   data: {
+  //     title: 'Cofetaria La Petite - Douce Revelation',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
 
-  {
-    path: 'finalizeaza-comanda', component: CheckoutComponent,
-    data: {
-      title: 'Cofetaria La Petite - Douce Revelation',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
+  // {
+  //   path: 'despre-noi', component: AboutComponent,
+  //   data: {
+  //     title: 'Despre noi',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
 
-  {
-    path: 'despre-noi', component: AboutComponent,
-    data: {
-      title: 'Despre noi',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
+  // {
+  //   path: 'setari-gdpr', component: GdprComponent,
+  //   data: {
+  //     title: 'Setari GDPR',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
 
-  {
-    path: 'setari-gdpr', component: GdprComponent,
-    data: {
-      title: 'Setari GDPR',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-
-  {
-    path: 'confidentialitate', component: ConfidentialityComponent,
-    data: {
-      title: 'Confidentialitate',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'politica-cookies', component: CookiesComponent,
-    data: {
-      title: 'politica cookies',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'termeni-si-conditii', component: TermsComponent,
-    data: {
-      title: 'Termeni si conditii',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'cum-cumpar', component: HowToBuyComponent,
-    data: {
-      title: 'Cum cumpar',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'cum-platesc', component: HowToPayComponent,
-    data: {
-      title: 'Cum platesc',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'info-livrare', component: DeliveryInfoComponent,
-    data: {
-      title: 'Info livrare',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  {
-    path: 'contact', component: ContactComponent,
-    data: {
-      title: 'Contact',
-      description: '',
-      ogUrl: 'your og url'
-    }
-  },
-  { path: 'login', component: LoginComponent },
-  { path: 'autentificare', component: LoginComponent },
-  { path: 'contul-meu', component: MyAccountComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'confidentialitate', component: ConfidentialityComponent,
+  //   data: {
+  //     title: 'Confidentialitate',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // {
+  //   path: 'politica-cookies', component: CookiesComponent,
+  //   data: {
+  //     title: 'politica cookies',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // {
+  //   path: 'termeni-si-conditii', component: TermsComponent,
+  //   data: {
+  //     title: 'Termeni si conditii',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // {
+  //   path: 'cum-cumpar', component: HowToBuyComponent,
+  //   data: {
+  //     title: 'Cum cumpar',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // {
+  //   path: 'cum-platesc', component: HowToPayComponent,
+  //   data: {
+  //     title: 'Cum platesc',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // {
+  //   path: 'info-livrare', component: DeliveryInfoComponent,
+  //   data: {
+  //     title: 'Info livrare',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // {
+  //   path: 'contact', component: ContactComponent,
+  //   data: {
+  //     title: 'Contact',
+  //     description: '',
+  //     ogUrl: 'your og url'
+  //   }
+  // },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'autentificare', component: LoginComponent },
+  // { path: 'contul-meu', component: MyAccountComponent, canActivate: [AuthGuard] },
 
   { path: '404', component: NotFoundComponent },
 
-  { path: 'comanda-finalizata', component: SuccessOrderComponent },
-  { path: 'mesaj-trimis', component: ThankYouComponent },
+  // { path: 'comanda-finalizata', component: SuccessOrderComponent },
+  // { path: 'mesaj-trimis', component: ThankYouComponent },
 
   { path: '**', redirectTo: '/404' }
 ];
