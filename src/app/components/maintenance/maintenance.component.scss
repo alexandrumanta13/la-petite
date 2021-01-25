@@ -40,11 +40,17 @@ youtube-player {
   margin: auto;
   flex-direction: column;
 
-  h4 {
+  h5 {
     margin: auto;
     background: #ecbbb6;
     color: #fff;
     padding: 16px 32px;
+  }
+
+  img {
+      width: 150px;
+      margin-bottom: 16px;
+      margin-left: auto;git 
   }
 
   .btn-box {
