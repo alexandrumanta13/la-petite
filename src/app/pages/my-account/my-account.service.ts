@@ -7,7 +7,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class MyAccountService {
 
-    private REST_API_SERVER = "https://pro-staff.ro/prostaff-api/v1/";
+    private REST_API_SERVER = "https://la-petite.ro/la-petite-api/v1/";
 
     /**
      * Constructor
@@ -47,7 +47,7 @@ export class MyAccountService {
      */
 
     public getUserOrders(userID): Promise<any> {
-
+        console.log(userID)
         return new Promise((resolve, reject) => {
             this._httpClient.get(this.REST_API_SERVER + 'customer/orders/' + userID)
                 .subscribe((response: any) => {

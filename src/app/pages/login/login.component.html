@@ -28,14 +28,14 @@
 
           <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
             <div class="form-group">
-              <input type="text" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
+              <input type="text" name="email" class="form-control" [(ngModel)]="login.email" #email="ngModel"
                 [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
               <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
                 <div *ngIf="email.errors.required">Email is required</div>
               </div>
             </div>
             <div class="form-group">
-              <input type="password" name="password" class="form-control" [(ngModel)]="model.password"
+              <input type="password" name="password" class="form-control" [(ngModel)]="login.password"
                 #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required
                 minlength="6">
               <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">

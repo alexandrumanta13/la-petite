@@ -147,7 +147,9 @@ export class ProductComponent implements OnInit {
         }
       });
 
-    }//LightBox / Fancybox
+    }
+    
+    //LightBox / Fancybox
     // if ($('.lightbox-image').length) {
     //   $('.lightbox-image').fancybox({
     //     openEffect: 'fade',

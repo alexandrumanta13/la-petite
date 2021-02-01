@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
     this.getProducts();
 
     this._cartService.numTotal.subscribe(info => {
-      console.log(info)
       this.cartTotal$ = info;
     });
 

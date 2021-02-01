@@ -79,7 +79,7 @@ import { OrderDetailsComponent } from './pages/my-account/order-details/order-de
 import { MustMatchDirective } from './pages/login/must-match.directive';
 import { MaintenanceComponent } from './components/maintenance/maintenance.component';
 
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -87,7 +87,7 @@ import { MaintenanceComponent } from './components/maintenance/maintenance.compo
     AppComponent,
     HeaderComponent,
     FooterComponent,
-
+    
     HomeComponent,
     NotFoundComponent,
 
@@ -135,7 +135,7 @@ import { MaintenanceComponent } from './components/maintenance/maintenance.compo
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    NgxPaginationModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     CarouselModule,

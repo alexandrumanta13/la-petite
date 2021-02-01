@@ -14,12 +14,13 @@ export interface AuthResponseData {
 export class AuthAPIService {
   private API_LOGIN = "https://la-petite.ro/la-petite-api/v1/";
 
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
 
   private tokenExpirationTimer: any;
 
   constructor(private _httpClient: HttpClient, public _router: Router) {
     console.log('Hello AuthService Provider');
+    this.user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('LaPetiteUserData')));
   }
 
   public postData(credentials, type): Promise<any> {
@@ -32,37 +33,37 @@ export class AuthAPIService {
     });
   }
 
-  public signup(user): Promise<any> {
-    console.log(user)
-    return new Promise((resolve, reject) => {
-      const headers = new HttpHeaders();
-      this._httpClient.post(`https://la-petite.ro/la-petite-api/v1/register`, {  "firstName": user.name, "lastName": user.last_name, "email": user.email, "password": user.password })
-        .subscribe((data: any) => {
-          
-          resolve(data);
-        }, reject);
-    });
-  }
-
-  // signup(user) {
+  // public signup(user): Promise<any> {
   //   console.log(user)
-  //   return this._httpClient.post<AuthResponseData>(`https://la-petite.ro/la-petite-api/v1/register`, {  "firstName": user.name, "lastName": user.last_name, "email": user.email, "password": user.password })
-  //     .pipe(tap(data => {
-  //       this.handleAuthentication(
-  //         data.user.id,
-  //         data.user.name,
-  //         data.user.last_name,
-  //         data.user.email,
-  //         data.user.provider,
-  //         data.user.provider_id,
-  //         data.user.provider_pic,
-  //         data.user.date_last_visit,
-  //         data.user.access,
-  //         data.user.token
-  //       );
-  //     })
-  //     );
+  //   return new Promise((resolve, reject) => {
+  //     const headers = new HttpHeaders();
+  //     this._httpClient.post(`https://la-petite.ro/la-petite-api/v1/register`, {  "firstName": user.name, "lastName": user.last_name, "email": user.email, "password": user.password })
+  //       .subscribe((data: any) => {
+          
+  //         resolve(data);
+  //       }, reject);
+  //   });
   // }
+
+  signup(user) {
+    console.log(user)
+    return this._httpClient.post<AuthResponseData>(`https://la-petite.ro/la-petite-api/v1/register`, {  "firstName": user.name, "lastName": user.last_name, "email": user.email, "password": user.password })
+      .pipe(tap(data => {
+        this.handleAuthentication(
+          data.user.id,
+          data.user.name,
+          data.user.last_name,
+          data.user.email,
+          data.user.provider,
+          data.user.provider_id,
+          data.user.provider_pic,
+          data.user.date_last_visit,
+          data.user.access,
+          data.user.token
+        );
+      })
+      );
+  }
 
 
 
@@ -160,7 +161,6 @@ export class AuthAPIService {
     token: string,
 
   ) {
-    console.log('asdasd')
     const expirationDate = new Date(date_last_visit);
     expirationDate.setFullYear(expirationDate.getFullYear() + 1);
     const user = new User(

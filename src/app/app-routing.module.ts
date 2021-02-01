@@ -31,6 +31,8 @@ import { AuthAPIService } from './pages/login/auth-api.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './pages/login/jwt-interceptor';
 import { MaintenanceComponent } from './components/maintenance/maintenance.component';
+import { MyOrdersComponent } from './pages/my-account/my-orders/my-orders.component';
+import { OrderDetailsComponent } from './pages/my-account/order-details/order-details.component';
 
 const routes: Routes = [
   {
@@ -42,14 +44,6 @@ const routes: Routes = [
     }
   },
 
-  // {
-  //   path: '', component: MaintenanceComponent,
-  //   data: {
-  //     title: 'Cofetaria La Petite - Douce Revelation',
-  //     description: 'La Petite - Douce Revelation este un laborator de cofetarie artizanala din Bucuresti cu deserturi delicioase, din ingrediente naturale. Vezi prajiturile noastre!',
-  //     ogUrl: 'your og url'
-  //   }
-  // },
 
   {
     path: 'produs/:categorySlug/:productSlug', component: ProductComponent,
@@ -181,6 +175,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'autentificare', component: LoginComponent },
   { path: 'contul-meu', component: MyAccountComponent, canActivate: [AuthGuard] },
+  { path: 'comenzile-mele', component: MyOrdersComponent, canActivate: [AuthGuard] },
+  { path: 'comenzile-mele/:orderUUID', component: OrderDetailsComponent, canActivate: [AuthGuard] },
 
   { path: '404', component: NotFoundComponent },
 
@@ -193,7 +189,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+   // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // provider used to create fake backend

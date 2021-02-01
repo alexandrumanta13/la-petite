@@ -169,3 +169,25 @@ input.form-control {
 .testimonial-style-four .owl-carousel .owl-item {
 
 }
+
+.ngx-pagination .current {
+  background: #e3a087 !important;
+  color: #fff;
+    box-shadow: 0 10px 20px rgb(227 160 135 / 30%);
+}
+
+.ngx-pagination li {
+  position: relative;
+    display: inline-block;
+    font-size: 16px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    color: #222;
+    background: transparent;
+    z-index: 1;
+    transition: all 500ms ease;
+}
+

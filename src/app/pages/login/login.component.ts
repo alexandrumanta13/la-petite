@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   };
 
   public model: any = {};
+  public login: any = {};
 
   authObs: Observable<any>;
   private userSub: Subscription;
@@ -37,11 +38,17 @@ export class LoginComponent implements OnInit {
     public router: Router,
     public user: UserService,
     private _toaster: ToastrService) {
-    this.user.sessionIn();
+    //this.user.sessionIn();
   }
 
   ngOnInit() { 
-    console.log(this.user)
+    this.userSub = this.authAPIService.user.subscribe(user => {
+      this.isAuthentificated = !!user;
+      if(this.isAuthentificated) {
+        this.router.navigate(['/contul-meu']);
+      }
+    })
+
   }
 
   signInWithGoogle(): void {
@@ -96,22 +103,37 @@ export class LoginComponent implements OnInit {
 
     let authObs: Observable<AuthResponseData>;
 
-    authObs = this.authAPIService.login(email, password);
+    authObs = this.authAPIService.login(this.login.email, this.login.password);
 
     authObs.subscribe(data => {
       console.log(data)
-      this.router.navigate(['/contul-meu']);
+      if(data['success']) {
+        this._toaster.success('', `${data['message']}`, {
+          timeOut: 8000,
+          positionClass: 'toast-bottom-right'
+        });
+        setTimeout(() => {
+          this.router.navigate(['/contul-meu'])
+        }, 200)
+        
+      } else {
+        this._toaster.warning('', `${data['message']}`, {
+          timeOut: 8000,
+          positionClass: 'toast-bottom-right'
+        });
+        form.reset();
+      }
+
     }, error => {
       console.log(error)
     });
-    form.reset();
+
   }
 
   signup() {
    
     console.log(this.model)
-    this.authAPIService.signup(this.model).then(data => {
-      console.log(data)
+    this.authAPIService.signup(this.model).subscribe(data => {
       if(data['success']) {
         this._toaster.success('', `${data['message']}`, {
           timeOut: 8000,

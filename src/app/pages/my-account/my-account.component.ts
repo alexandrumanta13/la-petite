@@ -23,10 +23,10 @@ export class MyAccountComponent implements OnInit {
     private myAccountService: MyAccountService,
     private toaster: ToastrService,
     public router: Router
-  ) { }
+  ) { console.log('asdad1')}
 
   ngOnInit(): void {
-    
+     
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthentificated = !!user;
       if(this.isAuthentificated) {
