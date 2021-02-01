@@ -7,6 +7,7 @@ import { UserService } from '../user/user.service';
 import { Observable, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login.component.html',
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
   constructor(private SocialAuthService: SocialAuthService,
     public authAPIService: AuthAPIService,
     public router: Router,
-    public user: UserService) {
+    public user: UserService,
+    private _toaster: ToastrService) {
     this.user.sessionIn();
   }
 
@@ -106,7 +108,23 @@ export class LoginComponent implements OnInit {
   }
 
   signup() {
-
+   
+    console.log(this.model)
+    this.authAPIService.signup(this.model).then(data => {
+      console.log(data)
+      if(data['success']) {
+        this._toaster.success('', `${data['message']}`, {
+          timeOut: 8000,
+          positionClass: 'toast-bottom-right'
+        });
+      } else {
+        this._toaster.warning('', `${data['message']}`, {
+          timeOut: 8000,
+          positionClass: 'toast-bottom-right'
+        });
+      }
+      
+    })
   }
   
 }

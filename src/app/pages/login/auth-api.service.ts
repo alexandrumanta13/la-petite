@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { User } from '../user/user.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
+
 
 export interface AuthResponseData {
   user: User
@@ -13,7 +14,7 @@ export interface AuthResponseData {
 export class AuthAPIService {
   private API_LOGIN = "https://la-petite.ro/la-petite-api/v1/";
 
-  user = new BehaviorSubject<User>(null);
+  user = new Subject<User>();
 
   private tokenExpirationTimer: any;
 
@@ -31,38 +32,45 @@ export class AuthAPIService {
     });
   }
 
-  signup(email: string, password: string) {
-    return this._httpClient.post<AuthResponseData>(`https://pro-staff.ro/prostaff-api/v1/login`, { "email": email, "password": password })
-      .pipe(tap(data => {
-        this.handleAuthentication(
-          data.user.id,
-          data.user.name,
-          data.user.last_name,
-          data.user.email,
-          data.user.provider,
-          data.user.provider_id,
-          data.user.provider_pic,
-          data.user.date_last_visit,
-          data.user.access,
-          data.user.token
-        );
-      })
-      );
+  public signup(user): Promise<any> {
+    console.log(user)
+    return new Promise((resolve, reject) => {
+      const headers = new HttpHeaders();
+      this._httpClient.post(`https://la-petite.ro/la-petite-api/v1/register`, {  "firstName": user.name, "lastName": user.last_name, "email": user.email, "password": user.password })
+        .subscribe((data: any) => {
+          
+          resolve(data);
+        }, reject);
+    });
   }
+
+  // signup(user) {
+  //   console.log(user)
+  //   return this._httpClient.post<AuthResponseData>(`https://la-petite.ro/la-petite-api/v1/register`, {  "firstName": user.name, "lastName": user.last_name, "email": user.email, "password": user.password })
+  //     .pipe(tap(data => {
+  //       this.handleAuthentication(
+  //         data.user.id,
+  //         data.user.name,
+  //         data.user.last_name,
+  //         data.user.email,
+  //         data.user.provider,
+  //         data.user.provider_id,
+  //         data.user.provider_pic,
+  //         data.user.date_last_visit,
+  //         data.user.access,
+  //         data.user.token
+  //       );
+  //     })
+  //     );
+  // }
 
 
 
   login(email: string, password: string) {
-    return this._httpClient
-      .post<AuthResponseData>(this.API_LOGIN,
-        {
-          email: email,
-          password: password,
-        }
-      )
+    
+    return this._httpClient.post<AuthResponseData>(this.API_LOGIN + 'login', { email: email,  password: password })
       .pipe(
         tap(data => {
-          console.log(data)
           this.handleAuthentication(
             data.user.id,
             data.user.name,
@@ -75,9 +83,8 @@ export class AuthAPIService {
             data.user.access,
             data.user.token,
           );
-
         })
-      );
+      )
   }
 
   logout() {
@@ -153,7 +160,7 @@ export class AuthAPIService {
     token: string,
 
   ) {
-
+    console.log('asdasd')
     const expirationDate = new Date(date_last_visit);
     expirationDate.setFullYear(expirationDate.getFullYear() + 1);
     const user = new User(
@@ -170,8 +177,21 @@ export class AuthAPIService {
       expirationDate
     )
     this.user.next(user);
+    
     //this.autoLogout(expirationDate.getTime());
 
     localStorage.setItem('LaPetiteUserData', JSON.stringify(user))
+  }
+
+  private handleError(errorRes: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occured!';
+    if(!errorRes.error || !errorRes.error.error) {
+      return throwError(errorMessage)
+    }
+    switch(errorRes.error.error.message) {
+      case 'EMAIL_EXISTS':
+        errorMessage = 'This email exists already!'
+    }
+    return throwError(errorMessage)
   }
 }
