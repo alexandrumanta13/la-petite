@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthAPIService } from '../../login/auth-api.service';
+import { User } from '../../user/user.model';
 
 @Component({
   selector: 'app-addresses',
@@ -18,7 +19,7 @@ export class AddressesComponent implements OnInit {
   addresses: any;
   delete: any = [];
   edit: any = [];
-  user: import("/Users/ek23ax/www/la petite/src/app/pages/user/user.model").User;
+  user: User;
 
   constructor(
     private _httpClient: HttpClient,
