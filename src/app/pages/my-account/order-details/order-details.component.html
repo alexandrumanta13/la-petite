@@ -27,7 +27,7 @@
   
           <div class="delivery-card card">
             <p><strong>Adresa de livrare:</strong></p>
-            <p>{{order?.customer.firstName}} {{order?.customer.lastName}}, {{order?.customer.phone}}</p>
+            <p>{{order?.customer.name}} {{order?.customer.last_name}} {{order?.customer.shippingAddress[0].phone}}</p>
             <p>{{order?.customer.shippingAddress[0].address}}, {{order?.customer.shippingAddress[0].county}},
               {{order?.customer.shippingAddress[0].town}}</p>
           </div>
@@ -42,13 +42,14 @@
           <p><strong>Produse:</strong></p>
           <ul class="products">
             <li *ngFor="let product of order?.products">
-              <a href="/produs/{{product?.alias}}" class="product-image">
-                <img src="{{product?.image_url}}" alt="product">
+              <span>{{product.num}} x</span>
+              <a href="/produs/{{product.alias}}" class="product-image">
+                <img src="/assets/images/resource/shop/{{product.images[0].image_url}}" alt="product">
               </a>
               <a href="/produs/{{product?.alias}}" class="product-name">
-                  {{product?.name}}
+                  <strong>{{product.product_name}}</strong>
               </a>
-              
+              <span class="price">{{product.price}} Lei</span>
             </li>
           </ul>
         </div><!-- End .col-lg-9 -->

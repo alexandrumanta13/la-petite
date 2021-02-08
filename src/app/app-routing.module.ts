@@ -33,6 +33,8 @@ import { JwtInterceptor } from './pages/login/jwt-interceptor';
 import { MaintenanceComponent } from './components/maintenance/maintenance.component';
 import { MyOrdersComponent } from './pages/my-account/my-orders/my-orders.component';
 import { OrderDetailsComponent } from './pages/my-account/order-details/order-details.component';
+import { CouponsComponent } from './pages/my-account/coupons/coupons.component';
+import { AddressesComponent } from './pages/my-account/addresses/addresses.component';
 
 const routes: Routes = [
   {
@@ -177,6 +179,9 @@ const routes: Routes = [
   { path: 'contul-meu', component: MyAccountComponent, canActivate: [AuthGuard] },
   { path: 'comenzile-mele', component: MyOrdersComponent, canActivate: [AuthGuard] },
   { path: 'comenzile-mele/:orderUUID', component: OrderDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'cupoane-reducere', component: CouponsComponent, canActivate: [AuthGuard] },
+  { path: 'adresele-mele', component: AddressesComponent, canActivate: [AuthGuard] },
+
 
   { path: '404', component: NotFoundComponent },
 

@@ -80,6 +80,8 @@ import { MustMatchDirective } from './pages/login/must-match.directive';
 import { MaintenanceComponent } from './components/maintenance/maintenance.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CouponsComponent } from './pages/my-account/coupons/coupons.component';
+import { AddressesComponent } from './pages/my-account/addresses/addresses.component';
 
 
 @NgModule({
@@ -128,6 +130,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     OrderDetailsComponent,
     MustMatchDirective,
     MaintenanceComponent,
+    CouponsComponent,
+    AddressesComponent,
   ],
   imports: [
     BrowserModule,
