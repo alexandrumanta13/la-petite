@@ -34,7 +34,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+        <div class="col-lg-6 col-md-12 col-sm-12 content-column ">
           <div class="product-details">
             <h2>{{product?.product_name}}</h2>
             <h3>{{price}} Lei {{portions}}</h3>
@@ -69,6 +69,33 @@
 
                 </li>
               </ul>
+            </div>
+
+            <div class="composition short-box" *ngIf="product?.categories[0].id == 4">
+              <p>Alegeti compozitia:</p>
+
+              <select nice-select (change)="chooseComposition()" [(ngModel)]="composition" [value]="composition" [attr.data-value]="composition">
+                  <option value="Blanche Fraise">Blanche Fraise</option>
+                  <option value="Madagascar">Madagascar</option>
+                  <option value="Latte Framboise">Latte Framboise</option>
+                  <option value="Latte Fôret">Latte Fôret</option>
+                  <option value="Profiterol">Profiterol</option>
+                  <option value="Trois Chocolat">Trois Chocolat</option>
+                  <option value="Petite Latte">Petite Latte</option>
+                  <option value="Petite Fraise">Petite Fraise</option>
+                  <option value="Vanille au Pistache">Vanille au Pistache</option>
+                  <option value="Millefeuillle Abricot">Millefeuillle Abricot</option>
+                  <option value="Passion Orange">Passion Orange</option>
+                  <option value="Duo Chocolat">Duo Chocolat</option>
+                  <option value="Caramelle">Caramelle</option>
+                  <option value="Cheesecake New York">Cheesecake New York</option>
+              </select>
+             
+            </div>
+            <div class="message" *ngIf="product?.categories[0].id == 3 || product?.categories[0].id == 4">
+              <p>Adauga acestui produs un mesaj personalizat:</p>
+              <input type="text" [(ngModel)]="message" name="message" placeholder="Mesaj pe tort">
+              
             </div>
             <div class="addto-cart-box">
               <ul class="clearfix">

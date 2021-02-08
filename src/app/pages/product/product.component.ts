@@ -31,6 +31,8 @@ export class ProductComponent implements OnInit {
   accessories: any;
   cartQuantity: number = 1;
   recommended: any;
+  message: string = "";
+  composition: string = "";
 
   productImages = [];
 
@@ -70,7 +72,6 @@ export class ProductComponent implements OnInit {
 
     this._ProductService.getProduct(this._productRoute).then(data => {
       this.product = data;
-      console.log(this.product)
       this.product.accessories = [];
       this.product.selectedAccessories = '';
       this.productCategoryName = this.product.categories[0].category_name;
@@ -79,8 +80,9 @@ export class ProductComponent implements OnInit {
       this.portions = this.product.information[0].portions;
       this.isActive = this.product.information[0].id;
       this.product.selectedQnt = this.product.information[0].quantity + this.product.information[0].um;
+      this.product.composition = "";
+      this.product.message = "";
       this.product.images.map(productImage => {
-
         this.productImages.push({ src: '/assets/images/resource/shop/' + productImage.image_url, thumb: '/assets/images/resource/shop/' + productImage.image_url })
       })
       console.log(this.productImages)
@@ -108,6 +110,10 @@ export class ProductComponent implements OnInit {
   addToCart(product) {
 
     this.product.selectedPrice = this.price;
+    if(this.message) {
+      this.product.message = this.message;
+    }
+    
     product.cart_uuid = uuidv4();
     this._cartService.addToCart(product, this.cartQuantity, false);
 
@@ -148,6 +154,7 @@ export class ProductComponent implements OnInit {
       });
 
     }
+
     
     //LightBox / Fancybox
     // if ($('.lightbox-image').length) {
@@ -196,6 +203,11 @@ export class ProductComponent implements OnInit {
   close(): void {
     // close lightbox programmatically
     this._lightbox.close();
+  }
+
+
+  chooseComposition() {
+    this.product.composition = this.composition;
   }
 
 

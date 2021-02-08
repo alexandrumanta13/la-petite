@@ -42,13 +42,24 @@
           <p><strong>Produse:</strong></p>
           <ul class="products">
             <li *ngFor="let product of order?.products">
-              <span>{{product.num}} x</span>
+              
               <a href="/produs/{{product.alias}}" class="product-image">
                 <img src="/assets/images/resource/shop/{{product.images[0].image_url}}" alt="product">
               </a>
               <a href="/produs/{{product?.alias}}" class="product-name">
-                  <strong>{{product.product_name}}</strong>
+                  <strong>{{product.num}} x {{product.product_name}}</strong>
+                  <ul class="accessories" *ngIf="product.accessories">
+                      <li *ngFor="let accessory of product.accessories">
+                        <img src="/assets/images/resource/{{accessory.image_url}}" alt="">
+                        {{accessory.accessory_name}}
+                      </li>
+                  </ul>
               </a>
+              <div class="details">
+                <span>Cantitate: {{product.quantity}}</span>
+                <span *ngIf="product.composition">Compozitie: {{product.composition}}</span>
+                <span *ngIf="product.message">Mesaj: {{product.message}}</span>
+              </div>
               <span class="price">{{product.price}} Lei</span>
             </li>
           </ul>

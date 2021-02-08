@@ -191,3 +191,12 @@ input.form-control {
     transition: all 500ms ease;
 }
 
+.nice-select {
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+  border: none !important;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}

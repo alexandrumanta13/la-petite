@@ -49,16 +49,17 @@ export class CartService {
                 const filter = {
                     'id': product.id,
                     'selectedQnt': product.selectedQnt,
+                    'composition': product.composition,
+                    'message': product.message,
                 };
 
                 const existing = products.filter(function (v, i) {
-                    return (v["id"] == product.id && v["selectedQnt"] == product.selectedQnt);
+                    return (v["id"] == product.id && v["selectedQnt"] == product.selectedQnt && v["composition"] == product.composition && v["message"] == product.message);
                 });
 
                 
 
                 if (existing.length > 0) {
-                    console.log(increment)
                     if(increment) {
                         existing[0].num = parseInt(value);
                     } else {

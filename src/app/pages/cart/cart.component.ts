@@ -24,7 +24,6 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.items$.subscribe(data => {
       this.products = data;
-      console.log(data)
     })
 
     this.cartService.totalPrice.subscribe(info => {
@@ -38,7 +37,6 @@ export class CartComponent implements OnInit {
   }
 
   addToCart(product, event, isBlur: boolean = false) {
-    console.log(isBlur)
     if(isBlur) {
       this.cartService.addToCart(product, event.target.value, true);
     } else {
@@ -47,7 +45,6 @@ export class CartComponent implements OnInit {
   }
 
   addOneToCart(product) {
-    console.log(product.num + 1)
     this.cartService.addToCart(product, product.num + 1, true);
   }
 

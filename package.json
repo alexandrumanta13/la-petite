@@ -32,6 +32,7 @@
     "angularx-social-login": "^3.5.4",
     "hammerjs": "^2.0.8",
     "isotope-layout": "^3.0.6",
+    "ng-nice-select": "^1.3.1",
     "ngx-gallery": "^5.10.0",
     "ngx-lightbox": "^2.2.2",
     "ngx-owl-carousel-o": "^4.0.0",

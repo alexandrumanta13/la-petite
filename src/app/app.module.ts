@@ -82,7 +82,7 @@ import { MaintenanceComponent } from './components/maintenance/maintenance.compo
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CouponsComponent } from './pages/my-account/coupons/coupons.component';
 import { AddressesComponent } from './pages/my-account/addresses/addresses.component';
-
+import { NiceSelectModule } from "ng-nice-select";
 
 @NgModule({
   declarations: [
@@ -147,7 +147,8 @@ import { AddressesComponent } from './pages/my-account/addresses/addresses.compo
     ToastrModule.forRoot(),
     SocialLoginModule,
     YouTubePlayerModule,
-    LightboxModule
+    LightboxModule,
+    NiceSelectModule
   ],
   exports: [],
   providers: [

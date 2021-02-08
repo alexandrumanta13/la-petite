@@ -62,12 +62,18 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="delivery-date">
-                    Data de livrare:
-                    {{product.deliverydate}} -
-                    Interval:
-                    {{product.interval}}
+                  <div class="extra">
+                    <div class="composition" *ngIf="product.composition">
+                      Compozitie:
+                      <strong>{{product.composition}}</strong>
+                    </div>
+                   
+                    <div class="message" *ngIf="product.message">
+                      Mesaj:
+                      <strong>{{product.message}}</strong>
+                    </div>
                   </div>
+                  
                 </td>
                 <td class="price">{{product.selectedPrice | number:'1.2-2'}} lei</td>
                 <td class="qty">

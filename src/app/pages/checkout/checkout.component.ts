@@ -86,7 +86,8 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.items$.subscribe(data => {
-      this.products = data
+      this.products = data;
+      console.log(this.products)
     })
 
     this.cartService.totalPrice.subscribe(info => {
@@ -247,7 +248,7 @@ export class CheckoutComponent implements OnInit {
         method: this.payment,
         notes: this.note_box,
         products: this.products,
-        accessories: this.products[0].accessories,
+        accessories: this.products.accessories,
         deliverydate: this.deliverydate,
         intervaldelivery: this.interval
       }
