@@ -313,25 +313,25 @@ export class CheckoutComponent implements OnInit {
 
     this._httpClient.post(this.ADD_ORDER, this.order).subscribe((data: any) => {
       if (data.status == "success") {
-        // this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
-        //   if (data.status == "success") {
+        this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
+          if (data.status == "success") {
 
-        //     this.toaster.success('Iti multumim!', `${data.message}`, {
-        //       timeOut: 3000,
-        //       positionClass: 'toast-bottom-right'
-        //     });
+            this.toaster.success('Iti multumim!', `${data.message}`, {
+              timeOut: 3000,
+              positionClass: 'toast-bottom-right'
+            });
 
-        //     // if (this.discount > 0) {
-        //     //   this._httpClient.post(this.USE_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
+            // if (this.discount > 0) {
+            //   this._httpClient.post(this.USE_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
 
-        //     //   })
-        //     // }
+            //   })
+            // }
 
-        //     this.cartService.emptyCart();
-        //     f.reset();
-        //     this.router.navigate(['/comanda-finalizata']);
-        //   }
-        // })
+            this.cartService.emptyCart();
+            f.reset();
+            this.router.navigate(['/comanda-finalizata']);
+          }
+        })
       }
     });
   }
