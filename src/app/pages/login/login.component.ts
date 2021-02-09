@@ -112,10 +112,9 @@ export class LoginComponent implements OnInit {
           timeOut: 8000,
           positionClass: 'toast-bottom-right'
         });
-        setTimeout(() => {
-          console.log('asdadasdasda')
-          this.router.navigate(['/contul-meu'])
-        }, 200)
+        
+        this.router.navigate(['/contul-meu'])
+        
         
       } else {
         this._toaster.warning('', `${data['message']}`, {
