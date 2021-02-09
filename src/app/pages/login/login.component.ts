@@ -8,6 +8,7 @@ import { Observable, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { map, take } from 'rxjs/operators';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login.component.html',
@@ -106,17 +107,19 @@ export class LoginComponent implements OnInit {
     authObs = this.authAPIService.login(this.login.email, this.login.password);
 
     authObs.subscribe(data => {
-      console.log(data)
+
       if(data['success']) {
         this._toaster.success('', `${data['message']}`, {
           timeOut: 8000,
           positionClass: 'toast-bottom-right'
         });
+        window.location.reload();
         setTimeout(() => {
           
           this.router.navigate(['/contul-meu'])
-        }, 1000)
+        }, 2000)
         
+       
       } else {
         this._toaster.warning('', `${data['message']}`, {
           timeOut: 8000,

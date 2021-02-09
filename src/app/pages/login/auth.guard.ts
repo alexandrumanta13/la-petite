@@ -1,8 +1,9 @@
 
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
+import { User } from '../user/user.model';
 
 import { AuthAPIService } from './auth-api.service';
 
@@ -14,27 +15,43 @@ export class AuthGuard implements CanActivate {
         private authService: AuthAPIService
     ) { }
 
+
+
+
+    // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    //     if (localStorage.getItem('LaPetiteUserData')) {
+    //         // logged in so return true
+    //         return true;
+    //     }
+
+    //     // not logged in so redirect to login page with the return url and return false
+    //     this.router.navigate(['autentificare'], { queryParams: { returnUrl: state.url }});
+    //     return false;
+    // }
+
     canActivate(route: ActivatedRouteSnapshot, router: RouterStateSnapshot): | boolean  | UrlTree  | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
+       
         return this.authService.user.pipe(
             take(1),
             map(user => {
-                console.log(user)
                 const isAuth = !!user;
                 if (isAuth) {
                   return true;
                 }
                 return this.router.createUrlTree(['/autentificare']);
-        }), 
-        //tap(isAuth => {
+        })
+       
+        // tap(isAuth => {
            
-            // if(!isAuth) {
-            //     console.log('asdadsa1')
-            //     return this.router.createUrlTree['/autentificare']
-            // } else {
-            //     console.log('asdsadas2')
-            //     return this.router.createUrlTree['/contul-meu']
-            // }
-        //})
+        //     if(!isAuth) {
+        //         console.log('asdadsa1')
+        //         return this.router.createUrlTree['/autentificare']
+        //     } else {
+        //         console.log(isAuth)
+        //         this.router.createUrlTree['/autentificare']
+        //         return true;
+        //     }
+        // })
     )
     }
 

@@ -29,4 +29,8 @@ export class MyOrdersComponent implements OnInit {
     })
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
 }

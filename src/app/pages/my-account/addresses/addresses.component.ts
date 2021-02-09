@@ -112,4 +112,8 @@ export class AddressesComponent implements OnInit {
   toggleDelete(i) {
     this.delete[i] = !this.delete[i];
   }
+
+  logout() {
+    this.authAPIService.logout();
+  }
 }

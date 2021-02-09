@@ -42,4 +42,8 @@ export class CouponsComponent implements OnInit {
     })
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
 }

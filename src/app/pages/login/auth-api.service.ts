@@ -19,8 +19,9 @@ export class AuthAPIService {
   private tokenExpirationTimer: any;
 
   constructor(private _httpClient: HttpClient, public _router: Router) {
-    console.log('Hello AuthService Provider');
+    
     this.user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('LaPetiteUserData')));
+    console.log('Hello AuthService Provider', this.user);
   }
 
   public postData(credentials, type): Promise<any> {

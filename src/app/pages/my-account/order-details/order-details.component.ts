@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthAPIService } from '../../login/auth-api.service';
 import { MyAccountService } from '../my-account.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MyAccountService } from '../my-account.service';
 export class OrderDetailsComponent implements OnInit {
   order: any;
 
-  constructor(private myAccountService: MyAccountService, private _route: ActivatedRoute,) { }
+  constructor(private myAccountService: MyAccountService, private _route: ActivatedRoute, public router: Router,  public authAPIService: AuthAPIService,) { }
 
   ngOnInit(): void {
     this._route.paramMap.subscribe(params => {
@@ -19,5 +20,9 @@ export class OrderDetailsComponent implements OnInit {
         console.log(this.order)
       })
     });
+  }
+
+  logout() {
+    this.authAPIService.logout();
   }
 }
