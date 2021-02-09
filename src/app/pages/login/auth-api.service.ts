@@ -176,11 +176,14 @@ export class AuthAPIService {
       token,
       expirationDate
     )
+
+
+    localStorage.setItem('LaPetiteUserData', JSON.stringify(user))
     this.user.next(user);
     
     //this.autoLogout(expirationDate.getTime());
 
-    localStorage.setItem('LaPetiteUserData', JSON.stringify(user))
+    
   }
 
   private handleError(errorRes: HttpErrorResponse) {
