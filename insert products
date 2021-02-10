@@ -1,0 +1,23 @@
+INSERT INTO `products`(`product_name`, `alias`, `CategoryID`, `description`, `descriptionInfo`, `ingredients`, `active`) VALUES ()
+
+
+INSERT INTO `products`(`product_name`, `alias`, `CategoryID`, `description`) VALUES ('Mini-Tort Révélation D’amour', 'mini-tort-revelation-d-amour', 6, 'Cand ciocolata alba intalneste zmeura, este clar ca va iesi o poveste de dragoste fabuloasa. Am mai adaugat si o tenta eleganta de vanilie. Rezultatul? Révélation D’amour!');
+INSERT INTO `products`(`product_name`, `alias`, `CategoryID`, `description`) VALUES ('Tort Je T’aime', 'tort-je-t-aime', 6, 'Acest desert contine ciocolata alba atat de fina, incat fructele de padure se topesc de dragul ei, promitandu-i dragoste eterna.');
+INSERT INTO `products`(`product_name`, `alias`, `CategoryID`, `description`) VALUES ('Cutie Macarons V-day', 'cutie-macarons-v-day', 6, 'Macarons. Cine le poate rezista? Sa fim seriosi, contin zmeura si vanilie, plus ca mai au fi forma aceasta simpatica. Cum sa nu le adori?');
+INSERT INTO `products`(`product_name`, `alias`, `CategoryID`, `description`) VALUES ('Pachet Adore', 'pachet-adore', 6, 'Legenda spune ca e mai bine sa fii sigur decat sa regreti ca ai luat prea putine. De aceea am creat pachetul de 6 monoportii cu 3 sortimente diferite, toate la fel de spectaculoase.');
+INSERT INTO `products`(`product_name`, `alias`, `CategoryID`, `description`) VALUES ('Tort Blanche', 'tort-blanche', 6, 'Ce ar putea fi gresit intr-un tort in care ciocolata alba belgiana imbratiseaza cu patos capsunele, zmeura si visinele?');
+INSERT INTO `products`(`product_name`, `alias`, `CategoryID`, `description`) VALUES ('Tort Impulse', 'tort-impulse', 6, 'Tortul acesta este in intregime o declaratie de dragoste. Forma de inima si insertia de fructul pasiunii exprima romantism din orice perspectiva ai privi.');
+
+
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (59, 'mini-tort-revelation-d-amour-1');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (59, 'mini-tort-revelation-d-amour-2');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (60, 'tort-je-t-aime-1');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (60, 'tort-je-t-aime-2');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (61, 'cutie-macarons-v-day-1');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (61, 'cutie-macarons-v-day-2');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (62, 'pachet-adore-1');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (62, 'pachet-adore-2');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (63, 'tort-blanche-1');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (63, 'tort-blanche-2');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (64, 'tort-impulse-1');
+INSERT INTO `product_images`(`ProductID`, `image_url`) VALUES (64, 'tort-impulse-2');

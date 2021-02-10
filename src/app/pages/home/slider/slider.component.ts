@@ -17,7 +17,8 @@ export class SliderComponent implements OnInit {
     animateOut: 'fadeOut',
     animateIn: 'fadeIn',
     autoplay: true,
-    smartSpeed: 4000,
+    smartSpeed: 5000,
+    autoplayTimeout:5000,
 
     navText: ['<span class="icon-Arrow-Left"></span>', '<span class="icon-Arrow-Right"></span>'],
     responsive: {

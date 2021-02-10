@@ -41,6 +41,16 @@ export class ProductsService {
         });
     }
 
+    public getProductsLimited(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this._httpClient.get<Product[]>(this.REST_API_SERVER + 'recommended/category/limited')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+       
+    }
+
     /**
      * Get products
      *
