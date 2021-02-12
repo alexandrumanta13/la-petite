@@ -124,22 +124,22 @@
       <div class="tabs-box">
         <div class="tab-btn-box">
           <ul class="tab-btns tab-buttons clearfix">
-            <li class="tab-btn active-btn" data-tab="#tab-1">Descriere</li>
-            <li class="tab-btn" data-tab="#tab-2">Info Livrare</li>
+            <li class="tab-btn" [ngClass]="{ 'active-btn':activeTab==='description'}" (click)="descriptionTab('description')" data-tab="#tab-1">Descriere</li>
+            <li class="tab-btn" [ngClass]="{ 'active-btn':activeTab==='infoDelivery'}" (click)="infoDelivery('infoDelivery')" data-tab="#tab-2">Info Livrare</li>
           </ul>
         </div>
         <div class="tabs-content">
-          <div class="tab active-tab" id="tab-1">
+          <div class="tab" [ngClass]="{ 'active-tab':activeTab==='description'}" id="tab-1">
             <div class="content-box">
               <h3>Descriere produs</h3>
-              <p *ngIf="!product?.descriptionInfo">{{product?.ingredients}}</p>
+              <p *ngIf="!product?.descriptionInfo" [innerHTML]="product?.ingredients"></p>
               <p *ngIf="product?.descriptionInfo" [innerHTML]="product?.descriptionInfo"></p>
 
             </div>
           </div>
         </div>
         <div class="tabs-content">
-          <div class="tab" id="tab-2">
+          <div class="tab" [ngClass]="{ 'active-tab':activeTab==='infoDelivery'}" id="tab-2">
             <div class="content-box">
               <h3>Info Livrare</h3>
               <p>
@@ -202,7 +202,7 @@
                   </li>
                 </ul>
                 <div class="cart-btn"><a routerLink="/produs/{{product.categories[0].slug}}/{{product.alias}}"
-                    class="theme-btn-two">Vezi detalii</a></div>
+                    class="theme-btn-two">Cumpara</a></div>
               </div>
             </div>
           </div>

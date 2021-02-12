@@ -43,7 +43,7 @@ export class ProductsService {
 
     public getProductsLimited(): Promise<any> {
         return new Promise((resolve, reject) => {
-            this._httpClient.get<Product[]>(this.REST_API_SERVER + 'recommended/category/limited')
+            this._httpClient.get<Product[]>(this.REST_API_SERVER + 'limited')
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

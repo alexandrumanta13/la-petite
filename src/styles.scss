@@ -111,13 +111,16 @@ h6 {
   }
 
   .popover-body {
-      padding: 16px;
+    padding: 16px;
   }
 
 
 }
 
-.ngb-tp-hour, .ngb-tp-meridian, .ngb-tp-minute, .ngb-tp-second {
+.ngb-tp-hour,
+.ngb-tp-meridian,
+.ngb-tp-minute,
+.ngb-tp-second {
   flex: 1;
 
   button {
@@ -125,7 +128,8 @@ h6 {
   }
 }
 
-.popover .ngb-dp-header, .popover .ngb-dp-weekdays {
+.popover .ngb-dp-header,
+.popover .ngb-dp-weekdays {
   padding: 10px 0;
 }
 
@@ -143,6 +147,7 @@ input.form-control {
   border: 1px solid #e6e6e6;
   padding: 10px 30px;
   border-radius: 0;
+
   &:focus {
     box-shadow: none;
   }
@@ -150,45 +155,47 @@ input.form-control {
 
 .gdpr {
   margin-top: 20px;
+
   .custom-control.material-checkbox .material-control-indicator {
     border: 1px solid #6d4b50;
   }
 
-  .custom-control.material-checkbox .material-control-input:checked ~ .material-control-indicator {
+  .custom-control.material-checkbox .material-control-input:checked~.material-control-indicator {
     border: 2px solid #6d4b50;
     border-top: 0px;
     border-left: 0px;
   }
 }
 
-.testimonial-block-two, .testimonial-style-four .owl-carousel .owl-item, owl-stage, .owl-carousel .owl-stage {
+.testimonial-block-two,
+.testimonial-style-four .owl-carousel .owl-item,
+owl-stage,
+.owl-carousel .owl-stage {
   height: 100%;
   display: flex;
 }
 
-.testimonial-style-four .owl-carousel .owl-item {
-
-}
+.testimonial-style-four .owl-carousel .owl-item {}
 
 .ngx-pagination .current {
   background: #e3a087 !important;
   color: #fff;
-    box-shadow: 0 10px 20px rgb(227 160 135 / 30%);
+  box-shadow: 0 10px 20px rgb(227 160 135 / 30%);
 }
 
 .ngx-pagination li {
   position: relative;
-    display: inline-block;
-    font-size: 16px;
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
-    color: #222;
-    background: transparent;
-    z-index: 1;
-    transition: all 500ms ease;
+  display: inline-block;
+  font-size: 16px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-family: 'Rubik', sans-serif;
+  color: #222;
+  background: transparent;
+  z-index: 1;
+  transition: all 500ms ease;
 }
 
 .nice-select {
@@ -199,4 +206,17 @@ input.form-control {
   display: flex;
   align-items: center;
   padding: 0 16px;
+}
+
+@media only screen and (max-width: 499px) {
+  .banner-carousel .content-box h1.valentine {
+    display: flex;
+    flex-direction: column;
+    font-size: 32px !important;
+    line-height: 50px !important;
+
+    span {
+      font-size: 32px !important;
+    }
+  }
 }

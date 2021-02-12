@@ -35,6 +35,7 @@ export class ProductComponent implements OnInit {
   composition: string = "";
 
   productImages = [];
+  activeTab: any = "description";
 
 
   /**
@@ -208,6 +209,15 @@ export class ProductComponent implements OnInit {
 
   chooseComposition() {
     this.product.composition = this.composition;
+  }
+
+
+  descriptionTab(activeTab){
+    this.activeTab = activeTab;
+  }
+
+  infoDelivery(activeTab){
+    this.activeTab = activeTab;
   }
 
 
