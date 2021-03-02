@@ -104,7 +104,8 @@ export class CheckoutComponent implements OnInit {
       if (this.isAuthentificated) {
         this.user = user;
         this.getAddresses(user);
-      }
+      } 
+      
     });
 
     this.formGroup = new FormGroup({

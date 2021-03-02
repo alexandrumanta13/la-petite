@@ -9,14 +9,14 @@ export class UserService {
   user = new BehaviorSubject<User>(null);
 
   async storeData(data) {
-    localStorage.setItem('LaPetiteUserData', JSON.stringify(data));
+    localStorage.setItem('LaPetiteUser_Data', JSON.stringify(data));
     this.user = new BehaviorSubject<User>(null);
     const newData = await this.getData();
     return this.router.navigate(['/'], newData);
   }
 
   getData() {
-    return JSON.parse(localStorage.getItem('LaPetiteUserData'));
+    return JSON.parse(localStorage.getItem('LaPetiteUser_Data'));
   }
 
   sessionIn() {
@@ -36,7 +36,7 @@ export class UserService {
   }
 
   logOut() {
-    localStorage.setItem('LaPetiteUserData', '');
+    localStorage.setItem('LaPetiteUser_Data', '');
     localStorage.clear();
     return this.router.navigate(['']);
   }

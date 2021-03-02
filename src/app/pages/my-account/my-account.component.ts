@@ -54,7 +54,7 @@ export class MyAccountComponent implements OnInit {
           positionClass: 'toast-bottom-right'
         });
         
-        localStorage.setItem('ProstaffUserData', JSON.stringify(data.user));
+        localStorage.setItem('LaPetiteUser_Data', JSON.stringify(data.user));
         
       }
       if (data.success === false) {

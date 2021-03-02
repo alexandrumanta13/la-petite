@@ -20,7 +20,7 @@ export class AuthAPIService {
 
   constructor(private _httpClient: HttpClient, public _router: Router) {
     
-    this.user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('LaPetiteUserData')));
+    this.user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('LaPetiteUser_Data')));
     console.log('Hello AuthService Provider', this.user);
   }
 
@@ -92,7 +92,7 @@ export class AuthAPIService {
   logout() {
     this.user.next(null);
     this._router.navigate(['/autentificare']);
-    localStorage.removeItem('LaPetiteUserData');
+    localStorage.removeItem('LaPetiteUser_Data');
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
@@ -100,7 +100,7 @@ export class AuthAPIService {
   }
 
   autoLogout(expirationDuration: number) {
-
+    localStorage.removeItem('LaPetiteUser_Data');
     this.tokenExpirationTimer = setTimeout(() => {
       console.log(expirationDuration)
       this.logout();
@@ -108,7 +108,7 @@ export class AuthAPIService {
   }
 
   autoLogin() {
-    const LaPetiteUserData: {
+    const LaPetiteUser_Data: {
       id: number,
       name: string,
       last_name: string,
@@ -120,29 +120,29 @@ export class AuthAPIService {
       access: number,
       _token: string;
       _tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem('LaPetiteUserData'));
-    if (!LaPetiteUserData) {
+    } = JSON.parse(localStorage.getItem('LaPetiteUser_Data'));
+    if (!LaPetiteUser_Data) {
       return;
     }
 
     const loadedUser = new User(
-      LaPetiteUserData.id,
-      LaPetiteUserData.name,
-      LaPetiteUserData.last_name,
-      LaPetiteUserData.email,
-      LaPetiteUserData.provider,
-      LaPetiteUserData.provider_id,
-      LaPetiteUserData.provider_pic,
-      LaPetiteUserData.date_last_visit,
-      LaPetiteUserData.access,
-      LaPetiteUserData._token,
-      new Date(LaPetiteUserData._tokenExpirationDate)
+      LaPetiteUser_Data.id,
+      LaPetiteUser_Data.name,
+      LaPetiteUser_Data.last_name,
+      LaPetiteUser_Data.email,
+      LaPetiteUser_Data.provider,
+      LaPetiteUser_Data.provider_id,
+      LaPetiteUser_Data.provider_pic,
+      LaPetiteUser_Data.date_last_visit,
+      LaPetiteUser_Data.access,
+      LaPetiteUser_Data._token,
+      new Date(LaPetiteUser_Data._tokenExpirationDate)
     );
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
       const expirationDuration =
-        new Date(LaPetiteUserData._tokenExpirationDate).getTime() -
+        new Date(LaPetiteUser_Data._tokenExpirationDate).getTime() -
         new Date().getTime();
       //this.autoLogout(expirationDuration);
 
@@ -179,7 +179,7 @@ export class AuthAPIService {
     )
 
 
-    localStorage.setItem('LaPetiteUserData', JSON.stringify(user))
+    localStorage.setItem('LaPetiteUser_Data', JSON.stringify(user))
     this.user.next(user);
     
     //this.autoLogout(expirationDate.getTime());
