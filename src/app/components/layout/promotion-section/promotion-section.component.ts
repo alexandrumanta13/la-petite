@@ -20,6 +20,7 @@ export class PromotionSectionComponent implements OnInit {
     smartSpeed: 3000,
     autoplay: true,
     navText: ['<span class="icon-Arrow-Left"></span>', '<span class="icon-Arrow-Right"></span>'],
+    
     responsive: {
       0: {
         items: 1
@@ -51,7 +52,7 @@ export class PromotionSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this._ProductsService.getProductsLimited().then(data => {
-      console.log(data.products)
+     
       this.products = data.products;
     });    
     // this.products = [

@@ -241,7 +241,7 @@ export class CheckoutComponent implements OnInit {
           shippingAddress: {
             address: (this.model.address_1 ? this.model.address + ' ' + this.model.address_1 : this.model.address),
             town: this.model.town_city,
-            county: this.model.county,
+            county: this.model.county.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
           }
         },
         total: this.totalPrice$,
@@ -249,11 +249,15 @@ export class CheckoutComponent implements OnInit {
         method: this.payment,
         notes: this.note_box,
         products: this.products,
-        accessories: this.products.accessories,
+        
         deliverydate: this.deliverydate,
         intervaldelivery: this.interval
       }
     ];
+
+    // if(this.products.accessories) {
+    //   this.order.accessories: this.products.accessories,
+    // }
 
     if (this.isAuthentificated) {
       let userInfo = {};
@@ -297,7 +301,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     console.log(this.order);
-
+    
     // this._httpClient.post(this.SEND_ORDER, this.order).subscribe((data: any) => {
     //   if (data.status == "success") {
 
