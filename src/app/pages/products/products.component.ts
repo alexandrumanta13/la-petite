@@ -24,6 +24,7 @@ export class ProductsComponent implements OnInit {
   public totalPages: number = 1;
   public pages: number[] = [];
   categories: any;
+  tempTitle: string;
 
 
   /**
@@ -82,10 +83,16 @@ export class ProductsComponent implements OnInit {
       this._ProductsService.getProducts(this._categoryRoute, this.currentPage).then(data => {
         this.totalNoOfProducts = data.total_no_of_products;
         this.products = data.products;
-
+         
+        if(this._categoryRoute == 'produse-editie-limitata' && data.products.length == 0) {
+           
+          this.tempTitle ='<h4>IN CURAND <br> Bunatatile de Paste</h4>';
+        } else {
+          this.tempTitle ='';
+        }
         this.setTotalPages(data.no_of_pages);
         this.setPagesArray(this.totalPages);
-        console.log(this.products)
+         
         this._ProductsService.getCategory(this._categoryRoute);
 
         this.moveToTop();

@@ -9,7 +9,34 @@
       <p>Produse de sezon</p>
       <h2>Editie Limitata</h2>
     </div> -->
+
     <owl-carousel-o [options]="customOptions" class="single-item-carousel nav-style-one owl-dots-none">
+      <ng-template carouselSlide>
+        <div class="inner-box">
+          <div class="row clearfix">
+            <div class="col-lg-6 col-md-12 col-sm-12 image-column">
+              <div class="image-box">
+                
+                <figure class="image"><img src="/assets/images/cozonaci-la-petite.jpeg" alt=""></figure>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+              <div class="content-box">
+                <!-- <div class="price-box" style="background-image: url(assets/images/icons/icon-bg-4.png);">
+                  <span>{{product.information[0].price}}</span>
+                  <p>Lei</p>
+                </div> -->
+                <h3>Bunatati de Paste</h3>
+                <p>Stim cat de importanta este masa pentru sarbatorile pascale, de aceea pregatim din timp o serie de bunatati cu care sa-i incanti pe cei dragi.
+                  Ramai alaturi de noi, revenim in curand cu deliciile pentru Paste.</p>
+                <div class="btn-box"><a class="theme-btn-two">In curand</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+    <!-- <owl-carousel-o [options]="customOptions" class="single-item-carousel nav-style-one owl-dots-none">
       <ng-template carouselSlide *ngFor="let product of products">
         <div class="inner-box">
           <div class="row clearfix">
@@ -36,15 +63,15 @@
       
 
 
-      <!-- <div class="owl-nav">
+      <div class="owl-nav">
         <div class="owl-prev"><span class="icon-Arrow-Left"></span></div>
         <div class="owl-next"><span class="icon-Arrow-Right"></span></div>
       </div>
       <div class="owl-dots">
         <div class="owl-dot"><span></span></div>
         <div class="owl-dot active"><span></span></div>
-      </div> -->
-    </owl-carousel-o>
+      </div> 
+    </owl-carousel-o> -->
     <!-- <owl-carousel-o [options]="customOptions" class="single-item-carousel nav-style-one owl-dots-none">
       <ng-template carouselSlide *ngFor="let product of products">
         <div class="inner-box">

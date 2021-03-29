@@ -34,6 +34,7 @@ export class CheckoutComponent implements OnInit {
 
   private CHECK_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/check";
   private USE_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/use";
+  private SEND_COUPON = "https://la-petite.ro/la-petite-api/v1/coupon/generate"; 
 
   discountCode: any;
   deliverydate: string;
@@ -87,7 +88,7 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.items$.subscribe(data => {
       this.products = data;
-      console.log(this.products)
+     
     })
 
     this.cartService.totalPrice.subscribe(info => {
@@ -112,7 +113,7 @@ export class CheckoutComponent implements OnInit {
       activeEndDate: new FormControl(new Date(), { validators: [Validators.required, DateTimeValidator] })
     }, { updateOn: 'change' });
 
-    console.log(this.selectedAddress)
+    
   }
 
   send() {
@@ -134,7 +135,7 @@ export class CheckoutComponent implements OnInit {
       this.selectedAddress = this.addresses[0];
     }
 
-    console.log(this.selectedAddress)
+    
   }
 
   getData() {
@@ -142,28 +143,41 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkDiscount() {
+    if(this.discountCode != 'LAPETITE10') {
+      this.toaster.warning('', 'Cuponul de reducere nu este corect!', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+    
     if (this.model.email) {
-      this._httpClient.post(this.CHECK_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
+      this._httpClient.post(this.SEND_COUPON, {email: this.model.email}).subscribe((data: any) => {
         if (data.success === true) {
-
-          this.discount = data.percent;
-          this.totalPrice$ = this.totalPrice$ - (this.totalPrice$ * this.discount / 100);
-          this._httpClient.post(this.USE_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
+          this._httpClient.post(this.CHECK_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
             if (data.success === true) {
-              this.toaster.success('Iti multumim!', `${data.message}`, {
+    
+              this.discount = data.percent;
+              this.totalPrice$ = this.totalPrice$ - (this.totalPrice$ * this.discount / 100);
+              this._httpClient.post(this.USE_COUPON, { email: this.model.email, coupon: this.discountCode }).subscribe((data: any) => {
+                if (data.success === true) {
+                  this.toaster.success('Iti multumim!', `${data.message}`, {
+                    timeOut: 3000,
+                    positionClass: 'toast-bottom-right'
+                  });
+                }
+              })
+    
+            } else {
+              this.toaster.warning('', `${data.message}`, {
                 timeOut: 3000,
                 positionClass: 'toast-bottom-right'
               });
             }
           })
-
-        } else {
-          this.toaster.warning('', `${data.message}`, {
-            timeOut: 3000,
-            positionClass: 'toast-bottom-right'
-          });
         }
-      })
+      });
+     
     } else {
       this.toaster.warning('', 'Te rugam sa introduci adresa de email!', {
         timeOut: 3000,
@@ -383,7 +397,7 @@ export class CheckoutComponent implements OnInit {
       active[i].classList.remove('active');
     }
     event.target.closest(".shipping-address-box").classList.add('active');
-    console.log(this.selectedAddress)
+    
   }
 
   signInWithGoogle(): void {
@@ -403,7 +417,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   apiConnection(data) {
-    console.log(data);
+    
     this.userPostData.email = data.email;
     this.userPostData.name = data.name;
     this.userPostData.provider = data.provider;
@@ -415,7 +429,7 @@ export class CheckoutComponent implements OnInit {
       result => {
         this.responseData = result;
         if (this.responseData.userData) {
-          console.log(this.responseData)
+          
           this.userService.storeData(this.responseData.userData);
 
         }
